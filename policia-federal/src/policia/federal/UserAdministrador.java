@@ -6,16 +6,15 @@ package policia.federal;
  * @author Mailen 
  * @author Leo
  */
-public class Administrador extends Usuario implements PAdministrador{
+public class UserAdministrador extends Usuario implements PAdministrador{
 
-    public Administrador(String usuario, String password) {
+    public UserAdministrador(String usuario, String password) {
         super(usuario, password);
     }
-    
-    
+
     @Override
     public void mostrarMenu() {
-
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override

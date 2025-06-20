@@ -7,11 +7,13 @@ package policia.federal;
 /**
  *
  * @author Nicolas
- * @author Mailen 
+ * @author Mailen
  * @author Leo
  */
 public interface PAdministrador extends PConsultarTodo {
-    
+
+    /**
+     *
+     */
     public void administrarTodo();
-    
 }

@@ -19,6 +19,26 @@ abstract class Usuario {
         this.password = password;
     }
 
-    
+    public boolean autenticar(String user, String pass) {
+        return this.usuario.equals(user) && this.password.equals(pass);
+    }
     public abstract void mostrarMenu();
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    
+    
 }

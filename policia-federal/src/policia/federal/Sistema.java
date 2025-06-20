@@ -4,17 +4,28 @@
  */
 package policia.federal;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Nicolas
  * @author Mailen 
  * @author Leo
  */
+
 public class Sistema {
 
     private boolean enEjecucion = true;
-
+    private ArrayList<Usuario> usuarios = new ArrayList<>();
     Tools tools = new Tools();
+
+    
+    public Sistema() {
+        // Inicializar algunos usuarios
+        usuarios.add(new UserAdministrador("admin", "1234"));
+        usuarios.add(new UserInvestigador("invest", "12345"));
+        usuarios.add(new UserVigilante("vigi", "123456"));
+    }
 
     public void iniciar() {
         while (enEjecucion) {
@@ -66,3 +77,5 @@ public class Sistema {
     }
 
 }
+
+
