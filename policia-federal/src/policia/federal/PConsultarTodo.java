@@ -12,5 +12,5 @@ package policia.federal;
  */
 public interface PConsultarTodo extends PConsultarDatosPropios{
     
-    public void consutlarTodo();
+    public void consultarTodo();
 }

@@ -9,7 +9,7 @@ public class Juez {
     private int codigo;
     private int anios_de_servicio;
 
-     Tools tools = new Tools();
+    Tools tools = new Tools();
      
     public Juez(String nombre_apellido, int codigo, int anios_de_servicio) {
         this.nombre_apellido = nombre_apellido;
