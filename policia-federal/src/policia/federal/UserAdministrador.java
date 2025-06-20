@@ -12,9 +12,26 @@ public class UserAdministrador extends Usuario implements PAdministrador{
         super(usuario, password);
     }
 
+    
+    
+    public void loginAdministrador() {
+        System.out.println("Iniciando sesion como Administrador...");
+        mostrarMenu();
+    }
+    
+    
+    
     @Override
     public void mostrarMenu() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        System.out.println("\n\n===== Sistema de Gestion Policial =====");
+        System.out.println("1. Crear Usuarios del sistema");
+        System.out.println("2. Menu Vigilantes");
+        System.out.println("3. Menu Jueces");
+        System.out.println("4. Menu Bancos");
+        System.out.println("0. Salir");
+        
+        int opcion = tools.leerEntero("Seleccione una opcion: ");
+
     }
 
     @Override

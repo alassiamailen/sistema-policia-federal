@@ -16,4 +16,10 @@ public class UserInvestigador extends Usuario {
         System.out.println("Menú de Investigador");
     }
 
+    
+    public void loginInvestigador() {
+        System.out.println("Iniciando sesion como Investigador...");
+        // Aqui iria la logica de autenticacion y menu de investigador
+    }
+
 }

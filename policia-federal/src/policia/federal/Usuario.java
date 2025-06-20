@@ -13,6 +13,7 @@ package policia.federal;
 abstract class Usuario {
     public String usuario;
     public String password;
+    Tools tools = new Tools();
 
     public Usuario(String usuario, String password) {
         this.usuario = usuario;
