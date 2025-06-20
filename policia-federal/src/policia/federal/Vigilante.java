@@ -10,6 +10,16 @@ package policia.federal;
  * @author Mailen 
  * @author Leo
  */
-public class EntidadBancaria {
+public class Vigilante extends Usuario {
+
+    public Vigilante(String usuario, String password) {
+        super(usuario, password);
+    }
+    
+    
+    @Override
+    public void mostrarMenu() {
+
+    }
     
 }

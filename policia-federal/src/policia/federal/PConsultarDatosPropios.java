@@ -6,7 +6,9 @@ package policia.federal;
 
 /**
  *
- * @author nicol
+ * @author Nicolas
+ * @author Mailen 
+ * @author Leo
  */
 public interface PConsultarDatosPropios {
     

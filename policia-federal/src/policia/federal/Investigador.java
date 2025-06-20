@@ -10,6 +10,14 @@ package policia.federal;
  * @author Mailen 
  * @author Leo
  */
-public class EntidadBancaria {
+public class Investigador extends Usuario {
     
+    public Investigador(String usuario, String password) {
+        super(usuario, password);
+    }
+    
+    @Override
+    public void mostrarMenu() {
+
+    }
 }

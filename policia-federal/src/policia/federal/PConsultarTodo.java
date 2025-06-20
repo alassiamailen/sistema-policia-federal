@@ -7,9 +7,10 @@ package policia.federal;
 /**
  *
  * @author Nicolas
- * @author Mailen
+ * @author Mailen 
+ * @author Leo
  */
-public interface PConsultarTodo  {
+public interface PConsultarTodo extends PConsultarDatosPropios{
     
     public void consutlarTodo();
 }

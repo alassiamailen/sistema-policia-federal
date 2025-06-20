@@ -2,13 +2,16 @@ package policia.federal;
 /**
  *
  * @author Nicolas
- * @author Mailen
+ * @author Mailen 
+ * @author Leo
  */
 
 public class Main {
 
     public static void main(String[] args) {
-       Sucursal nueva = new Sucursal();
+        
+        Sistema app = new Sistema();
+        app.iniciar();
     }
     
 }
