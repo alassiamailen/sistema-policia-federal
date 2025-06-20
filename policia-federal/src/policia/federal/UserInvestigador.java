@@ -10,17 +10,14 @@ package policia.federal;
  * @author Mailen 
  * @author Leo
  */
-public class Sucursal implements PConsultarTodo{
-
+public class UserInvestigador extends Usuario {
     
-    public Sucursal() {
+    public UserInvestigador(String usuario, String password) {
+        super(usuario, password);
     }
-
+    
     @Override
-    public void consutlarTodo() {
-
+    public void mostrarMenu() {
+        System.out.println("Menú de Investigador");
     }
-    
-
-    
 }

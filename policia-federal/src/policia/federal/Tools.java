@@ -17,7 +17,6 @@ public class Tools {
 
     public Tools() {
     }
-    
         
     private final Scanner sc = new Scanner(System.in);
     

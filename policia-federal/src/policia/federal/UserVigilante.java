@@ -10,16 +10,16 @@ package policia.federal;
  * @author Mailen 
  * @author Leo
  */
-public class Vigilante extends Usuario {
+public class UserVigilante extends Usuario {
 
-    public Vigilante(String usuario, String password) {
+    public UserVigilante(String usuario, String password) {
         super(usuario, password);
     }
     
     
     @Override
     public void mostrarMenu() {
-
+        System.out.println("Menú de UserVigilante");
     }
     
 }
