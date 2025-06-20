@@ -1,5 +1,4 @@
-
-import policia.federal.Tools;
+package policia.federal;
 
 public class Vigilante {
 
@@ -16,11 +15,9 @@ public class Vigilante {
     }
 
     public void ingresarDatos() {
-        String nombre_apellido, aux_codigo, aux_edad;
-        int codigo, edad;
-        nombre_apellido = tools.leerString("Ingrese nombre y apellido: ");
-        codigo = tools.leerEntero("Ingrese codigo: ");
-        edad = tools.leerEntero("Ingrese edad: ");
+        this.nombre_apellido = tools.leerString("Ingrese nombre y apellido: ");
+        this.codigo = tools.leerEntero("Ingrese codigo: ");
+        this.edad = tools.leerEntero("Ingrese edad: ");
 
     }
 }

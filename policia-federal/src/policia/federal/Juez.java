@@ -1,5 +1,4 @@
 package policia.federal;
-import javax.swing.JOptionPane;
 /**
  *
  * @author Alassia
