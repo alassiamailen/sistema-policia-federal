@@ -5,8 +5,8 @@ import javax.swing.JOptionPane;
  * @author Alassia
  */
 public class BandaCriminal {
-    double nro_de_identificacion;
-    double cantidad_de_miembros;
+    private double nro_de_identificacion;
+    private double cantidad_de_miembros;
 
     public BandaCriminal(double nro_de_identificacion, double cantidad_de_miembros) {
         this.nro_de_identificacion = nro_de_identificacion;

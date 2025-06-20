@@ -9,6 +9,8 @@ public class Vigilante {
     private int codigo;
     private int edad;
 
+    Tools tools = new Tools();
+    
     public Vigilante(String nombre_apellido, int codigo, int edad) {
         this.nombre_apellido = nombre_apellido;
         this.codigo = codigo;
@@ -18,12 +20,10 @@ public class Vigilante {
     public void ingresarDatos(){
         String nombre_apellido,aux_codigo,aux_edad;
         int codigo, edad;
-        nombre_apellido= JOptionPane.showInputDialog(null, "Ingrese nombre y apellido: ");
-        aux_codigo=JOptionPane.showInputDialog(null, "Ingrese codigo: ");
-        codigo= Integer.parseInt(aux_codigo);
-        aux_edad=JOptionPane.showInputDialog(null, "Ingrese edad: ");
-        edad= Integer.parseInt(aux_edad);
-         
+        nombre_apellido= tools.leerString("Ingrese nombre y apellido: ");
+        codigo=tools.leerEntero("Ingrese codigo: ");       
+        edad= tools.leerEntero("Ingrese edad: ");
+        
     }
     
 }
