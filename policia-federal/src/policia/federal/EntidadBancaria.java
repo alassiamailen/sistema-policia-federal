@@ -1,8 +1,9 @@
-package policia.federal;
 
+package policia.federal;
 /**
- *
- * @author Alassia
+ * @author Nicolas
+ * @author Mailen 
+ * @author Leo
  */
 public class EntidadBancaria {
     private int codigo;
@@ -27,3 +28,5 @@ public class EntidadBancaria {
         domicilio= tools.leerString("Ingrese el domicilio: ");        
     }
 }
+
+

@@ -2,7 +2,9 @@ package policia.federal;
 import javax.swing.JOptionPane;
 /**
  *
- * @author Alassia
+ * @author Nicolas
+ * @author Mailen 
+ * @author Leo
  */
 public class Vigilante {
     private String nombre_apellido;
@@ -25,5 +27,8 @@ public class Vigilante {
         edad= tools.leerEntero("Ingrese edad: ");
         
     }
-    
+
+
 }
+
+
