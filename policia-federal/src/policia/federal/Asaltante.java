@@ -23,11 +23,9 @@ public class Asaltante {
     public Asaltante(){
         ingresarDatos();
     }
-    public void ingresarDatos(){
-        int codigo, banda_criminal;
-        String nombre_apellido;
-        nombre_apellido= tools.leerString("Ingrese nombre y apellido: ");      
-        codigo= tools.leerEntero("Ingrese codigo del asaltado: ");       
-        banda_criminal=tools.leerEntero("Ingrese codigo de banda criminal: ");
+    public void ingresarDatos(){       
+        this.nombre_apellido= tools.leerString("Ingrese nombre y apellido: ");      
+        this.codigo= tools.leerEntero("Ingrese codigo del asaltado: ");       
+        this.banda_criminal=tools.leerEntero("Ingrese codigo de banda criminal: ");
     }
 }

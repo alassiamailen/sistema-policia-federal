@@ -19,12 +19,10 @@ public class Juez {
     public Juez(){
         ingresarDatos();
     }
-     public void ingresarDatos(){
-        int codigo, anios_servicio;
-        String nombre_apellido;
-        nombre_apellido= tools.leerString("Ingrese nombre y apellido: "); 
-        codigo= tools.leerEntero("Ingrese codigo de Juez: ");    
-        anios_servicio=tools.leerEntero("Ingrese anios de servicio: ");
+     public void ingresarDatos(){       
+        this.nombre_apellido= tools.leerString("Ingrese nombre y apellido: "); 
+        this.codigo= tools.leerEntero("Ingrese codigo de Juez: ");    
+        this.anios_de_servicio=tools.leerEntero("Ingrese anios de servicio: ");
     }
     
 }
