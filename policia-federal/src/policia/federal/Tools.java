@@ -20,8 +20,11 @@ public class Tools {
     
     public int leerEntero(String mensaje){
         System.out.println(mensaje);
-        return sc.nextInt();
+        int valor = sc.nextInt();
+        sc.nextLine(); // limpiar salto de línea pendiente
+        return valor;
     }
+
     
     public String leerString(String mensaje){
         System.out.println(mensaje);

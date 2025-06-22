@@ -6,14 +6,10 @@ package policia.federal;
 
 /**
  *
- * @author Nicolas
- * @author Mailen
- * @author Leo
+ * @author Nico
  */
-public interface PAdministrador extends PConsultarTodo {
-
-    /**
-     *
-     */
-    public void administrarTodo();
+@FunctionalInterface  //Esto nos indica que hay un solo metodo abstracto
+public interface Accion {
+    void ejecutar();
 }
+

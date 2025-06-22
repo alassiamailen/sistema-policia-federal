@@ -6,39 +6,37 @@ package policia.federal;
 
 /**
  *
- * @author Nicolas
- * @author Mailen 
- * @author Leo
+ * @author Nico
  */
-abstract class Usuario {
-    public String usuario;
-    public String password;
+public class Usuario {
+    private String nombreUsuario;
+    private String password;
+    private Rol rol;
 
-    public Usuario(String usuario, String password) {
-        this.usuario = usuario;
+    public Usuario(String nombreUsuario, String password, Rol rol) {
+        this.nombreUsuario = nombreUsuario;
         this.password = password;
+        this.rol = rol;
     }
 
-    public boolean autenticar(String user, String pass) {
-        return this.usuario.equals(user) && this.password.equals(pass);
-    }
-    public abstract void mostrarMenu();
-
-    public String getUsuario() {
-        return usuario;
+    public boolean autenticar(String nombreUsuario, String password) {
+        return this.nombreUsuario.equals(nombreUsuario) && this.password.equals(password);
     }
 
-    public String getPassword() {
-        return password;
+    public boolean puedeRealizar(Permiso permiso) {
+        return rol.tienePermiso(permiso);
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public String getNombreUsuario() {
+        return nombreUsuario;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+    public void mostrarPermisos(){
+        rol.permisosAdquiridos();}
     
+    public Rol getRol() {
+        return rol;
+    }
     
 }
+

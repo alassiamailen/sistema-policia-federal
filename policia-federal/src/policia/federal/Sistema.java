@@ -4,78 +4,85 @@
  */
 package policia.federal;
 
-import java.util.ArrayList;
-
 /**
  *
- * @author Nicolas
- * @author Mailen 
- * @author Leo
+ * @author Nico
  */
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 public class Sistema {
 
-    private boolean enEjecucion = true;
-    private ArrayList<Usuario> usuarios = new ArrayList<>();
-    Tools tools = new Tools();
+    private List<Usuario> usuarios = new ArrayList<>();
+    private final Scanner sc = new Scanner(System.in);
 
-    
-    public Sistema() {
-        // Inicializar algunos usuarios
-        usuarios.add(new UserAdministrador("admin", "1234"));
-        usuarios.add(new UserInvestigador("invest", "12345"));
-        usuarios.add(new UserVigilante("vigi", "123456"));
+    public void registrarUsuario(Usuario usuario) {
+        usuarios.add(usuario);
     }
 
-    public void iniciar() {
-        while (enEjecucion) {
-            mostrarLogin();
+    public Usuario login(String nombreUsuario, String contraseña) {
+        for (Usuario u : usuarios) {
+            if (u.autenticar(nombreUsuario, contraseña)) {
+                return u;
+            }
         }
+        return null; // login fallido
     }
 
-    private void mostrarLogin() {
+    public void iniciarApp() {
+        int intento = 3;
+        Usuario logueado = null;
         System.out.println("===== Sistema de Gestion Policial =====");
-        System.out.println("1. Iniciar sesion como Administrador");
-        System.out.println("2. Iniciar sesion como Investigador");
-        System.out.println("3. Iniciar sesion como Vigilante");
-        System.out.println("0. Salir");
+        do {
+            System.out.println("\n=========Iniciar Sesion=========");
+            String Usuario = leerString("Usuario: ");
+            String clave = leerString("Clave: ");
+            logueado = login(Usuario, clave);
+            if (logueado == null) {
+                System.out.println("......................");
+                System.out.println("Usuario o Clave Incorrecta");
+                intento--;
+                if (intento == 0) {
+                    System.out.println("Limite de intentos denegados. Contactarse con el administrador.");
+                    return;
+                }
+                if (intento < 2) {
+                    System.out.println("Intente nuevamente. Queda " + intento + " intento.");
+                    System.out.println("......................");
 
-        int opcion = tools.leerEntero("Seleccione una opcion: ");
+                } else {
+                    System.out.println("Intente nuevamente. Quedan " + intento + " intentos.");
+                    System.out.println("......................");
 
-        switch (opcion) {
-            case 1:
-                loginAdministrador();
-                break;
-            case 2:
-                loginInvestigador();
-                break;
-            case 3:
-                loginVigilante();
-                break;
-            case 0:
-                enEjecucion = false;
-                System.out.println("Sistema cerrado.");
-                break;
-            default:
-                System.out.println("Opcion invalida.");
-        }
+                }
+
+            }
+        } while (logueado == null && intento != 0);
+            if (logueado != null){
+                navegar(logueado);
+            }
+        
     }
 
-    private void loginAdministrador() {
-        System.out.println("Iniciando sesion como Administrador...");
-        // Aqui iria la logica de autenticacion y menu de administrador
+    public int leerEntero(String mensaje) {
+        System.out.println(mensaje);
+        int valor = sc.nextInt();
+        sc.nextLine(); // limpiar salto de línea pendiente
+        return valor;
     }
 
-    private void loginInvestigador() {
-        System.out.println("Iniciando sesion como Investigador...");
-        // Aqui iria la logica de autenticacion y menu de investigador
+    public String leerString(String mensaje) {
+        System.out.println(mensaje);
+        return sc.nextLine();
     }
 
-    private void loginVigilante() {
-        System.out.println("Iniciando sesion como Vigilante...");
-        // Aqui iria la logica de autenticacion y menu de vigilante
+    private void navegar(Usuario logueado){
+        System.out.println("Bienvenido, " + logueado.getNombreUsuario());
+        System.out.println("Rol: " + logueado.getRol().getNombre());
+        MostrarElMenu mostrarMenu = new MostrarElMenu(logueado);
+        mostrarMenu.deInicio();
+        
     }
-
+        
 }
-
-
