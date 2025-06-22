@@ -13,10 +13,10 @@ public class MostrarElMenu {
 
     private final Usuario usuario;
     private final Map<Permiso, Accion> acciones = new HashMap<>();
-
-    Contexto contexto = new Contexto();
+    private Contexto contexto;
     
-    public MostrarElMenu(Usuario usuario) {
+    public MostrarElMenu(Usuario usuario, Contexto contexto) {
+        this.contexto = contexto;
         this.usuario = usuario;
         inicializarAcciones();
     }

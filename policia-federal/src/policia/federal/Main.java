@@ -18,11 +18,11 @@ public class Main {
         EntidadBancaria nueva3 = new EntidadBancaria("Santander Rio",14, "Paternal");
      
         
-        Contexto context = new Contexto();
+        Contexto contexto = new Contexto();
         
-        context.agregarEntidadBancaria(nueva1);
-        context.agregarEntidadBancaria(nueva2);
-        context.agregarEntidadBancaria(nueva3);
+        contexto.agregarEntidadBancaria(nueva1);
+        contexto.agregarEntidadBancaria(nueva2);
+        contexto.agregarEntidadBancaria(nueva3);
 
         // Roles
         Rol admin = new Rol("Administrador");
@@ -45,7 +45,7 @@ public class Main {
         sistema.registrarUsuario(new Usuario("pepe", "abcd", vigilante));
         sistema.registrarUsuario(new Usuario("lula", "123", investigador));
 
-        sistema.iniciarApp();
+        sistema.iniciarApp(contexto);
 
     }
 
