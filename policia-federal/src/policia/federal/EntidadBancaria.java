@@ -8,9 +8,8 @@ package policia.federal;
 public class EntidadBancaria {
     private int codigo;
     private String domicilio;
-    private String nombre;
+    private String nombre;   
     
-    //array list de sucursal
     
     
     Tools tools = new Tools();
@@ -34,7 +33,11 @@ public class EntidadBancaria {
 
     @Override
     public String toString() {
-        return "EntidadBancaria{" + "codigo=" + codigo + ", nombre=" + nombre + '}';
+        return nombre;
+    }
+    
+    public String getNombre() {
+        return nombre;
     }
     
     

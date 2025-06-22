@@ -14,13 +14,15 @@ public class MostrarElMenu {
     private final Usuario usuario;
     private final Map<Permiso, Accion> acciones = new HashMap<>();
     private Contexto contexto;
-    
+    private ArrayList<ContratoSucVig> contratos = new ArrayList<>();
+
     public MostrarElMenu(Usuario usuario, Contexto contexto) {
         this.contexto = contexto;
         this.usuario = usuario;
         inicializarAcciones();
     }
-    
+    Tools tools = new Tools();
+
     private void inicializarAcciones() {
         acciones.put(Permiso.CONSULTAR_DATOS_DE_OTRAS_ENTIDADES, this::deConsultarDatos);
         acciones.put(Permiso.CONTRATAR_VIGILANTE, this::deContratarVigilante);
@@ -75,24 +77,47 @@ public class MostrarElMenu {
     private void deEditarDatos() {
         System.out.println("Entrando al panel de edicion...");
         // Contratar Vgilante
-            //elegir entindad basncaria
-                //elegir sucrusal
-                    //crearContrato
-                        //Consultar vigiliantes disponibles
-                            //this.vigilante. 
-                        
+        //elegir entindad basncaria
+        //elegir sucrusal
+        //crearContrato
+        //Consultar vigiliantes disponibles
+        //this.vigilante. 
+
     }
 
     private void deEliminarUsuarios() {
         System.out.println("Entrando al panel de eliminacion...");
     }
 
-    private void deContratarVigilante(){
-        System.out.println("ACA INSTANCIO UN CONTRATO");
-        //Mostar entidades
-        //new contrato(entidad,   ,   ,   ,   ,);
-        //Mostrar sucursales
-        //new contrato(entidad,   ,   ,   ,   ,);
+    private void deContratarVigilante() {
+        String entidad_bancaria, sucursal, vigilante;
 
+        do {
+            contexto.mostrarEntidadesBancarias();
+            entidad_bancaria = tools.leerString("Ingrese nombre de ENTIDAD BANCARIA: ");
+
+        } while (!contexto.validarEntidadBancaria(entidad_bancaria));
+
+        do {
+            contexto.mostrarSucursales();
+            sucursal = tools.leerString("Ingrese nombre de SUCURSAL: ");
+        } while (!contexto.validarSucursal(sucursal));
+        
+        do {
+            contexto.mostrarVigilantes();
+            vigilante = tools.leerString("Ingrese nombre de VIGILANTE: ");
+        } while (!contexto.validarVigilante(vigilante));
+
+        ContratoSucVig nuevo_contrato = new ContratoSucVig(entidad_bancaria, sucursal, vigilante);
+        nuevo_contrato.setCodigo(contratos.size());
+        contratos.add(nuevo_contrato);
+        contexto.mostrarContratos(contratos);
+        
+        deContratarVigilante();
+        //Logica que diga: Desea crear otro contrato o volver al inicio. 
+        //Si toca 1 va al menu de deContratarVigilante();
+        //si toca 2 va al menu de deInicio();
     }
+    
+
 }

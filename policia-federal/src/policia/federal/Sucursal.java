@@ -17,11 +17,14 @@ public class Sucursal {
     private ArrayList<Vigilante> vigilantes_contratados = new ArrayList<>();
     private ArrayList<Asaltante> asaltantes = new ArrayList<>();
     private ArrayList<ContratoSucVig> contrato= new ArrayList<>();
+    private String nombre;   
+    
 
     Tools tools = new Tools();
 
-    public Sucursal(int cantidad_de_empleados) {
+    public Sucursal(int cantidad_de_empleados, String nombre) {
         this.cantidad_de_empleados = cantidad_de_empleados;
+        this.nombre=nombre;
     }
 
     public void ingresarDatos() {
@@ -31,12 +34,16 @@ public class Sucursal {
         
     }
     public void contratarVigilante() {
-        String nombre_apellido;
-        int codigo, edad;
-        nombre_apellido = tools.leerString("Ingrese nombre y apellido del vigilante: ");
-        codigo = tools.leerEntero("Ingrese codigo: ");
-        edad = tools.leerEntero("Ingrese edad: ");
-        Vigilante nuevo_vigilante = new Vigilante(nombre_apellido, codigo, edad);
-        vigilantes_contratados.add(nuevo_vigilante);
+        String nombre;
+        int codigo, edad;        
+        nombre = tools.leerString("Ingrese nombre de Sucursal: ");
+        
+    }
+     @Override
+    public String toString() {
+        return nombre;
+    }
+     public String getNombre() {
+        return nombre;
     }
 }

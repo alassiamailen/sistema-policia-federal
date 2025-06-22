@@ -13,16 +13,33 @@ public class Main {
 
     public static void main(String[] args) {
         //ENTIDADES
-        EntidadBancaria nueva1 = new EntidadBancaria("BBVA",1234, "Triunvirato");
-        EntidadBancaria nueva2 = new EntidadBancaria("Galicia",134, "aca");
-        EntidadBancaria nueva3 = new EntidadBancaria("Santander Rio",14, "alla");
+        EntidadBancaria BBVA = new EntidadBancaria("BBVA",1234, "Triunvirato");
+        EntidadBancaria GALICIA = new EntidadBancaria("Galicia",134, "Vicente Lopez");
+        EntidadBancaria SANTANDER_RIO = new EntidadBancaria("Santander Rio",14, "Paternal");
+        //SUCURSALES
+        Sucursal paternal = new Sucursal(15,"Paternal");
+        Sucursal vicente_lopez = new Sucursal(15,"Vicente Lopez");
+        Sucursal triunvirato = new Sucursal(15,"Triunvirato");
+        // VIGILANTES
+        Vigilante vigilante_1 = new Vigilante("JUAN PEREZ", 12, 45);
+        Vigilante vigilante_2 = new Vigilante("MONICA DIAZ", 33, 56);
+        Vigilante vigilante_3 = new Vigilante("PEDRO PEDRO", 120, 54);
+        
      
         
         Contexto contexto = new Contexto();
-        
-        contexto.agregarEntidadBancaria(nueva1);
-        contexto.agregarEntidadBancaria(nueva2);
-        contexto.agregarEntidadBancaria(nueva3);
+        // Inicializar entidad
+        contexto.agregarEntidadBancaria(BBVA);
+        contexto.agregarEntidadBancaria(GALICIA);
+        contexto.agregarEntidadBancaria(SANTANDER_RIO);
+        // Inicializar sucursal
+        contexto.agregarSucursal(paternal);
+        contexto.agregarSucursal(vicente_lopez);
+        contexto.agregarSucursal(triunvirato);
+        // Inicializar vigilante
+        contexto.agregarVigilante(vigilante_1);
+        contexto.agregarVigilante(vigilante_2);
+        contexto.agregarVigilante(vigilante_3);
 
         // Roles
         Rol admin = new Rol("Administrador");
@@ -32,7 +49,7 @@ public class Main {
         admin.agregarPermiso(Permiso.CREAR_USUARIOS);
         admin.agregarPermiso(Permiso.EDITAR_DATOS);
         admin.agregarPermiso(Permiso.ELIMINAR_DATOS);
-
+        
         Rol vigilante = new Rol("Vigilante");
         vigilante.agregarPermiso(Permiso.CONSULTAR_MIS_DATOS);
 
@@ -50,3 +67,6 @@ public class Main {
     }
 
 }
+
+
+
