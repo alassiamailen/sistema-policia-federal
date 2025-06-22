@@ -47,7 +47,7 @@ public class MostrarElMenu {
         if (seleccionado != null && acciones.containsKey(seleccionado)) {
             acciones.get(seleccionado).ejecutar();
         } else {
-            System.out.println("Opción no válida o permiso no autorizado.");
+            System.out.println("Opcion no valida.");
         }
     }
 
