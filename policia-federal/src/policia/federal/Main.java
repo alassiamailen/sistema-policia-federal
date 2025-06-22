@@ -13,9 +13,9 @@ public class Main {
 
     public static void main(String[] args) {
         //ENTIDADES
-        EntidadBancaria nueva1 = new EntidadBancaria(1234, "Triunvirato");
-        EntidadBancaria nueva2 = new EntidadBancaria(134, "aca");
-        EntidadBancaria nueva3 = new EntidadBancaria(14, "alla");
+        EntidadBancaria nueva1 = new EntidadBancaria("BBVA",1234, "Triunvirato");
+        EntidadBancaria nueva2 = new EntidadBancaria("Galicia",134, "aca");
+        EntidadBancaria nueva3 = new EntidadBancaria("Santander Rio",14, "alla");
      
         
         Contexto context = new Contexto();

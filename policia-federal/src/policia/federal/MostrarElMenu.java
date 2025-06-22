@@ -57,12 +57,11 @@ public class MostrarElMenu {
     private void deConsultarMisDatos() {
         System.out.println("Crear entidad bancaria...");
         contexto.mostrarEntidadesBancarias();
-        EntidadBancaria nueva = new EntidadBancaria(9999, "aca cerca");
+        EntidadBancaria nueva = new EntidadBancaria("Banco Provincia", 9999, "aca cerca");
         System.out.println("--------------------------------");
         contexto.agregarEntidadBancaria(nueva);
         contexto.mostrarEntidadesBancarias();
 
-        
     }
 
     private void deConsultarDatos() {
