@@ -16,7 +16,7 @@ public class Sistema {
 
     private List<Usuario> usuarios = new ArrayList<>();
     private final Scanner sc = new Scanner(System.in);
-    
+
     public void registrarUsuario(Usuario usuario) {
         usuarios.add(usuario);
     }
@@ -30,7 +30,7 @@ public class Sistema {
         return null; // login fallido
     }
 
-    public void iniciarApp() {
+    public void iniciarApp(Contexto contexto) {
         int intento = 3;
         Usuario logueado = null;
         System.out.println("===== Sistema de Gestion Policial =====");
@@ -60,7 +60,10 @@ public class Sistema {
             }
         } while (logueado == null && intento != 0);
             if (logueado != null){
-                navegar(logueado);
+                System.out.println("Bienvenido, " + logueado.getNombreUsuario());
+                System.out.println("Rol: " + logueado.getRol().getNombre());
+                MostrarElMenu mostrarMenu = new MostrarElMenu(logueado, contexto);
+                mostrarMenu.deInicio();
             }
         
     }
@@ -77,11 +80,5 @@ public class Sistema {
         return sc.nextLine();
     }
 
-    private void navegar(Usuario logueado){
-        System.out.println("Bienvenido, " + logueado.getNombreUsuario());
-        System.out.println("Rol: " + logueado.getRol().getNombre());
-        MostrarElMenu mostrarMenu = new MostrarElMenu(logueado);
-        mostrarMenu.deInicio();
-    }   
-        
+
 }
