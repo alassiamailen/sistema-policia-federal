@@ -12,25 +12,28 @@ import java.util.List;
  * @author Nico
  */
 public class Contexto {
+
     public List<EntidadBancaria> entidadBancaria = new ArrayList<>();
-    public  List<Juez> Juez = new ArrayList<>();
-    public  List<Vigilante> Vigilante = new ArrayList<>();
-    public  List<Sucursal> Sucursal = new ArrayList<>();
+    public List<Juez> Juez = new ArrayList<>();
+    public List<Vigilante> Vigilante = new ArrayList<>();
+    public List<Sucursal> Sucursal = new ArrayList<>();
 
     public Contexto() {
     }
 
-    public void agregarEntidadBancaria(EntidadBancaria entidad){
+    public void agregarEntidadBancaria(EntidadBancaria entidad) {
         entidadBancaria.add(entidad);
     }
-    
-    public void mostrarEntidadesBancarias(){
-        for(EntidadBancaria cadaUna : entidadBancaria){
-            System.out.println(cadaUna);
+
+    public void mostrarEntidadesBancarias() {
+        for (int i = 0; i < entidadBancaria.size(); i++) {
+            System.out.println((i + 1) + "- " + entidadBancaria.get(i));
         }
     }
-    
-    
+
+    public void mostrarSucursal() {
+        for (int i = 0; i < entidadBancaria.size(); i++) {
+            System.out.println((i + 1) + "- " + entidadBancaria.get(i));
+        }
+    }
 }
-
-

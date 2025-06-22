@@ -34,7 +34,7 @@ public class EntidadBancaria {
 
     @Override
     public String toString() {
-        return "EntidadBancaria{" + "codigo=" + codigo + ", nombre=" + nombre + '}';
+        return nombre;
     }
     
     

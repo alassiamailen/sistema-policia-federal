@@ -17,6 +17,9 @@ public class Sucursal {
     private ArrayList<Vigilante> vigilantes_contratados = new ArrayList<>();
     private ArrayList<Asaltante> asaltantes = new ArrayList<>();
     private ArrayList<ContratoSucVig> contrato= new ArrayList<>();
+    
+    
+    
 
     Tools tools = new Tools();
 
@@ -32,7 +35,7 @@ public class Sucursal {
     }
     public void contratarVigilante() {
         String nombre_apellido;
-        int codigo, edad;
+        int codigo, edad;        
         nombre_apellido = tools.leerString("Ingrese nombre y apellido del vigilante: ");
         codigo = tools.leerEntero("Ingrese codigo: ");
         edad = tools.leerEntero("Ingrese edad: ");

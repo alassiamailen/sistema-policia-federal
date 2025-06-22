@@ -11,10 +11,8 @@ import java.util.ArrayList;
  */
 public class ContratoSucVig {
    private LocalDate fecha_de_inicio;
-   private LocalDate fecha_de_fin; 
-   //no es array
-   private String entidad_bancaria;
-    //no es array
+   private LocalDate fecha_de_fin;  
+   private String entidad_bancaria;   
    private String sucursal;
    private boolean vigilante_armando;
    //vigilante
