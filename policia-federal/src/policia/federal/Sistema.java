@@ -16,7 +16,7 @@ public class Sistema {
 
     private List<Usuario> usuarios = new ArrayList<>();
     private final Scanner sc = new Scanner(System.in);
-
+    
     public void registrarUsuario(Usuario usuario) {
         usuarios.add(usuario);
     }
@@ -82,7 +82,6 @@ public class Sistema {
         System.out.println("Rol: " + logueado.getRol().getNombre());
         MostrarElMenu mostrarMenu = new MostrarElMenu(logueado);
         mostrarMenu.deInicio();
-        
-    }
+    }   
         
 }
