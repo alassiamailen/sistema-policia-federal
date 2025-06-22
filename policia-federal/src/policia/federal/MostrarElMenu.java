@@ -14,13 +14,16 @@ public class MostrarElMenu {
     private final Usuario usuario;
     private final Map<Permiso, Accion> acciones = new HashMap<>();
 
+    Contexto contexto = new Contexto();
+    
     public MostrarElMenu(Usuario usuario) {
         this.usuario = usuario;
         inicializarAcciones();
     }
-
+    
     private void inicializarAcciones() {
         acciones.put(Permiso.CONSULTAR_DATOS_DE_OTRAS_ENTIDADES, this::deConsultarDatos);
+        acciones.put(Permiso.CONTRATAR_VIGILANTE, this::deContratarVigilante);
         acciones.put(Permiso.CONSULTAR_MIS_DATOS, this::deConsultarMisDatos);
         acciones.put(Permiso.EDITAR_DATOS, this::deCrearDatos);
         acciones.put(Permiso.CREAR_USUARIOS, this::deEditarDatos);
@@ -52,7 +55,14 @@ public class MostrarElMenu {
     }
 
     private void deConsultarMisDatos() {
-        System.out.println("Mostrando tus datos personales...");
+        System.out.println("Crear entidad bancaria...");
+        contexto.mostrarEntidadesBancarias();
+        EntidadBancaria nueva = new EntidadBancaria(9999, "aca cerca");
+        System.out.println("--------------------------------");
+        contexto.agregarEntidadBancaria(nueva);
+        contexto.mostrarEntidadesBancarias();
+
+        
     }
 
     private void deConsultarDatos() {
@@ -78,4 +88,12 @@ public class MostrarElMenu {
         System.out.println("Entrando al panel de eliminacion...");
     }
 
+    private void deContratarVigilante(){
+        System.out.println("ACA INSTANCIO UN CONTRATO");
+        //Mostar entidades
+        //new contrato(entidad,   ,   ,   ,   ,);
+        //Mostrar sucursales
+        //new contrato(entidad,   ,   ,   ,   ,);
+
+    }
 }

@@ -13,6 +13,7 @@ public enum Permiso {
     CONSULTAR_DATOS_DE_OTRAS_ENTIDADES("Consultar datos."),
     EDITAR_DATOS("Editar datos."),
     CREAR_USUARIOS("Crear usuario."),
+    CONTRATAR_VIGILANTE("Crear un contrato entre sucursal y vigilante."),
     ELIMINAR_DATOS("Eliminar usuarios.");
 
 

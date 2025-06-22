@@ -3,6 +3,8 @@
  */
 package policia.federal;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Nico
@@ -10,10 +12,22 @@ package policia.federal;
 public class Main {
 
     public static void main(String[] args) {
+        //ENTIDADES
+        EntidadBancaria nueva1 = new EntidadBancaria(1234, "Triunvirato");
+        EntidadBancaria nueva2 = new EntidadBancaria(134, "aca");
+        EntidadBancaria nueva3 = new EntidadBancaria(14, "alla");
+     
         
+        Contexto context = new Contexto();
+        
+        context.agregarEntidadBancaria(nueva1);
+        context.agregarEntidadBancaria(nueva2);
+        context.agregarEntidadBancaria(nueva3);
+
         // Roles
         Rol admin = new Rol("Administrador");
         admin.agregarPermiso(Permiso.CONSULTAR_DATOS_DE_OTRAS_ENTIDADES);
+        admin.agregarPermiso(Permiso.CONTRATAR_VIGILANTE);
         admin.agregarPermiso(Permiso.CONSULTAR_MIS_DATOS);
         admin.agregarPermiso(Permiso.CREAR_USUARIOS);
         admin.agregarPermiso(Permiso.EDITAR_DATOS);
