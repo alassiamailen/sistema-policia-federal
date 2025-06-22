@@ -8,7 +8,9 @@ package policia.federal;
 public class EntidadBancaria {
     private int codigo;
     private String domicilio;
-   
+    
+    //array list de sucursal
+    
     
     Tools tools = new Tools();
 
@@ -21,11 +23,9 @@ public class EntidadBancaria {
         ingresarDatos();
     }
     
-    public void ingresarDatos(){
-        int codigo;
-        String domicilio;
-        codigo= tools.leerEntero("Ingrese codigo de Entidad Bancaria: ");
-        domicilio= tools.leerString("Ingrese el domicilio: ");        
+    public void ingresarDatos(){        
+        this.codigo= tools.leerEntero("Ingrese codigo de Entidad Bancaria: ");
+        this.domicilio= tools.leerString("Ingrese el domicilio: ");        
     }
 }
 
