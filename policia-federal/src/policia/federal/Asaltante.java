@@ -1,10 +1,11 @@
 
 package policia.federal;
 
-import javax.swing.JOptionPane;
 
 /**
  *
+ * @author Alassia
+ * @author Nico
  * @author Alassia
  */
 public class Asaltante {
