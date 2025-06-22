@@ -38,7 +38,7 @@ public class Rol {
     public void permisosAdquiridos(){
         System.out.println("\nPermisos del rol " + nombre + ":");
         for(Permiso p : permisos){
-            System.out.println("- " + p.getDescripcion());
+            System.out.println("- " + p.toString());
         }
     }
     

@@ -80,8 +80,9 @@ public class Sistema {
     private void navegar(Usuario logueado){
         System.out.println("Bienvenido, " + logueado.getNombreUsuario());
         System.out.println("Rol: " + logueado.getRol().getNombre());
-        MostrarElMenu mostrarMenuDe = new MostrarElMenu(logueado);
-        mostrarMenuDe.deInicio();
+        MostrarElMenu mostrarMenu = new MostrarElMenu(logueado);
+        mostrarMenu.deInicio();
+        
     }
         
 }

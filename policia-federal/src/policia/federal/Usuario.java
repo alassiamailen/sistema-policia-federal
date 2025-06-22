@@ -37,5 +37,6 @@ public class Usuario {
     public Rol getRol() {
         return rol;
     }
+    
 }
 
