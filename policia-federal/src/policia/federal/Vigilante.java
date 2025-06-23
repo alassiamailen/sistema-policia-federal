@@ -20,13 +20,24 @@ public class Vigilante {
         this.edad = tools.leerEntero("Ingrese edad: ");
 
     }
-    
+
     @Override
     public String toString() {
+        String presentacion = "\n-----------------------\n\n";
+        presentacion += "Nombre: " + nombre_apellido + "\n";
+        presentacion += "Edad: " + edad + "\n";
+        presentacion += "Codigo: " + codigo + "\n";
+        presentacion += "\n-----------------------\n";
+
+        return presentacion;
+    }
+
+    public String getNombre() {
         return nombre_apellido;
     }
-    
-      public String getNombre() {
-        return nombre_apellido;
+
+    public int getCodigo() {
+        return codigo;
     }
+
 }

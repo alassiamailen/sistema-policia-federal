@@ -30,7 +30,7 @@ public class Sistema {
         return null; // login fallido
     }
 
-    public void iniciarApp(Contexto contexto) {
+    public void iniciarApp(Contexto contexto, Sistema sistema) {
         int intento = 3;
         Usuario logueado = null;
         System.out.println("===== Sistema de Gestion Policial =====");
@@ -62,7 +62,7 @@ public class Sistema {
             if (logueado != null){
                 System.out.println("Bienvenido, " + logueado.getNombreUsuario());
                 System.out.println("Rol: " + logueado.getRol().getNombre());
-                MostrarElMenu mostrarMenu = new MostrarElMenu(logueado, contexto);
+                MostrarElMenu mostrarMenu = new MostrarElMenu(logueado, contexto, sistema);
                 mostrarMenu.deInicio();
             }
         

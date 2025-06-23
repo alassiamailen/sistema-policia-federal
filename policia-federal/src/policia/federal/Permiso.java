@@ -14,8 +14,9 @@ public enum Permiso {
     EDITAR_DATOS("Editar datos."),
     CREAR_USUARIOS("Crear usuario."),
     CONTRATAR_VIGILANTE("Crear un contrato entre sucursal y vigilante."),
-    ELIMINAR_DATOS("Eliminar usuarios.");
-    //SALIR("Salir del programa.");
+    ELIMINAR_DATOS("Eliminar usuarios."),
+    CERRAR_SESION("Cerrar sesion."),
+    SALIR("Salir del programa.");
 
 
     private final String descripcion;
