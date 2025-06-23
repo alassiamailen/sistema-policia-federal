@@ -14,26 +14,34 @@ import java.util.List;
 public class Contexto {
 
     public List<EntidadBancaria> entidadBancaria = new ArrayList<>();
-    public List<Juez> Juez = new ArrayList<>();
-    public List<Vigilante> vigilantes = new ArrayList<>();
+    public List<Juez> juez = new ArrayList<>();
+    public List<Vigilante> vigilante = new ArrayList<>();
     public List<Sucursal> sucursal = new ArrayList<>();
+    public List<Asaltante> asaltante = new ArrayList<>();
 
     public Contexto() {
     }
 
-    /// AGREGAR
+     /// AGREGAR
     public void agregarEntidadBancaria(EntidadBancaria entidad) {
         entidadBancaria.add(entidad);
     }
 
-    public void agregarSucursal(Sucursal sucursales) {
-        sucursal.add(sucursales);
+    public void agregarSucursal(Sucursal s) {
+        sucursal.add(s);
     }
 
-    public void agregarVigilante(Vigilante vigilante) {
-        vigilantes.add(vigilante);
+    public void agregarVigilante(Vigilante v) {
+        vigilante.add(v);
     }
 
+    public void agregarAsaltantes(Asaltante a) {
+        asaltante.add(a);
+    }
+
+    public void agregarJuez(Juez j) {
+        juez.add(j);
+    }
     /// MOSTRAR
     public void mostrarEntidadesBancarias() {
         for (int i = 0; i < entidadBancaria.size(); i++) {
@@ -41,15 +49,27 @@ public class Contexto {
         }
     }
 
-    public void mostrarSucursal() {
-        for (int i = 0; i < sucursal.size(); i++) {
-            System.out.println((i + 1) + "- " + sucursal.get(i));
+    public void mostrarSucursales() {
+        for (Sucursal cadaUna : sucursal) {
+            System.out.println(cadaUna);
         }
     }
 
-    public void mostrarVigilantes() {
-        for (int i = 0; i < vigilantes.size(); i++) {
-            System.out.println((i + 1) + "- " + vigilantes.get(i));
+    public void mostrarJueces() {
+        for (Juez cadaUno : juez) {
+            System.out.println(cadaUno);
+        }
+    }
+
+    public void mostrarAsaltantes() {
+        for (Asaltante cadaUno : asaltante) {
+            System.out.println(cadaUno);
+        }
+    }
+
+     public void mostrarVigilantes() {
+        for (int i = 0; i < vigilante.size(); i++) {
+            System.out.println((i + 1) + "- " + vigilante.get(i));
         }
     }
 
@@ -61,37 +81,45 @@ public class Contexto {
     }
 
     /// VALIDAR
-    public boolean validarEntidadBancaria(String nombre) {
+    public String validarEntidadBancaria(int index) {
 
-        for (int i = 0; i < entidadBancaria.size(); i++) {
-            if (entidadBancaria.get(i).getNombre().toLowerCase().trim().equals(nombre.toLowerCase().trim())) {
-                return true;
-            }
-        }
-        System.out.println("Error - Ingrese un nombre valido");
-        return false;
+        if (index>0 && index<= entidadBancaria.size()) {
+            return entidadBancaria.get(index-1).getNombre();
+        }else{
+            System.out.println("Error - Ingrese una opcion valido");
+            return null;
+        }      
+       
+    } 
+
+    public String validarSucursal(int index) {
+
+        if (index>0 && index<= sucursal.size()) {
+            return sucursal.get(index-1).getNombre();
+        }else{
+            System.out.println("Error - Ingrese una opcion valido");
+            return null;
+        } 
     }
 
-    public boolean validarSucursal(String nombre) {
+    public String validarVigilante(int index) {
 
-        for (int i = 0; i < sucursal.size(); i++) {
-            if (sucursal.get(i).getNombre().toLowerCase().trim().equals(nombre.toLowerCase().trim())) {
-                return true;
-            }
-        }
-        System.out.println("Error - Ingrese un nombre valido");
-        return false;
+       if (index>0 && index<= vigilante.size()) {
+            return vigilante.get(index-1).getNombre();
+        }else{
+            System.out.println("Error - Ingrese una opcion valido");
+            return null;
+        } 
     }
-
-    public boolean validarVigilante(String nombre) {
-
-        for (int i = 0; i < vigilantes.size(); i++) {
-            if (vigilantes.get(i).getNombre().toLowerCase().trim().equals(nombre.toLowerCase().trim())) {
-                return true;
-            }
-        }
-        System.out.println("Error - Ingrese un nombre valido");
-        return false;
+      ///OBTENER NOMBRE APARTIR DEL INDEX
+    public String obtenerNombreEntidadBancaria(int index){
+        return entidadBancaria.get(index-1).getNombre();
+    }
+     public String obtenerNombreSucursal(int index){
+        return sucursal.get(index-1).getNombre();
+    }
+    public String obtenerNombreVigilante(int index){
+        return vigilante.get(index-1).getNombre();
     }
 
 }
