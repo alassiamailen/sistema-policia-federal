@@ -1,84 +1,35 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package policia.federal;
 
-/**
- *
- * @author Nico
- */
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+public class Sistema implements Menu.OnMenuItemSelectedListener, Authenticacion.Listener {
 
-public class Sistema {
+    private Contexto contexto;
+    private Menu menu;
 
-    private List<Usuario> usuarios = new ArrayList<>();
-    private final Scanner sc = new Scanner(System.in);
+    public void iniciar(Contexto contexto) {
+        this.contexto = contexto;
+        this.menu = new Menu(contexto, this);
 
-    public void registrarUsuario(Usuario usuario) {
-        usuarios.add(usuario);
+        Authenticacion.getInstance().iniciarSesion(this);
     }
 
-    public Usuario login(String nombreUsuario, String contraseña) {
-        for (Usuario u : usuarios) {
-            if (u.autenticar(nombreUsuario, contraseña)) {
-                return u;
-            }
-        }
-        return null; // login fallido
+    @Override
+    public void onUserLogin() {
+        menu.mostrar();
     }
 
-    public void iniciarApp(Contexto contexto, Sistema sistema) {
-        int intento = 3;
-        Usuario logueado = null;
-        System.out.println("===== Sistema de Gestion Policial =====");
-        do {
-            System.out.println("\n=========Iniciar Sesion=========");
-            String Usuario = leerString("Usuario: ");
-            String clave = leerString("Clave: ");
-            logueado = login(Usuario, clave);
-            if (logueado == null) {
-                System.out.println("......................");
-                System.out.println("Usuario o Clave Incorrecta");
-                intento--;
-                if (intento == 0) {
-                    System.out.println("Limite de intentos denegados. Contactarse con el administrador.");
-                    return;
-                }
-                if (intento < 2) {
-                    System.out.println("Intente nuevamente. Queda " + intento + " intento.");
-                    System.out.println("......................");
-
-                } else {
-                    System.out.println("Intente nuevamente. Quedan " + intento + " intentos.");
-                    System.out.println("......................");
-
-                }
-
-            }
-        } while (logueado == null && intento != 0);
-            if (logueado != null){
-                System.out.println("Bienvenido, " + logueado.getNombreUsuario());
-                System.out.println("Rol: " + logueado.getRol().getNombre());
-                MostrarElMenu mostrarMenu = new MostrarElMenu(logueado, contexto, sistema);
-                mostrarMenu.deInicio();
-            }
-        
+    @Override
+    public void cerrarSesion() {
+        Authenticacion.getInstance().cerrarSesion();
+        Authenticacion.getInstance().iniciarSesion(this);
     }
 
-    public int leerEntero(String mensaje) {
-        System.out.println(mensaje);
-        int valor = sc.nextInt();
-        sc.nextLine(); // limpiar salto de línea pendiente
-        return valor;
+    @Override
+    public void abrirPantallaConsultaDeDatos() {
+        // esto es un ejemplo de como usar la interfaz de menu como callback
+        // para no meter toda la logica ahi. Tambien podrian crear una clase
+        // para cada pantalla, y que maneja su logica dentro. Podrian llamarla desde
+        // aca. Algo como:
+        // PantallaRegistroDatos p = new PantallaRegistroDatos()
+        // p.mostrar();
     }
-
-    public String leerString(String mensaje) {
-        System.out.println(mensaje);
-        return sc.nextLine();
-    }
-
-
 }

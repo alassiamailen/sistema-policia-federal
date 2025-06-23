@@ -3,8 +3,6 @@
  */
 package policia.federal;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author Nico
@@ -63,16 +61,14 @@ public class Main {
         investigador.agregarPermiso(Permiso.SALIR);
 
         // Sistema y usuarios
+        Authenticacion authenticacion = Authenticacion.getInstance();
+        authenticacion.registrarUsuario(new Usuario("juan", "1234", admin));
+        authenticacion.registrarUsuario(new Usuario("pepe", "abcd", vigilante));
+        authenticacion.registrarUsuario(new Usuario("lula", "123", investigador));
+
         Sistema sistema = new Sistema();
-        sistema.registrarUsuario(new Usuario("juan", "1234", admin));
-        sistema.registrarUsuario(new Usuario("pepe", "abcd", vigilante));
-        sistema.registrarUsuario(new Usuario("lula", "123", investigador));
-
-        
-        sistema.iniciarApp(contexto, sistema);
-
+        sistema.iniciar(contexto);
     }
-
 }
 
 

@@ -9,21 +9,26 @@ import java.util.Scanner;
  *
  * @author Nico
  */
-public class MostrarElMenu {
+public class Menu {
 
-    private Usuario usuario;
+    public interface OnMenuItemSelectedListener {
+        void cerrarSesion();
+        void abrirPantallaConsultaDeDatos();
+    }
+
     private Map<Permiso, Accion> acciones = new HashMap<>();
     private Contexto contexto;
     private ArrayList<ContratoSucVig> contratos = new ArrayList<>();
-    private Sistema sistema;
 
-    public MostrarElMenu(Usuario usuario, Contexto contexto, Sistema sistema) {
-        this.sistema = sistema;
+    private Tools tools = new Tools();
+
+    private OnMenuItemSelectedListener menuItemListener;
+
+    public Menu(Contexto contexto, OnMenuItemSelectedListener menuItemListener) {
         this.contexto = contexto;
-        this.usuario = usuario;
+        this.menuItemListener = menuItemListener;
         inicializarAcciones();
     }
-    Tools tools = new Tools();
 
     private void inicializarAcciones() {
         acciones.put(Permiso.CONSULTAR_DATOS_DE_OTRAS_ENTIDADES, this::deConsultarDatos);
@@ -36,7 +41,8 @@ public class MostrarElMenu {
         acciones.put(Permiso.SALIR, this::deSalir);
     }
 
-    public void deInicio() {
+    public void mostrar() {
+        Usuario usuario = Authenticacion.getInstance().getUsuarioActxual();
         System.out.println("Usuario " + usuario.getNombreUsuario() + ":");
         ArrayList<Permiso> permisos = new ArrayList<>(usuario.getRol().getPermisos());
         Scanner sc = new Scanner(System.in);
@@ -80,10 +86,11 @@ public class MostrarElMenu {
         if (vigilante_encontrado == false) {
             System.out.println("Codigo ingresado no coincide con un vigilante.");
         };
-        deInicio();
+        mostrar();
     }
 
     private void deConsultarDatos() {
+        // menuItemListener.abrirPantallaConsultaDeDatos()
         System.out.println("Mostrando todos los registros del sistema...");
     }
 
@@ -144,12 +151,12 @@ public class MostrarElMenu {
             }
         } while (!salir);
 
-        deInicio();
+        mostrar();
 
     }
 
     private void deCerrarSesion() {
-        sistema.iniciarApp(contexto, sistema);
+        menuItemListener.cerrarSesion();
     }
 
     private void deSalir() {
