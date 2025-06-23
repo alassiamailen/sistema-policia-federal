@@ -68,4 +68,10 @@ public class ContratoSucVig {
                 + "Fecha de fin: " + fecha_de_fin;
     }
 
+    public String getVigilante() {
+        return vigilante;
+    }
+    
+    
+
 }

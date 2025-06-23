@@ -16,7 +16,7 @@ public class Sucursal {
     private ArrayList<Usuario> usuarios = new ArrayList<>();
     private ArrayList<Vigilante> vigilantes_contratados = new ArrayList<>();
     private ArrayList<Asaltante> asaltantes = new ArrayList<>();
-    private ArrayList<ContratoSucVig> contrato= new ArrayList<>();
+    private ArrayList<ContratoSucVig> contrato = new ArrayList<>();
     private String nombre;   
     
 
@@ -46,4 +46,10 @@ public class Sucursal {
      public String getNombre() {
         return nombre;
     }
+
+    public ArrayList<ContratoSucVig> getContrato() {
+        return contrato;
+    }
+     
+     
 }

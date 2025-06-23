@@ -41,36 +41,46 @@ public class MostrarElMenu {
         ArrayList<Permiso> permisos = new ArrayList<>(usuario.getRol().getPermisos());
         Scanner sc = new Scanner(System.in);
 
-        int i = 1;
-        Map<Integer, Permiso> opciones = new HashMap<>();
-        for (Permiso permiso : permisos) {
-            System.out.println(i + " - " + permiso.toString());
-            opciones.put(i, permiso);
-            i++;
-        }
+        do {
+            int i = 1;
+            Map<Integer, Permiso> opciones = new HashMap<>();
+            for (Permiso permiso : permisos) {
+                System.out.println(i + " - " + permiso.toString());
+                opciones.put(i, permiso);
+                i++;
+            }
+            System.out.print("\nSeleccione una opcion >>> ");
+            int eleccion = sc.nextInt();
+            Permiso seleccionado = opciones.get(eleccion);
 
-        System.out.print("\nSeleccione una opcion >>> ");
-        int eleccion = sc.nextInt();
-        Permiso seleccionado = opciones.get(eleccion);
+            if (seleccionado != null && acciones.containsKey(seleccionado)) {
+                acciones.get(seleccionado).ejecutar();
+            } else {
+                System.out.println("Opcion no valida.");
+            }
+        } while (true);
 
-        if (seleccionado != null && acciones.containsKey(seleccionado)) {
-            acciones.get(seleccionado).ejecutar();
-        } else {
-            System.out.println("Opcion no valida.");
-        }
     }
 
     private void deConsultarMisDatos() {
+        boolean vigilante_encontrado = false;
         int codigo_vigilante = tools.leerEntero("Ingrese su codigo de Vigilante.");
         for (Vigilante v : contexto.getVigilante()) {
             if (codigo_vigilante == v.getCodigo()) {
                 System.out.println(v.toString());
-                deInicio();
-            } else {
-                System.out.println("Vigilante no disponible en la base de datos.");
-                deInicio();
+                for (ContratoSucVig c : contratos) {
+                    if (v.getNombre() == c.getVigilante()) {
+                        System.out.println("Contrato: " + c);
+                    }
+
+                }
+                vigilante_encontrado = true;
             }
         }
+        if (vigilante_encontrado == false) {
+            System.out.println("Codigo ingresado no coincide con un vigilante.");
+        };
+        deInicio();
 
     }
 

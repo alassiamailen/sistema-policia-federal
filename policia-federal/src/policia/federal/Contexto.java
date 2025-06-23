@@ -112,9 +112,8 @@ public class Contexto {
         System.out.println("Error - Ingrese un nombre valido");
         return false;
     }
-    
-    // GETTERS 
 
+    // GETTERS 
     public List<EntidadBancaria> getEntidadBancaria() {
         return entidadBancaria;
     }
@@ -134,7 +133,5 @@ public class Contexto {
     public List<Asaltante> getAsaltante() {
         return asaltante;
     }
-    
-    
 
 }
