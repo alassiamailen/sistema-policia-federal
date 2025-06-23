@@ -68,6 +68,7 @@ public class Main {
         sistema.registrarUsuario(new Usuario("pepe", "abcd", vigilante));
         sistema.registrarUsuario(new Usuario("lula", "123", investigador));
 
+        
         sistema.iniciarApp(contexto, sistema);
 
     }

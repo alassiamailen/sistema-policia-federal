@@ -9,6 +9,7 @@ import java.util.List;
 
 /**
  *
+ * @author Nico
  */
 public class Contexto {
 
@@ -81,38 +82,52 @@ public class Contexto {
     }
 
     /// VALIDAR
-// Ejemplo del primer texto
     public String validarEntidadBancaria(int index) {
+
         if (index > 0 && index <= entidadBancaria.size()) {
             return entidadBancaria.get(index - 1).getNombre();
         } else {
             System.out.println("Error - Ingrese una opcion valido");
             return null;
         }
+
     }
 
-    public boolean validarSucursal(String nombre) {
+    public String validarSucursal(int index) {
 
-        for (int i = 0; i < sucursal.size(); i++) {
-            if (sucursal.get(i).getNombre().toLowerCase().trim().equals(nombre.toLowerCase().trim())) {
-                return true;
-            }
+        if (index > 0 && index <= sucursal.size()) {
+            return sucursal.get(index - 1).getNombre();
+        } else {
+            System.out.println("Error - Ingrese una opcion valido");
+            return null;
         }
-        System.out.println("Error - Ingrese un nombre valido");
-        return false;
     }
 
-    public boolean validarVigilante(String nombre) {
-        for (int i = 0; i < vigilante.size(); i++) {
-            if (vigilante.get(i).getNombre().toLowerCase().trim().equals(nombre.toLowerCase().trim())) {
-                return true;
-            }
+    public String validarVigilante(int index) {
+
+        if (index > 0 && index <= vigilante.size()) {
+            return vigilante.get(index - 1).getNombre();
+        } else {
+            System.out.println("Error - Ingrese una opcion valido");
+            return null;
         }
-        System.out.println("Error - Ingrese un nombre valido");
-        return false;
+    }
+
+    ///OBTENER NOMBRE APARTIR DEL INDEX
+    public String obtenerNombreEntidadBancaria(int index) {
+        return entidadBancaria.get(index - 1).getNombre();
+    }
+
+    public String obtenerNombreSucursal(int index) {
+        return sucursal.get(index - 1).getNombre();
+    }
+
+    public String obtenerNombreVigilante(int index) {
+        return vigilante.get(index - 1).getNombre();
     }
 
     // GETTERS 
+
     public List<EntidadBancaria> getEntidadBancaria() {
         return entidadBancaria;
     }
@@ -132,5 +147,4 @@ public class Contexto {
     public List<Asaltante> getAsaltante() {
         return asaltante;
     }
-
 }

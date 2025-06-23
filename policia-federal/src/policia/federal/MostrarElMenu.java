@@ -81,7 +81,6 @@ public class MostrarElMenu {
             System.out.println("Codigo ingresado no coincide con un vigilante.");
         };
         deInicio();
-
     }
 
     private void deConsultarDatos() {
@@ -109,32 +108,44 @@ public class MostrarElMenu {
 
     private void deContratarVigilante() {
         String entidad_bancaria, sucursal, vigilante;
+        boolean salir = false;
+        int index_entidad_bancaria, index_sucursal, index_vigilante;
 
         do {
-            contexto.mostrarEntidadesBancarias();
-            entidad_bancaria = tools.leerString("Ingrese nombre de ENTIDAD BANCARIA: ");
+            do {
+                contexto.mostrarEntidadesBancarias();
+                index_entidad_bancaria = tools.leerEntero("Ingrese nombre de ENTIDAD BANCARIA o <0> para SALIR: ");
+                if (index_entidad_bancaria == 0) {
+                    salir = true;
+                    break;
+                }
 
-        } while (!contexto.validarEntidadBancaria(entidad_bancaria));
+            } while (contexto.validarEntidadBancaria(index_entidad_bancaria) == null);
 
-        do {
-            contexto.mostrarSucursales();
-            sucursal = tools.leerString("Ingrese nombre de SUCURSAL: ");
-        } while (!contexto.validarSucursal(sucursal));
+            if (!salir) {
+                do {
+                    contexto.mostrarSucursales();
+                    index_sucursal = tools.leerEntero("Ingrese nombre de SUCURSAL: ");
+                } while (contexto.validarSucursal(index_sucursal) == null);
 
-        do {
-            contexto.mostrarVigilantes();
-            vigilante = tools.leerString("Ingrese nombre de VIGILANTE: ");
-        } while (!contexto.validarVigilante(vigilante));
+                do {
+                    contexto.mostrarVigilantes();
+                    index_vigilante = tools.leerEntero("Ingrese nombre de VIGILANTE: ");
+                } while (contexto.validarVigilante(index_vigilante) == null);
 
-        ContratoSucVig nuevo_contrato = new ContratoSucVig(entidad_bancaria, sucursal, vigilante);
-        nuevo_contrato.setCodigo(contratos.size());
-        contratos.add(nuevo_contrato);
-        contexto.mostrarContratos(contratos);
+                entidad_bancaria = contexto.obtenerNombreEntidadBancaria(index_entidad_bancaria);
+                sucursal = contexto.obtenerNombreSucursal(index_sucursal);
+                vigilante = contexto.obtenerNombreVigilante(index_vigilante);
 
-        deContratarVigilante();
-        //Logica que diga: Desea crear otro contrato o volver al inicio. 
-        //Si toca 1 va al menu de deContratarVigilante();
-        //si toca 2 va al menu de deInicio();
+                ContratoSucVig nuevo_contrato = new ContratoSucVig(entidad_bancaria, sucursal, vigilante);
+                nuevo_contrato.setCodigo(contratos.size());
+                contratos.add(nuevo_contrato);
+                contexto.mostrarContratos(contratos);
+            }
+        } while (!salir);
+
+        deInicio();
+
     }
 
     private void deCerrarSesion() {
@@ -145,4 +156,5 @@ public class MostrarElMenu {
         String mensaje = "===== Saliendo del Sistema de Gestion Policial =====";
         System.out.println(mensaje);
     }
+
 }
