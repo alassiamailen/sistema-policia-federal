@@ -23,10 +23,19 @@ public class Vigilante {
     
     @Override
     public String toString() {
-        return nombre_apellido;
+         String presentacion = "\n-----------------------\n\n"; 
+        presentacion += "Nombre: " + nombre_apellido + "\n";
+        presentacion += "Edad: " + edad + "\n";
+        presentacion += "Codigo: " + codigo + "\n";
+        presentacion += "\n-----------------------\n";
+
+        return presentacion;
     }
     
       public String getNombre() {
         return nombre_apellido;
+    }
+      public int getCodigo() { 
+        return codigo; 
     }
 }

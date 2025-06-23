@@ -49,12 +49,18 @@ public class Main {
         admin.agregarPermiso(Permiso.CREAR_USUARIOS);
         admin.agregarPermiso(Permiso.EDITAR_DATOS);
         admin.agregarPermiso(Permiso.ELIMINAR_DATOS);
-
+         admin.agregarPermiso(Permiso.CERRAR_SESION); 
+        admin.agregarPermiso(Permiso.SALIR);
+        
         Rol vigilante = new Rol("Vigilante");
         vigilante.agregarPermiso(Permiso.CONSULTAR_MIS_DATOS);
+        vigilante.agregarPermiso(Permiso.CERRAR_SESION);
+        vigilante.agregarPermiso(Permiso.SALIR);
 
         Rol investigador = new Rol("Investigador");
         investigador.agregarPermiso(Permiso.CONSULTAR_DATOS_DE_OTRAS_ENTIDADES);
+          investigador.agregarPermiso(Permiso.CERRAR_SESION); 
+        investigador.agregarPermiso(Permiso.SALIR);
 
         // Sistema y usuarios
         Sistema sistema = new Sistema();
@@ -62,8 +68,12 @@ public class Main {
         sistema.registrarUsuario(new Usuario("pepe", "abcd", vigilante));
         sistema.registrarUsuario(new Usuario("lula", "123", investigador));
 
-        sistema.iniciarApp(contexto);
+        
+        sistema.iniciarApp(contexto, sistema);
 
     }
 
 }
+
+
+

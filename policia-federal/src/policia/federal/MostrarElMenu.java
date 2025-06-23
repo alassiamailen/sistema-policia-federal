@@ -11,12 +11,14 @@ import java.util.Scanner;
  */
 public class MostrarElMenu {
 
-    private final Usuario usuario;
-    private final Map<Permiso, Accion> acciones = new HashMap<>();
+    private Usuario usuario;
+    private Map<Permiso, Accion> acciones = new HashMap<>();
     private Contexto contexto;
     private ArrayList<ContratoSucVig> contratos = new ArrayList<>();
+    private Sistema sistema;
 
-    public MostrarElMenu(Usuario usuario, Contexto contexto) {
+    public MostrarElMenu(Usuario usuario, Contexto contexto, Sistema sistema) {
+        this.sistema = sistema;
         this.contexto = contexto;
         this.usuario = usuario;
         inicializarAcciones();
@@ -30,10 +32,12 @@ public class MostrarElMenu {
         acciones.put(Permiso.EDITAR_DATOS, this::deCrearDatos);
         acciones.put(Permiso.CREAR_USUARIOS, this::deEditarDatos);
         acciones.put(Permiso.ELIMINAR_DATOS, this::deEliminarUsuarios);
+         acciones.put(Permiso.CERRAR_SESION, this::deCerrarSesion); 
+        acciones.put(Permiso.SALIR, this::deSalir);
     }
 
     public void deInicio() {
-        System.out.println("Usuario " + usuario.getRol().getNombre() + " " + usuario.getNombreUsuario() + ":");
+       System.out.println("Usuario " + usuario.getNombreUsuario() + ":");
         ArrayList<Permiso> permisos = new ArrayList<>(usuario.getRol().getPermisos());
         Scanner sc = new Scanner(System.in);
 
@@ -45,7 +49,7 @@ public class MostrarElMenu {
             i++;
         }
 
-        System.out.print("Seleccione una opción: ");
+         System.out.print("\nSeleccione una opcion >>> ");
         int eleccion = sc.nextInt();
         Permiso seleccionado = opciones.get(eleccion);
 
@@ -57,12 +61,16 @@ public class MostrarElMenu {
     }
 
     private void deConsultarMisDatos() {
-        System.out.println("Crear entidad bancaria...");
-        contexto.mostrarEntidadesBancarias();
-        EntidadBancaria nueva = new EntidadBancaria("Banco Provincia", 9999, "aca cerca");
-        System.out.println("--------------------------------");
-        contexto.agregarEntidadBancaria(nueva);
-        contexto.mostrarEntidadesBancarias();
+        int codigo_vigilante = tools.leerEntero("Ingrese su codigo de Vigilante."); 
+        for (Vigilante v : contexto.getVigilante()) {
+            if (codigo_vigilante == v.getCodigo()) {
+                System.out.println(v.toString());
+                deInicio();
+            } else {
+                System.out.println("Vigilante no disponible en la base de datos.");
+                deInicio();
+            }
+        }
 
     }
 
@@ -93,42 +101,51 @@ public class MostrarElMenu {
         String entidad_bancaria, sucursal, vigilante;
         boolean salir = false;
         int index_entidad_bancaria, index_sucursal, index_vigilante;
-        
+
         do {
             do {
                 contexto.mostrarEntidadesBancarias();
                 index_entidad_bancaria = tools.leerEntero("Ingrese nombre de ENTIDAD BANCARIA o <0> para SALIR: ");
-                if(index_entidad_bancaria==0){ 
-                    salir=true;
+                if (index_entidad_bancaria == 0) {
+                    salir = true;
                     break;
                 }
-               
-            } while (contexto.validarEntidadBancaria(index_entidad_bancaria)==null);            
 
-            if(!salir){
+            } while (contexto.validarEntidadBancaria(index_entidad_bancaria) == null);
+
+            if (!salir) {
                 do {
-                contexto.mostrarSucursales();
-                index_sucursal = tools.leerEntero("Ingrese nombre de SUCURSAL: ");
-            } while (contexto.validarSucursal(index_sucursal)==null);
-                
-            do {
-                contexto.mostrarVigilantes();
-                index_vigilante = tools.leerEntero("Ingrese nombre de VIGILANTE: ");
-            } while (contexto.validarVigilante(index_vigilante)==null);
-            
-            entidad_bancaria=contexto.obtenerNombreEntidadBancaria(index_entidad_bancaria);
-            sucursal= contexto.obtenerNombreSucursal(index_sucursal);
-            vigilante= contexto.obtenerNombreVigilante(index_vigilante);
-            
-            ContratoSucVig nuevo_contrato = new ContratoSucVig(entidad_bancaria, sucursal, vigilante);
-            nuevo_contrato.setCodigo(contratos.size());
-            contratos.add(nuevo_contrato);
-            contexto.mostrarContratos(contratos);
+                    contexto.mostrarSucursales();
+                    index_sucursal = tools.leerEntero("Ingrese nombre de SUCURSAL: ");
+                } while (contexto.validarSucursal(index_sucursal) == null);
+
+                do {
+                    contexto.mostrarVigilantes();
+                    index_vigilante = tools.leerEntero("Ingrese nombre de VIGILANTE: ");
+                } while (contexto.validarVigilante(index_vigilante) == null);
+
+                entidad_bancaria = contexto.obtenerNombreEntidadBancaria(index_entidad_bancaria);
+                sucursal = contexto.obtenerNombreSucursal(index_sucursal);
+                vigilante = contexto.obtenerNombreVigilante(index_vigilante);
+
+                ContratoSucVig nuevo_contrato = new ContratoSucVig(entidad_bancaria, sucursal, vigilante);
+                nuevo_contrato.setCodigo(contratos.size());
+                contratos.add(nuevo_contrato);
+                contexto.mostrarContratos(contratos);
             }
         } while (!salir);
-        
+
         deInicio();
-        
 
     }
+    
+     private void deCerrarSesion() {
+        sistema.iniciarApp(contexto, sistema);
+    }
+
+    private void deSalir() {
+        String mensaje = "===== Saliendo del Sistema de Gestion Policial =====";
+        System.out.println(mensaje);
+    }
+
 }
