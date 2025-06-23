@@ -50,8 +50,8 @@ public class Contexto {
     }
 
     public void mostrarSucursales() {
-        for (Sucursal cadaUna : sucursal) {
-            System.out.println(cadaUna);
+        for (int i = 0; i < sucursal.size(); i++) {
+            System.out.println((i + 1) + "- " + sucursal.get(i));
         }
     }
 
@@ -81,15 +81,14 @@ public class Contexto {
     }
 
     /// VALIDAR
-    public boolean validarEntidadBancaria(String nombre) {
-
-        for (int i = 0; i < entidadBancaria.size(); i++) {
-            if (entidadBancaria.get(i).getNombre().toLowerCase().trim().equals(nombre.toLowerCase().trim())) {
-                return true;
-            }
+// Ejemplo del primer texto
+    public String validarEntidadBancaria(int index) {
+        if (index > 0 && index <= entidadBancaria.size()) {
+            return entidadBancaria.get(index - 1).getNombre();
+        } else {
+            System.out.println("Error - Ingrese una opcion valido");
+            return null;
         }
-        System.out.println("Error - Ingrese un nombre valido");
-        return false;
     }
 
     public boolean validarSucursal(String nombre) {
