@@ -10,32 +10,8 @@ package policia.federal;
 public class Main {
 
     public static void main(String[] args) {
-        //ENTIDADES
-        EntidadBancaria BBVA = new EntidadBancaria("BBVA", 1234, "Triunvirato");
-        EntidadBancaria GALICIA = new EntidadBancaria("Galicia", 134, "Vicente Lopez");
-        EntidadBancaria SANTANDER_RIO = new EntidadBancaria("Santander Rio", 14, "Paternal");
-        //SUCURSALES
-        Sucursal paternal = new Sucursal(15, "Paternal");
-        Sucursal vicente_lopez = new Sucursal(15, "Vicente Lopez");
-        Sucursal triunvirato = new Sucursal(15, "Triunvirato");
-        // VIGILANTES
-        Vigilante vigilante_1 = new Vigilante("JUAN PEREZ", 12, 45);
-        Vigilante vigilante_2 = new Vigilante("MONICA DIAZ", 33, 56);
-        Vigilante vigilante_3 = new Vigilante("PEDRO PEDRO", 120, 54);
-
         Contexto contexto = new Contexto();
-        // Inicializar entidad
-        contexto.agregarEntidadBancaria(BBVA);
-        contexto.agregarEntidadBancaria(GALICIA);
-        contexto.agregarEntidadBancaria(SANTANDER_RIO);
-        // Inicializar sucursal
-        contexto.agregarSucursal(paternal);
-        contexto.agregarSucursal(vicente_lopez);
-        contexto.agregarSucursal(triunvirato);
-        // Inicializar vigilante
-        contexto.agregarVigilante(vigilante_1);
-        contexto.agregarVigilante(vigilante_2);
-        contexto.agregarVigilante(vigilante_3);
+        Authenticacion authenticacion = Authenticacion.getInstance();
 
         // Roles
         Rol admin = new Rol("Administrador");
@@ -57,11 +33,37 @@ public class Main {
         investigador.agregarPermiso(Permiso.CERRAR_SESION);
         investigador.agregarPermiso(Permiso.SALIR);
 
-        Authenticacion authenticacion = Authenticacion.getInstance();
         authenticacion.registrarUsuario(new Usuario("juan", "1234", admin));
-        authenticacion.registrarUsuario(new Usuario("pepe", "abcd", vigilante));
         authenticacion.registrarUsuario(new Usuario("lula", "123", investigador));
+        RegistroVigilantes registro = new RegistroVigilantes(authenticacion, contexto, vigilante);
 
+        //Cargo vigilantes y linkeo con usuarios y cargo al contexto
+        registro.crearVigilanteConUsuario("Carlos Sanchez", 10, 40, "carlos", "1234");
+        registro.crearVigilanteConUsuario("Ana Gomez", 11, 38, "ana", "abcd");
+        registro.crearVigilanteConUsuario("Luis Varela", 12, 45, "luis", "pass");
+
+        //ENTIDADES
+        EntidadBancaria BBVA = new EntidadBancaria("BBVA", 1234, "Triunvirato");
+        EntidadBancaria GALICIA = new EntidadBancaria("Galicia", 134, "Vicente Lopez");
+        EntidadBancaria SANTANDER_RIO = new EntidadBancaria("Santander Rio", 14, "Paternal");
+        //SUCURSALES
+        Sucursal paternal = new Sucursal(15, "Paternal");
+        Sucursal vicente_lopez = new Sucursal(15, "Vicente Lopez");
+        Sucursal triunvirato = new Sucursal(15, "Triunvirato");
+
+
+        // Inicializar entidad
+        contexto.agregarEntidadBancaria(BBVA);
+        contexto.agregarEntidadBancaria(GALICIA);
+        contexto.agregarEntidadBancaria(SANTANDER_RIO);
+        // Inicializar sucursal
+        contexto.agregarSucursal(paternal);
+        contexto.agregarSucursal(vicente_lopez);
+        contexto.agregarSucursal(triunvirato);
+
+
+      
+  
         Sistema sistema = new Sistema();
         sistema.iniciar(contexto);
 

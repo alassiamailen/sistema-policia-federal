@@ -9,10 +9,11 @@ package policia.federal;
  * @author Nico
  */
 public class Usuario {
+
     private String nombreUsuario;
     private String password;
     private Rol rol;
-    
+    private Vigilante vigilante; // null si no aplica
 
     public Usuario(String nombreUsuario, String password, Rol rol) {
         this.nombreUsuario = nombreUsuario;
@@ -32,12 +33,20 @@ public class Usuario {
         return nombreUsuario;
     }
 
-    public void mostrarPermisos(){
-        rol.permisosAdquiridos();}
-    
+    public void mostrarPermisos() {
+        rol.permisosAdquiridos();
+    }
+
     public Rol getRol() {
         return rol;
     }
-    
-}
 
+    public void setVigilante(Vigilante vigilante) {
+        this.vigilante = vigilante;
+    }
+
+    public Vigilante getVigilante() {
+        return vigilante;
+    }
+
+}

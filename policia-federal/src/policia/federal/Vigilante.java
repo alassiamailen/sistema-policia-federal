@@ -5,7 +5,6 @@ public class Vigilante {
     private String nombre_apellido;
     private int codigo;
     private int edad;
-    private Usuario usuario;
 
     Tools tools = new Tools();
 
@@ -24,7 +23,7 @@ public class Vigilante {
 
     @Override
     public String toString() {
-        String presentacion = "\n-----------------------\n\n";
+        String presentacion = "";
         presentacion += "Nombre: " + nombre_apellido + "\n";
         presentacion += "Edad: " + edad + "\n";
         presentacion += "Codigo: " + codigo + "\n";

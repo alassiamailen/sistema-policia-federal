@@ -16,6 +16,7 @@ public class Sistema implements Menu.OnMenuItemSelectedListener, Authenticacion.
 
     public void iniciar(Contexto contexto) {
         this.contexto = contexto;
+        //this siempre es una referencia al objeto en el cual se llama. En este caso sistema. 
         this.menu = new Menu(contexto, this);
 
         Authenticacion.getInstance().iniciarSesion(this);
