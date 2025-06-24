@@ -36,7 +36,7 @@ public class Menu {
         acciones.put(Permiso.CONSULTAR_DATOS_DE_OTRAS_ENTIDADES, this::deConsultarDatos);
         acciones.put(Permiso.CONTRATAR_VIGILANTE, this::deContratarVigilante);
         acciones.put(Permiso.CONSULTAR_MIS_DATOS_VIGILANTE, this::deConsultarMisDatos);
-        acciones.put(Permiso.EDITAR_DATOS, this::deCrearDatos);
+        acciones.put(Permiso.EDITAR_DATOS, this::deEditarDatos);
         acciones.put(Permiso.CREAR_USUARIOS, this::deEditarDatos);
         acciones.put(Permiso.ELIMINAR_DATOS, this::deEliminarUsuarios);
         acciones.put(Permiso.CERRAR_SESION, this::deCerrarSesion);
@@ -66,7 +66,7 @@ public class Menu {
             System.out.print("\nSeleccione una opcion >>> ");
             int eleccion = sc.nextInt();
             Permiso seleccionado = opciones.get(eleccion);
-            System.out.println("\n\n");
+            System.out.println("\n");
             if (seleccionado != null && acciones.containsKey(seleccionado)) {
                 acciones.get(seleccionado).ejecutar();
                 if (seleccionado == Permiso.SALIR) {
@@ -79,10 +79,6 @@ public class Menu {
 
     }
 
-    
-    
-    
-    
     
     
     private void deConsultarMisDatos() {
@@ -106,13 +102,8 @@ public class Menu {
     }
 
     private void deEditarDatos() {
-        System.out.println("Entrando al panel de edicion...");
-        // Contratar Vgilante
-        //elegir entindad basncaria
-        //elegir sucrusal
-        //crearContrato
-        //Consultar vigiliantes disponibles
-        //this.vigilante. 
+        PantallaDeMostrarDatos p = new PantallaDeMostrarDatos(contexto);
+        p.mostrarMenuEditables();
 
     }
 

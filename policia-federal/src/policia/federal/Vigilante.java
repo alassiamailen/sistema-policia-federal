@@ -32,12 +32,25 @@ public class Vigilante {
         return presentacion;
     }
 
-    public String getNombre() {
-        return nombre_apellido;
-    }
-
     public int getCodigo() {
         return codigo;
     }
 
+
+    public String getNombre() {
+        return nombre_apellido;
+    }
+
+    public void setNombre_apellido(String nombre_apellido) {
+        this.nombre_apellido = nombre_apellido;
+    }
+
+    public int getEdad() {
+        return edad;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+    
 }

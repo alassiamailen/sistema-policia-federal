@@ -42,4 +42,6 @@ public class Sistema implements Menu.OnMenuItemSelectedListener, Authenticacion.
         // PantallaRegistroDatos p = new PantallaRegistroDatos()
         // p.mostrar();
     }
+    
+
 }

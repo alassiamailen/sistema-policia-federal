@@ -39,8 +39,25 @@ public class EntidadBancaria {
     public String getNombre() {
         return nombre;
     }
+
+    public int getCodigo() {
+        return codigo;
+    }
+
+
+    public String getDomicilio() {
+        return domicilio;
+    }
+
+    public void setDomicilio(String domicilio) {
+        this.domicilio = domicilio;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    
     
     
 }
-
 

@@ -1,7 +1,6 @@
 package policia.federal;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 
 /**
  *
@@ -58,6 +57,7 @@ public class ContratoSucVig {
         this.codigo_contrato = codigo;
     }
 
+    @Override
     public String toString() {
         return "Codigo: #" + codigo_contrato + "\n"
                 + "Entidad: " + entidad_bancaria + "\n"
@@ -72,6 +72,4 @@ public class ContratoSucVig {
         return vigilante;
     }
     
-    
-
 }

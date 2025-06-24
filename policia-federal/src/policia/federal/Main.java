@@ -61,6 +61,9 @@ public class Main {
         contexto.agregarSucursal(vicente_lopez);
         contexto.agregarSucursal(triunvirato);
 
+        contexto.agregarJuez(new Juez("Esteban Paz", 123, 2));
+        contexto.agregarJuez(new Juez("Joaquin Lopez", 234, 5));
+        contexto.agregarJuez(new Juez("Juana Palapa", 456, 8));
 
       
   
