@@ -5,6 +5,7 @@ public class Vigilante {
     private String nombre_apellido;
     private int codigo;
     private int edad;
+    private Usuario usuario;
 
     Tools tools = new Tools();
 

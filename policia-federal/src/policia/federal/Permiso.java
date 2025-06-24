@@ -9,8 +9,8 @@ package policia.federal;
  * @author Nico
  */
 public enum Permiso {
-    CONSULTAR_MIS_DATOS("Consultar mis datos."),
-    CONSULTAR_DATOS_DE_OTRAS_ENTIDADES("Consultar datos."),
+    CONSULTAR_MIS_DATOS_VIGILANTE("Consultar mis datos."),
+    CONSULTAR_DATOS_DE_OTRAS_ENTIDADES("Consultar datos DE TODO."),
     EDITAR_DATOS("Editar datos."),
     CREAR_USUARIOS("Crear usuario."),
     CONTRATAR_VIGILANTE("Crear un contrato entre sucursal y vigilante."),

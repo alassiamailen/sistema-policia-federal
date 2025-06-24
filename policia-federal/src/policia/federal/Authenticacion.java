@@ -14,10 +14,15 @@ import java.util.Scanner;
 
 public class Authenticacion {
 
+    //A traves de esta interfaz le aviso a quien llame a mi metodo (En este caso iniciar sesion) que hubo un inicio de sesion existoso.
     public interface Listener {
         void onUserLogin();
     }
-
+    
+    //PATRON Singelton, esto hace que no pueda existir mas de una instancia del objeto a la vez en el sistema.
+    //Para esto armo estas dos statics, la variable y el metodo.
+    //Al ser static no pertencee al objeto, sino a la clase./
+    //La clase Auth se instancia a si misma y se adjudica a getInstance.
     private static Authenticacion instance;
 
     public static Authenticacion getInstance() {
@@ -32,7 +37,7 @@ public class Authenticacion {
     private final Scanner sc = new Scanner(System.in);
 
     private Authenticacion() {
-        // empty
+        
     }
 
     public void registrarUsuario(Usuario usuario) {
@@ -72,7 +77,7 @@ public class Authenticacion {
             }
         } while (usuarioActual == null && intento != 0);
 
-        System.out.println("Bienvenido, " + usuarioActual.getRol().getNombre() + usuarioActual.getNombreUsuario());
+        System.out.println("Bienvenido, " + usuarioActual.getRol().getNombre() + " " + usuarioActual.getNombreUsuario());
 
         listener.onUserLogin();
     }

@@ -41,7 +41,6 @@ public class Main {
         Rol admin = new Rol("Administrador");
         admin.agregarPermiso(Permiso.CONSULTAR_DATOS_DE_OTRAS_ENTIDADES);
         admin.agregarPermiso(Permiso.CONTRATAR_VIGILANTE);
-        admin.agregarPermiso(Permiso.CONSULTAR_MIS_DATOS);
         admin.agregarPermiso(Permiso.CREAR_USUARIOS);
         admin.agregarPermiso(Permiso.EDITAR_DATOS);
         admin.agregarPermiso(Permiso.ELIMINAR_DATOS);
@@ -49,7 +48,7 @@ public class Main {
         admin.agregarPermiso(Permiso.SALIR);
 
         Rol vigilante = new Rol("Vigilante");
-        vigilante.agregarPermiso(Permiso.CONSULTAR_MIS_DATOS);
+        vigilante.agregarPermiso(Permiso.CONSULTAR_MIS_DATOS_VIGILANTE);
         vigilante.agregarPermiso(Permiso.CERRAR_SESION);
         vigilante.agregarPermiso(Permiso.SALIR);
 

@@ -12,6 +12,7 @@ public class Usuario {
     private String nombreUsuario;
     private String password;
     private Rol rol;
+    
 
     public Usuario(String nombreUsuario, String password, Rol rol) {
         this.nombreUsuario = nombreUsuario;

@@ -197,7 +197,7 @@ public class Menu {
     private void inicializarAcciones() {
         acciones.put(Permiso.CONSULTAR_DATOS_DE_OTRAS_ENTIDADES, this::deConsultarDatos);
         acciones.put(Permiso.CONTRATAR_VIGILANTE, this::deContratarVigilante);
-        acciones.put(Permiso.CONSULTAR_MIS_DATOS, this::deConsultarMisDatos);
+        acciones.put(Permiso.CONSULTAR_MIS_DATOS_VIGILANTE, this::deConsultarMisDatos);
         acciones.put(Permiso.EDITAR_DATOS, this::deCrearDatos);
         acciones.put(Permiso.CREAR_USUARIOS, this::deEditarDatos);
         acciones.put(Permiso.ELIMINAR_DATOS, this::deEliminarUsuarios);
@@ -214,6 +214,7 @@ public class Menu {
         Scanner sc = new Scanner(System.in);
 
         boolean seguir = true;
+
         
         do {
             int i = 1;
@@ -264,7 +265,6 @@ public class Menu {
         if (vigilante_encontrado == false) {
             System.out.println("Codigo ingresado no coincide con un vigilante.");
         };
-        mostrar();
     }
 
     private void deConsultarDatos() {
