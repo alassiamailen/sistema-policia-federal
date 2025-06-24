@@ -53,7 +53,7 @@ public class Contexto {
     public void mostrarSucursales() {
         for (int i = 0; i < sucursal.size(); i++) {
             System.out.println((i + 1) + "- " + sucursal.get(i).getNombre());
-            
+
         }
     }
 
