@@ -62,7 +62,7 @@ public class Sistema {
             if (logueado != null){
                 System.out.println("Bienvenido, " + logueado.getNombreUsuario());
                 System.out.println("Rol: " + logueado.getRol().getNombre());
-                MostrarElMenu mostrarMenu = new MostrarElMenu(logueado, contexto, sistema);
+                Menu mostrarMenu = new Menu(logueado, contexto, sistema);
                 mostrarMenu.deInicio();
             }
         

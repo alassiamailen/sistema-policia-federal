@@ -9,7 +9,7 @@ import java.util.Scanner;
  *
  * @author Nico
  */
-public class MostrarElMenu {
+public class Menu {
 
     private Usuario usuario;
     private Map<Permiso, Accion> acciones = new HashMap<>();
@@ -17,7 +17,7 @@ public class MostrarElMenu {
     private ArrayList<ContratoSucVig> contratos = new ArrayList<>();
     private Sistema sistema;
 
-    public MostrarElMenu(Usuario usuario, Contexto contexto, Sistema sistema) {
+    public Menu(Usuario usuario, Contexto contexto, Sistema sistema) {
         this.sistema = sistema;
         this.contexto = contexto;
         this.usuario = usuario;
