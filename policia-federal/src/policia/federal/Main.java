@@ -3,8 +3,6 @@
  */
 package policia.federal;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author Nico
@@ -13,20 +11,18 @@ public class Main {
 
     public static void main(String[] args) {
         //ENTIDADES
-        EntidadBancaria BBVA = new EntidadBancaria("BBVA",1234, "Triunvirato");
-        EntidadBancaria GALICIA = new EntidadBancaria("Galicia",134, "Vicente Lopez");
-        EntidadBancaria SANTANDER_RIO = new EntidadBancaria("Santander Rio",14, "Paternal");
+        EntidadBancaria BBVA = new EntidadBancaria("BBVA", 1234, "Triunvirato");
+        EntidadBancaria GALICIA = new EntidadBancaria("Galicia", 134, "Vicente Lopez");
+        EntidadBancaria SANTANDER_RIO = new EntidadBancaria("Santander Rio", 14, "Paternal");
         //SUCURSALES
-        Sucursal paternal = new Sucursal(15,"Paternal");
-        Sucursal vicente_lopez = new Sucursal(15,"Vicente Lopez");
-        Sucursal triunvirato = new Sucursal(15,"Triunvirato");
+        Sucursal paternal = new Sucursal(15, "Paternal");
+        Sucursal vicente_lopez = new Sucursal(15, "Vicente Lopez");
+        Sucursal triunvirato = new Sucursal(15, "Triunvirato");
         // VIGILANTES
         Vigilante vigilante_1 = new Vigilante("JUAN PEREZ", 12, 45);
         Vigilante vigilante_2 = new Vigilante("MONICA DIAZ", 33, 56);
         Vigilante vigilante_3 = new Vigilante("PEDRO PEDRO", 120, 54);
-        
-     
-        
+
         Contexto contexto = new Contexto();
         // Inicializar entidad
         contexto.agregarEntidadBancaria(BBVA);
@@ -51,7 +47,7 @@ public class Main {
         admin.agregarPermiso(Permiso.ELIMINAR_DATOS);
         admin.agregarPermiso(Permiso.CERRAR_SESION);
         admin.agregarPermiso(Permiso.SALIR);
-        
+
         Rol vigilante = new Rol("Vigilante");
         vigilante.agregarPermiso(Permiso.CONSULTAR_MIS_DATOS);
         vigilante.agregarPermiso(Permiso.CERRAR_SESION);
@@ -62,18 +58,14 @@ public class Main {
         investigador.agregarPermiso(Permiso.CERRAR_SESION);
         investigador.agregarPermiso(Permiso.SALIR);
 
-        // Sistema y usuarios
-        Sistema sistema = new Sistema();
-        sistema.registrarUsuario(new Usuario("juan", "1234", admin));
-        sistema.registrarUsuario(new Usuario("pepe", "abcd", vigilante));
-        sistema.registrarUsuario(new Usuario("lula", "123", investigador));
+        Authenticacion authenticacion = Authenticacion.getInstance();
+        authenticacion.registrarUsuario(new Usuario("juan", "1234", admin));
+        authenticacion.registrarUsuario(new Usuario("pepe", "abcd", vigilante));
+        authenticacion.registrarUsuario(new Usuario("lula", "123", investigador));
 
-        
-        sistema.iniciarApp(contexto, sistema);
+        Sistema sistema = new Sistema();
+        sistema.iniciar(contexto);
 
     }
 
 }
-
-
-

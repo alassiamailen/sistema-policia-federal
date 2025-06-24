@@ -8,12 +8,13 @@ package policia.federal;
  *
  * @author Nico
  */
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class Rol {
     private String nombre;
-    private Set<Permiso> permisos = new HashSet<>();
+    private Set<Permiso> permisos = new LinkedHashSet<>();
+
 
     public Rol(String nombre) {
         this.nombre = nombre;
