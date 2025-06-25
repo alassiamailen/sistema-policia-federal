@@ -36,6 +36,7 @@ public class Menu {
     private void inicializarAcciones() {
         acciones.put(Permiso.CONSULTAR_DATOS_DE_OTRAS_ENTIDADES, this::deConsultarDatos);
         acciones.put(Permiso.CONTRATAR_VIGILANTE, this::deContratarVigilante);
+        acciones.put(Permiso.CARGAR_DETENIDO, this::cargarDetenido);
         acciones.put(Permiso.CONSULTAR_MIS_DATOS_VIGILANTE, this::deConsultarMisDatos);
         acciones.put(Permiso.EDITAR_DATOS, this::deEditarDatos);
         acciones.put(Permiso.CREAR_USUARIOS, this::deCrearUsuarios);
@@ -77,9 +78,9 @@ public class Menu {
             }
         } while (seguir);
 
+        //Listo
     }
 
-    //Listo
     private void deConsultarMisDatos() {
         Vigilante v = Authenticacion.getInstance().getUsuarioActual().getVigilante();
         if (v != null) {
@@ -105,7 +106,7 @@ public class Menu {
 
     //Listo
     private void deEditarDatos() {
-        PantallaDeMostrarDatos p = new PantallaDeMostrarDatos(contexto);
+        PantallaDeEditarDatos p = new PantallaDeEditarDatos(contexto);
         p.mostrarMenuEditables();
 
     }
@@ -117,45 +118,13 @@ public class Menu {
 
     //Mai laburando en esto
     private void deContratarVigilante() {
-        String entidad_bancaria, sucursal, vigilante;
-        boolean salir = false;
-        int index_entidad_bancaria, index_sucursal, index_vigilante;
+        PantallaDeContratarVigilante accion_de_contrato = new PantallaDeContratarVigilante();
+        accion_de_contrato.contratarVigilante(contexto);
+    }
 
-        do {
-            do {
-                contexto.mostrarEntidadesBancarias();
-                index_entidad_bancaria = tools.leerEntero("Ingrese nombre de ENTIDAD BANCARIA o <0> para SALIR: ");
-                if (index_entidad_bancaria == 0) {
-                    salir = true;
-                    break;
-                }
-
-            } while (contexto.validarEntidadBancaria(index_entidad_bancaria) == null);
-
-            if (!salir) {
-                do {
-                    contexto.mostrarSucursales();
-                    index_sucursal = tools.leerEntero("Ingrese nombre de SUCURSAL: ");
-                } while (contexto.validarSucursal(index_sucursal) == null);
-
-                do {
-                    contexto.mostrarVigilantes();
-                    index_vigilante = tools.leerEntero("Ingrese nombre de VIGILANTE: ");
-                } while (contexto.validarVigilante(index_vigilante) == null);
-
-                entidad_bancaria = contexto.obtenerNombreEntidadBancaria(index_entidad_bancaria);
-                sucursal = contexto.obtenerNombreSucursal(index_sucursal);
-                vigilante = contexto.obtenerNombreVigilante(index_vigilante);
-
-                ContratoSucVig nuevo_contrato = new ContratoSucVig(entidad_bancaria, sucursal, vigilante);
-                nuevo_contrato.setCodigo(contratos.size());
-                contratos.add(nuevo_contrato);
-                contexto.mostrarContratos(contratos);
-            }
-        } while (!salir);
-
-        mostrar();
-
+    private void cargarDetenido() {
+        PantallaDeCargarDetenido accion_de_cargar_detenido = new PantallaDeCargarDetenido();
+        accion_de_cargar_detenido.cargarDetenido(contexto);
     }
 
     //Listo

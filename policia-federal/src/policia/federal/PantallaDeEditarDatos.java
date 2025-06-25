@@ -12,11 +12,12 @@ import java.util.Scanner;
  *
  * @author Nico
  */
-public class PantallaDeMostrarDatos {
+public class PantallaDeEditarDatos {
+
 
     private Contexto contexto;
 
-    public PantallaDeMostrarDatos(Contexto contexto) {
+    public PantallaDeEditarDatos(Contexto contexto) {
         this.contexto = contexto;
     }
 
@@ -313,5 +314,6 @@ public class PantallaDeMostrarDatos {
         }
     }
 
-    //Editar Sucursal
+  
+
 }
