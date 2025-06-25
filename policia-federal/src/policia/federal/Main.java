@@ -1,14 +1,23 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
 package policia.federal;
 
 /**
+ * Clase principal que inicializa el sistema de gestión policial. Se encarga de
+ * crear y registrar roles, usuarios, vigilantes, entidades bancarias,
+ * sucursales, bandas criminales, asaltantes y jueces, y de iniciar el sistema.
  *
- * @author Nico
+ * @author Nicolas
+ * @author Mailen
+ * @author Leo
  */
 public class Main {
 
+    /**
+     * Método principal que se ejecuta al iniciar la aplicación. Configura el
+     * contexto inicial del sistema, crea roles, usuarios, vigilantes,
+     * entidades, bandas, y lanza el sistema principal.
+     *
+     * @param args argumentos de línea de comandos (no utilizados)
+     */
     public static void main(String[] args) {
         Contexto contexto = new Contexto();
         Authenticacion authenticacion = Authenticacion.getInstance();
@@ -50,15 +59,14 @@ public class Main {
         //SUCURSALES
         Sucursal paternal = new Sucursal(15, "Paternal");
         Sucursal vicente_lopez = new Sucursal(15, "Vicente Lopez");
-        Sucursal triunvirato = new Sucursal(15, "Triunvirato");      
+        Sucursal triunvirato = new Sucursal(15, "Triunvirato");
         /// BANDA CRIMINAL
-        BandaCriminal banda_1 = new BandaCriminal(889,2);
-        BandaCriminal banda_2 = new BandaCriminal(579,1);
-          /// ASALTANTES
-        Asaltante detenido_1 = new Asaltante(23,"Mario Ledesma",banda_1);
-        Asaltante detenido_2 = new Asaltante(12,"Carlos Gomez",banda_2);
-        Asaltante detenido_3 = new Asaltante(120,"Susana Palacios",banda_1);
-
+        BandaCriminal banda_1 = new BandaCriminal(889, 2);
+        BandaCriminal banda_2 = new BandaCriminal(579, 1);
+        /// ASALTANTES
+        Asaltante detenido_1 = new Asaltante(23, "Mario Ledesma", banda_1);
+        Asaltante detenido_2 = new Asaltante(12, "Carlos Gomez", banda_2);
+        Asaltante detenido_3 = new Asaltante(120, "Susana Palacios", banda_1);
 
         // Inicializar entidad
         contexto.agregarEntidadBancaria(BBVA);
@@ -77,11 +85,9 @@ public class Main {
         contexto.agregarAsaltantes(detenido_2);
         contexto.agregarAsaltantes(detenido_3);
         // Inicializar banda criminal
-         contexto.agregarBandaCriminal(banda_1);
-         contexto.agregarBandaCriminal(banda_2);
-
-      
-  
+        contexto.agregarBandaCriminal(banda_1);
+        contexto.agregarBandaCriminal(banda_2);
+        // Lanzar el sistema principal
         Sistema sistema = new Sistema();
         sistema.iniciar(contexto);
 

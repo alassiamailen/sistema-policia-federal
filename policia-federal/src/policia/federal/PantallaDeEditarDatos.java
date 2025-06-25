@@ -4,23 +4,37 @@
  */
 package policia.federal;
 
-
 import java.util.List;
 import java.util.Scanner;
 
 /**
+ * Clase que permite la edición de datos de diferentes entidades del sistema,
+ * como Juez, Vigilante y Entidad Bancaria.
  *
- * @author Nico
+ * Muestra menús para seleccionar qué entidad editar y qué atributos modificar.
+ * Utiliza la clase Contexto para acceder a las listas de entidades.
+ *
+ * @author Nicolas
+ * @author Mailen
+ * @author Leo
  */
 public class PantallaDeEditarDatos {
 
-
     private Contexto contexto;
 
+    /**
+     * Constructor que recibe el contexto general con las listas de entidades.
+     *
+     * @param contexto contexto general del sistema con las entidades cargadas
+     */
     public PantallaDeEditarDatos(Contexto contexto) {
         this.contexto = contexto;
     }
 
+    /**
+     * Muestra el menú principal de edición y procesa las opciones del usuario.
+     * Permite elegir la entidad a editar (Juez, Vigilante, Entidad Bancaria).
+     */
     public void mostrarMenuEditables() {
         Scanner sc = new Scanner(System.in);
         int seleccion;
@@ -41,7 +55,7 @@ public class PantallaDeEditarDatos {
                         editarVigilante();
                     case 3 ->
                         editarEntidadBancaria();
-                   
+
                     case 0 ->
                         seguir = false; // salir del menu editable
                     default ->
@@ -54,6 +68,9 @@ public class PantallaDeEditarDatos {
         }
     }
 
+    /**
+     * Muestra las opciones del menú principal de edición.
+     */
     private void mostrarMenuEditar() {
         System.out.println("=== Menu de Editar ===");
         System.out.println("1. Juez");
@@ -63,7 +80,10 @@ public class PantallaDeEditarDatos {
         System.out.println("0. Volver al menu principal");
     }
 
-    //Editar Juez
+    /**
+     * Permite editar los atributos del Juez seleccionado. Puede editar nombre
+     * completo y tiempo de servicio.
+     */
     private void editarJuez() {
         Scanner sc = new Scanner(System.in);
 
@@ -105,6 +125,11 @@ public class PantallaDeEditarDatos {
         }
     }
 
+    /**
+     * Muestra la lista de jueces para seleccionar uno.
+     *
+     * @return el objeto Juez seleccionado o null si se cancela
+     */
     private Juez seleccionarJuez() {
         List<Juez> jueces = contexto.getJuez();
         Scanner sc = new Scanner(System.in);
@@ -145,7 +170,10 @@ public class PantallaDeEditarDatos {
         }
     }
 
-    //Editar Vigilante
+    /**
+     * Permite editar los atributos del Vigilante seleccionado. Puede editar
+     * nombre completo y edad.
+     */
     private void editarVigilante() {
         Scanner sc = new Scanner(System.in);
         boolean seguir = true;
@@ -189,6 +217,11 @@ public class PantallaDeEditarDatos {
         }
     }
 
+    /**
+     * Muestra la lista de vigilantes para seleccionar uno.
+     *
+     * @return el objeto Vigilante seleccionado o null si se cancela
+     */
     private Vigilante seleccionarVigilante() {
         List<Vigilante> vigilantes = contexto.getVigilante();
         Scanner sc = new Scanner(System.in);
@@ -231,47 +264,10 @@ public class PantallaDeEditarDatos {
         }
     }
 
-    //Editar Entidad Bancaria
-    private EntidadBancaria seleccionarEntidad() {
-        List<EntidadBancaria> entidades = contexto.getEntidadBancaria(); // asegurate que exista este metodo
-        Scanner sc = new Scanner(System.in);
-
-        if (entidades.isEmpty()) {
-            System.out.println("No hay entidades bancarias disponibles.");
-            return null;
-        }
-
-        while (true) {
-            System.out.println("\n=== Seleccione una Entidad Bancaria ===");
-            for (int i = 0; i < entidades.size(); i++) {
-                EntidadBancaria e = entidades.get(i);
-                System.out.println((i + 1) + ". " + e.getNombre());
-                System.out.println("\tCodigo: " + e.getCodigo());
-                System.out.println("\tDomicilio: " + e.getDomicilio());
-            }
-            System.out.println("0. Volver");
-            System.out.print("Ingrese nuevo Nombre de la entidad >>> ");
-
-            if (sc.hasNextInt()) {
-                int eleccion = sc.nextInt();
-                sc.nextLine();
-
-                if (eleccion == 0) {
-                    return null;
-                }
-
-                if (eleccion >= 1 && eleccion <= entidades.size()) {
-                    return entidades.get(eleccion - 1);
-                } else {
-                    System.out.println("Seleccion fuera de rango. Intente de nuevo.");
-                }
-            } else {
-                System.out.println("Entrada invalida. Debe ingresar un numero.");
-                sc.nextLine();
-            }
-        }
-    }
-
+    /**
+     * Permite editar atributos de la Entidad Bancaria seleccionada. Puede
+     * editar nombre y domicilio.
+     */
     private void editarEntidadBancaria() {
         Scanner sc = new Scanner(System.in);
         boolean seguir = true;
@@ -314,6 +310,49 @@ public class PantallaDeEditarDatos {
         }
     }
 
-  
+    /**
+     * Permite seleccionar una Entidad Bancaria para editar.
+     *
+     * @return la EntidadBancaria seleccionada o null si se cancela
+     */
+    private EntidadBancaria seleccionarEntidad() {
+        List<EntidadBancaria> entidades = contexto.getEntidadBancaria(); // asegurate que exista este metodo
+        Scanner sc = new Scanner(System.in);
+
+        if (entidades.isEmpty()) {
+            System.out.println("No hay entidades bancarias disponibles.");
+            return null;
+        }
+
+        while (true) {
+            System.out.println("\n=== Seleccione una Entidad Bancaria ===");
+            for (int i = 0; i < entidades.size(); i++) {
+                EntidadBancaria e = entidades.get(i);
+                System.out.println((i + 1) + ". " + e.getNombre());
+                System.out.println("\tCodigo: " + e.getCodigo());
+                System.out.println("\tDomicilio: " + e.getDomicilio());
+            }
+            System.out.println("0. Volver");
+            System.out.print("Ingrese nuevo Nombre de la entidad >>> ");
+
+            if (sc.hasNextInt()) {
+                int eleccion = sc.nextInt();
+                sc.nextLine();
+
+                if (eleccion == 0) {
+                    return null;
+                }
+
+                if (eleccion >= 1 && eleccion <= entidades.size()) {
+                    return entidades.get(eleccion - 1);
+                } else {
+                    System.out.println("Seleccion fuera de rango. Intente de nuevo.");
+                }
+            } else {
+                System.out.println("Entrada invalida. Debe ingresar un numero.");
+                sc.nextLine();
+            }
+        }
+    }
 
 }

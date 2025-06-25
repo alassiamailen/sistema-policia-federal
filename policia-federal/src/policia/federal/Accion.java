@@ -1,15 +1,18 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
 package policia.federal;
 
 /**
+ * Interfaz funcional que representa una acción que puede ser ejecutada.
+ * Contiene un único método abstracto para realizar la ejecución.
  *
- * @author Nico
+ * @author Nicolas
+ * @author Mailen
+ * @author Leo
  */
 @FunctionalInterface  //Esto nos indica que hay un solo metodo abstracto
 public interface Accion {
+
+    /**
+     * Ejecuta la acción definida.
+     */
     void ejecutar();
 }
-

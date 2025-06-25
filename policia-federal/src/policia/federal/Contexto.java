@@ -1,15 +1,19 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package policia.federal;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Representa el contexto global del sistema policial, actuando como almacén
+ * centralizado de todas las entidades operativas: bancos, sucursales, jueces,
+ * vigilantes, asaltantes y bandas criminales.
  *
- * @author Nico
+ * Permite agregar, mostrar, validar y obtener datos de forma estructurada.
+ * También facilita la vinculación de entidades como contratos o asaltos.
+ *
+ * @author Nicolas
+ * @author Mailen
+ * @author Leo
  */
 public class Contexto {
 
@@ -20,12 +24,13 @@ public class Contexto {
     public List<Asaltante> asaltante = new ArrayList<>();
     public List<BandaCriminal> bandaCriminal = new ArrayList<>();
 
-    
-    
+    /**
+     * Constructor del contexto, inicializa todas las listas vacías.
+     */
     public Contexto() {
     }
 
-    /// AGREGAR
+    // ------------------------ AGREGAR ------------------------
     public void agregarEntidadBancaria(EntidadBancaria entidad) {
         entidadBancaria.add(entidad);
     }
@@ -50,7 +55,7 @@ public class Contexto {
         bandaCriminal.add(b);
     }
 
-    /// MOSTRAR
+    // ------------------------ MOSTRAR ------------------------
     public void mostrarEntidadesBancarias() {
         for (int i = 0; i < entidadBancaria.size(); i++) {
             System.out.println((i + 1) + "- " + entidadBancaria.get(i));
@@ -61,7 +66,7 @@ public class Contexto {
         for (int i = 0; i < bandaCriminal.size(); i++) {
             System.out.println((i + 1) + "- " + "Numero Identificacion: " + bandaCriminal.get(i).getCodigoIdentificacion());
         }
-    }    
+    }
 
     public void mostrarSucursales() {
         for (int i = 0; i < sucursal.size(); i++) {
@@ -94,14 +99,15 @@ public class Contexto {
             System.out.println(contrato);
         }
     }
-    public void mostrarAsaltos(ArrayList<Asalto> asaltos){
+
+    public void mostrarAsaltos(ArrayList<Asalto> asaltos) {
         System.out.println("-- ASALTOS --");
         for (Asalto asalto : asaltos) {
             System.out.println(asalto);
         }
     }
 
-    /// VALIDAR
+    // ------------------------ VALIDAR ------------------------
     public String validarEntidadBancaria(int index) {
 
         if (index > 0 && index <= entidadBancaria.size()) {
@@ -112,13 +118,14 @@ public class Contexto {
         }
 
     }
-    public String validarAsaltante(int index){
+
+    public String validarAsaltante(int index) {
         if (index > 0 && index <= asaltante.size()) {
             return asaltante.get(index - 1).getNombre();
         } else {
             System.out.println("Error - Ingrese una opcion valida");
             return null;
-        } 
+        }
     }
 
     public String validarSucursal(int index) {
@@ -139,9 +146,9 @@ public class Contexto {
             System.out.println("Error - Ingrese una opcion valida");
             return null;
         }
-    }   
+    }
 
-    ///OBTENER DATOS APARTIR DEL INDEX
+    // ------------------------ OBTENER ------------------------
     public String obtenerNombreEntidadBancaria(int index) {
         return entidadBancaria.get(index - 1).getNombre();
     }
@@ -153,17 +160,20 @@ public class Contexto {
     public String obtenerNombreVigilante(int index) {
         return vigilante.get(index - 1).getNombre();
     }
-    public Asaltante obtenerDetenido(int index){       
-       return asaltante.get(index-1);
+
+    public Asaltante obtenerDetenido(int index) {
+        return asaltante.get(index - 1);
     }
-    public BandaCriminal obtenerBandaCriminal(int index){
-        return asaltante.get(index-1).obtenerBandaCriminal();
+
+    public BandaCriminal obtenerBandaCriminal(int index) {
+        return asaltante.get(index - 1).obtenerBandaCriminal();
     }
-    public Sucursal obtenerSucursal(int index){
+
+    public Sucursal obtenerSucursal(int index) {
         return sucursal.get(index - 1);
     }
 
-    // GETTERS 
+    // ------------------------ GETTERS ------------------------
     public List<EntidadBancaria> getEntidadBancaria() {
         return entidadBancaria;
     }
@@ -184,7 +194,13 @@ public class Contexto {
         return asaltante;
     }
 
-    /// VINCULAR ENTIDADES
+    // ------------------------ VINCULACIONES ------------------------
+    /**
+     * Asigna un contrato a un vigilante específico por nombre.
+     *
+     * @param nombre_vigilante el nombre del vigilante
+     * @param contrato el contrato a asignar
+     */
     // Asignar a [Vigilante] un [Contrato] con una [Sucursal] determinada
     public void asignarContratoAVigilante(String nombre_vigilante, ContratoSucVig contrato) {
         for (int i = 0; i < vigilante.size(); i++) {
@@ -195,9 +211,16 @@ public class Contexto {
         }
 
     }
+
+    /**
+     * Asigna un asalto a un asaltante dado su índice en la lista.
+     *
+     * @param index índice del asaltante
+     * @param nuevo_asalto asalto a asignar
+     */
     // Asignar un [Asalto] a un [Asaltante] determinado
-    public void asignarAsaltoADetenido(int index, Asalto nuevo_asalto){
-        asaltante.get(index-1).agregarAsalto(nuevo_asalto);
+    public void asignarAsaltoADetenido(int index, Asalto nuevo_asalto) {
+        asaltante.get(index - 1).agregarAsalto(nuevo_asalto);
     }
-    
+
 }
