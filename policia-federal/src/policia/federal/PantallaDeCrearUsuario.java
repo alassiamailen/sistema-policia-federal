@@ -116,7 +116,8 @@ public class PantallaDeCrearUsuario {
         Rol nuevoRol = new Rol(nombreDeRol);
 
         List<Permiso> permisosDisponibles = new ArrayList<>(List.of(Permiso.values()));
-
+        permisosDisponibles.remove(Permiso.CERRAR_SESION);
+        permisosDisponibles.remove(Permiso.SALIR);
         while (true) {
             System.out.println("\nSeleccione un permiso para agregar al rol '" + nombreDeRol + "':");
             for (int i = 0; i < permisosDisponibles.size(); i++) {
@@ -131,6 +132,8 @@ public class PantallaDeCrearUsuario {
             } else if (opcion >= 1 && opcion <= permisosDisponibles.size()) {
                 Permiso permisoSeleccionado = permisosDisponibles.get(opcion - 1);
                 nuevoRol.agregarPermiso(permisoSeleccionado);
+                nuevoRol.agregarPermiso(Permiso.CERRAR_SESION);
+                nuevoRol.agregarPermiso(Permiso.SALIR);
                 permisosDisponibles.remove(permisoSeleccionado);
                 System.out.println("Permiso agregado: " + permisoSeleccionado);
             } else {
@@ -150,4 +153,6 @@ public class PantallaDeCrearUsuario {
         System.out.println("Usuario con rol nuevo creado exitosamente");
     }
 
+    
+    
 }
