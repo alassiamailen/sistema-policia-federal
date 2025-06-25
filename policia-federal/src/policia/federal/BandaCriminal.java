@@ -26,4 +26,11 @@ public class BandaCriminal {
         this.nro_de_identificacion = tools.leerEntero("Ingrese numero de Identificacion de Banda Criminal: ");
         this.cantidad_de_miembros = tools.leerEntero("Ingrese la cantidad de miembros que la componen");
     }
+    
+     public int getCodigoIdentificacion() {
+        return nro_de_identificacion;
+    }
+    
+    
+   
 }

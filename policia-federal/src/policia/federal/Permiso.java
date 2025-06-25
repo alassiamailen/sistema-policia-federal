@@ -14,6 +14,7 @@ public enum Permiso {
     EDITAR_DATOS("Editar datos."),
     CREAR_USUARIOS("Crear usuario."),
     CONTRATAR_VIGILANTE("Crear un contrato entre sucursal y vigilante."),
+    CARGAR_DETENIDO("Cargar un detenido."),
     ELIMINAR_DATOS("Eliminar usuarios."),
     CERRAR_SESION("Cerrar sesion."),
     SALIR("Salir del programa.");

@@ -1,12 +1,19 @@
 package policia.federal;
 
+import java.util.ArrayList;
+
 public class Vigilante {
 
     private String nombre_apellido;
     private int codigo;
     private int edad;
+    private int contadorContratos = 0;
+    private ArrayList<ContratoSucVig> contratos = new ArrayList<>();
 
     Tools tools = new Tools();
+
+    /////////////BORRAR ESTO/////////////     
+     Contexto contexto = new Contexto();
 
     public Vigilante(String nombre_apellido, int codigo, int edad) {
         this.nombre_apellido = nombre_apellido;
@@ -18,6 +25,17 @@ public class Vigilante {
         this.nombre_apellido = tools.leerString("Ingrese nombre y apellido: ");
         this.codigo = tools.leerEntero("Ingrese codigo: ");
         this.edad = tools.leerEntero("Ingrese edad: ");
+
+    }
+    /// Agregar un [ContratoSucVig] al ArrayList [contratos]
+    public void agregarContrato(ContratoSucVig contrato) {
+        // Le asigno un codigo unico al contrato antes de guardarlo en el array
+        contrato.setCodigo(contadorContratos);
+        contratos.add(contrato);
+        contadorContratos++;
+
+       /////////////BORRAR ESTO/////////////
+        contexto.mostrarContratos(contratos);
 
     }
 
