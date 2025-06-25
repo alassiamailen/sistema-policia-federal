@@ -19,6 +19,8 @@ public class Contexto {
     public List<Sucursal> sucursal = new ArrayList<>();
     public List<Asaltante> asaltante = new ArrayList<>();
 
+    
+    
     public Contexto() {
     }
 
@@ -128,7 +130,6 @@ public class Contexto {
     }
 
     // GETTERS 
-
     public List<EntidadBancaria> getEntidadBancaria() {
         return entidadBancaria;
     }

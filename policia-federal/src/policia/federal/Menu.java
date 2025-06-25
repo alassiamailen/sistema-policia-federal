@@ -12,7 +12,9 @@ import java.util.Scanner;
 public class Menu {
 
     public interface OnMenuItemSelectedListener {
+
         void cerrarSesion();
+
         void abrirPantallaConsultaDeDatos();
     }
 
@@ -30,14 +32,13 @@ public class Menu {
         inicializarAcciones();
     }
 
-    
     // Le adjudico un metodo a cada permiso
     private void inicializarAcciones() {
         acciones.put(Permiso.CONSULTAR_DATOS_DE_OTRAS_ENTIDADES, this::deConsultarDatos);
         acciones.put(Permiso.CONTRATAR_VIGILANTE, this::deContratarVigilante);
         acciones.put(Permiso.CONSULTAR_MIS_DATOS_VIGILANTE, this::deConsultarMisDatos);
         acciones.put(Permiso.EDITAR_DATOS, this::deEditarDatos);
-        acciones.put(Permiso.CREAR_USUARIOS, this::deEditarDatos);
+        acciones.put(Permiso.CREAR_USUARIOS, this::deCrearUsuarios);
         acciones.put(Permiso.ELIMINAR_DATOS, this::deEliminarUsuarios);
         acciones.put(Permiso.CERRAR_SESION, this::deCerrarSesion);
         acciones.put(Permiso.SALIR, this::deSalir);
@@ -53,7 +54,6 @@ public class Menu {
 
         boolean seguir = true;
 
-        
         do {
             int i = 1;
             Map<Integer, Permiso> opciones = new HashMap<>();
@@ -69,9 +69,9 @@ public class Menu {
             System.out.println("\n");
             if (seleccionado != null && acciones.containsKey(seleccionado)) {
                 acciones.get(seleccionado).ejecutar();
-                if (seleccionado == Permiso.SALIR) {
-                seguir = false;
-            }
+                if (seleccionado == Permiso.SALIR || seleccionado == Permiso.CERRAR_SESION) {
+                    seguir = false;
+                }
             } else {
                 System.out.println("Opcion no valida.");
             }
@@ -79,8 +79,7 @@ public class Menu {
 
     }
 
-    
-    
+    //Listo
     private void deConsultarMisDatos() {
         Vigilante v = Authenticacion.getInstance().getUsuarioActual().getVigilante();
         if (v != null) {
@@ -92,25 +91,31 @@ public class Menu {
 
     }
 
+    //Falta
     private void deConsultarDatos() {
         // menuItemListener.abrirPantallaConsultaDeDatos()
         System.out.println("Mostrando todos los registros del sistema...");
     }
 
-    private void deCrearDatos() {
-        System.out.println("Entrando al panel de creacion...");
+    //Listo
+    private void deCrearUsuarios() {
+        PantallaDeCrearUsuario p = new PantallaDeCrearUsuario(contexto);
+        p.menu();
     }
 
+    //Listo
     private void deEditarDatos() {
         PantallaDeMostrarDatos p = new PantallaDeMostrarDatos(contexto);
         p.mostrarMenuEditables();
 
     }
 
+    //Falta
     private void deEliminarUsuarios() {
         System.out.println("Entrando al panel de eliminacion...");
     }
 
+    //Mai laburando en esto
     private void deContratarVigilante() {
         String entidad_bancaria, sucursal, vigilante;
         boolean salir = false;
@@ -153,10 +158,12 @@ public class Menu {
 
     }
 
+    //Listo
     private void deCerrarSesion() {
         menuItemListener.cerrarSesion();
     }
 
+    //Listo
     private void deSalir() {
         String mensaje = "===== Saliendo del Sistema de Gestion Policial =====";
         System.out.println(mensaje);
