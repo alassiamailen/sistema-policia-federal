@@ -6,37 +6,64 @@ import java.util.Map;
 import java.util.Scanner;
 
 /**
+ * Clase encargada de mostrar y gestionar el menú principal del sistema de
+ * gestión policial. Las opciones disponibles dependen de los permisos del
+ * usuario autenticado.
  *
- * @author Nico
+ * Cada permiso está vinculado a una acción concreta que puede ejecutar el
+ * usuario.
+ *
+ * @author Nicolas
+ * @author Mailen
+ * @author Leo
  */
 public class Menu {
 
+    /**
+     * Interfaz para definir acciones externas que puede realizar el menú como
+     * abrir pantallas o cerrar sesión.
+     */
     public interface OnMenuItemSelectedListener {
 
+        /**
+         * Ejecuta el cierre de sesión del usuario actual.
+         */
         void cerrarSesion();
 
+        /**
+         * Abre la pantalla para consultar datos de otras entidades.
+         */
         void abrirPantallaConsultaDeDatos();
     }
 
     private Map<Permiso, Accion> acciones = new HashMap<>();
     private Contexto contexto;
     private ArrayList<ContratoSucVig> contratos = new ArrayList<>();
-
     private Tools tools = new Tools();
-
     private OnMenuItemSelectedListener menuItemListener;
 
+    /**
+     * Constructor del menú.
+     *
+     * @param contexto El contexto actual del sistema, donde se almacenan los
+     * datos centrales.
+     * @param menuItemListener Listener que permite ejecutar acciones externas
+     * como abrir pantallas o cerrar sesión.
+     */
     public Menu(Contexto contexto, OnMenuItemSelectedListener menuItemListener) {
         this.contexto = contexto;
         this.menuItemListener = menuItemListener;
         inicializarAcciones();
     }
 
-    // Le adjudico un metodo a cada permiso
+    /**
+     * Asocia a cada permiso una acción correspondiente dentro del sistema.
+     */
     private void inicializarAcciones() {
         acciones.put(Permiso.CONSULTAR_DATOS_DE_OTRAS_ENTIDADES, this::deConsultarDatos);
         acciones.put(Permiso.CONTRATAR_VIGILANTE, this::deContratarVigilante);
-        acciones.put(Permiso.CARGAR_DETENIDO, this::cargarDetenido);
+        acciones.put(Permiso.CARGAR_DETENIDO, this::cargarDetenido);     
+        acciones.put(Permiso.ABRIR_CASO, this::abrirCaso);
         acciones.put(Permiso.CONSULTAR_MIS_DATOS_VIGILANTE, this::deConsultarMisDatos);
         acciones.put(Permiso.EDITAR_DATOS, this::deEditarDatos);
         acciones.put(Permiso.CREAR_USUARIOS, this::deCrearUsuarios);
@@ -45,7 +72,11 @@ public class Menu {
         acciones.put(Permiso.SALIR, this::deSalir);
     }
 
-    // MENU PRINCIPAL
+    /**
+     * Muestra el menú principal del sistema basado en los permisos del usuario
+     * actual. Permite ejecutar acciones hasta que el usuario decida salir o
+     * cerrar sesión.
+     */
     public void mostrar() {
         Usuario usuario = Authenticacion.getInstance().getUsuarioActual();
         System.out.println("Usuario " + usuario.getNombreUsuario() + ":");
@@ -81,6 +112,9 @@ public class Menu {
         //Listo
     }
 
+    /**
+     * Muestra los datos del vigilante asociado al usuario actual.
+     */
     private void deConsultarMisDatos() {
         Vigilante v = Authenticacion.getInstance().getUsuarioActual().getVigilante();
         if (v != null) {
@@ -92,47 +126,68 @@ public class Menu {
 
     }
 
-    //Falta
+    /**
+     * Acción pendiente de implementación para consultar datos del sistema.
+     */
     private void deConsultarDatos() {
         // menuItemListener.abrirPantallaConsultaDeDatos()
         System.out.println("Mostrando todos los registros del sistema...");
     }
 
-    //Listo
+    /**
+     * Muestra el menú de creación de usuarios.
+     */
     private void deCrearUsuarios() {
         PantallaDeCrearUsuario p = new PantallaDeCrearUsuario(contexto);
         p.menu();
     }
 
-    //Listo
+    /**
+     * Muestra el menú para editar datos del sistema.
+     */
     private void deEditarDatos() {
         PantallaDeEditarDatos p = new PantallaDeEditarDatos(contexto);
         p.mostrarMenuEditables();
 
     }
 
-    //Falta
+    /**
+     * Acción pendiente de implementación para eliminar usuarios del sistema.
+     */
     private void deEliminarUsuarios() {
         System.out.println("Entrando al panel de eliminacion...");
     }
 
-    //Mai laburando en esto
+    /**
+     * Ejecuta la acción de contratación de un nuevo vigilante.
+     */
     private void deContratarVigilante() {
         PantallaDeContratarVigilante accion_de_contrato = new PantallaDeContratarVigilante();
         accion_de_contrato.contratarVigilante(contexto);
     }
 
+    /**
+     * Carga un detenido en el sistema.
+     */
     private void cargarDetenido() {
         PantallaDeCargarDetenido accion_de_cargar_detenido = new PantallaDeCargarDetenido();
         accion_de_cargar_detenido.cargarDetenido(contexto);
+    }    
+    private void abrirCaso(){
+        PantallaDeAbrirCaso accion_de_abrir_un_caso= new PantallaDeAbrirCaso();
+        accion_de_abrir_un_caso.abrirCaso(contexto);
     }
 
-    //Listo
+    /**
+     * Ejecuta el cierre de sesión utilizando el listener del menú.
+     */
     private void deCerrarSesion() {
         menuItemListener.cerrarSesion();
     }
 
-    //Listo
+    /**
+     * Muestra un mensaje de salida del sistema.
+     */
     private void deSalir() {
         String mensaje = "===== Saliendo del Sistema de Gestion Policial =====";
         System.out.println(mensaje);

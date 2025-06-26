@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package policia.federal;
 
 import java.util.ArrayList;
@@ -9,18 +5,36 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
+ * Clase que representa la pantalla para crear usuarios en el sistema. Permite
+ * crear usuarios con roles predefinidos (Investigador, Vigilante,
+ * Administrador) o crear un nuevo rol personalizado con permisos seleccionados.
  *
- * @author Nico
+ * Contiene un menú interactivo para que el usuario elija qué tipo de usuario
+ * crear.
+ *
+ * @author Nicolas
+ * @author Mailen
+ * @author Leo
  */
 public class PantallaDeCrearUsuario {
 
     private Contexto contexto;
     Tools t = new Tools();
 
+    /**
+     * Constructor que recibe el contexto general del sistema.
+     *
+     * @param contexto Contexto que contiene listas y datos generales del
+     * sistema
+     */
     public PantallaDeCrearUsuario(Contexto contexto) {
         this.contexto = contexto;
     }
 
+    /**
+     * Método principal que muestra el menú de creación de usuarios y procesa la
+     * selección del usuario.
+     */
     public void menu() {
         Scanner sc = new Scanner(System.in);
         int seleccion;
@@ -56,6 +70,9 @@ public class PantallaDeCrearUsuario {
         }
     }
 
+    /**
+     * Muestra las opciones disponibles en el menú de creación de usuarios.
+     */
     private void mostrarMenuEditar() {
         System.out.println("=== Menu de Crear Usuarios ===");
         System.out.println("Elije el rol");
@@ -66,6 +83,10 @@ public class PantallaDeCrearUsuario {
         System.out.println("0. Volver al menu principal");
     }
 
+    /**
+     * Crea un usuario con rol Investigador y permisos predefinidos. Solicita
+     * usuario y contraseña.
+     */
     private void crearInvestigador() {
         Rol investigador = new Rol("Investigador");
         investigador.agregarPermiso(Permiso.CONSULTAR_DATOS_DE_OTRAS_ENTIDADES);
@@ -77,6 +98,11 @@ public class PantallaDeCrearUsuario {
         System.out.println("Usuario creado exitosamente");
     }
 
+    /**
+     * Crea un usuario con rol Vigilante y permisos predefinidos. Solicita datos
+     * de usuario, contraseña, nombre completo, código y edad. Crea el vigilante
+     * y lo vincula con el usuario.
+     */
     private void crearVigilante() {
         Rol vigilante = new Rol("Vigilante");
         vigilante.agregarPermiso(Permiso.CONSULTAR_MIS_DATOS_VIGILANTE);
@@ -95,6 +121,10 @@ public class PantallaDeCrearUsuario {
         System.out.println("Usuario creado exitosamente");
     }
 
+    /**
+     * Crea un usuario con rol Administrador y permisos predefinidos. Solicita
+     * usuario y contraseña.
+     */
     private void crearAdministrador() {
         Rol admin = new Rol("Administrador");
         admin.agregarPermiso(Permiso.CONSULTAR_DATOS_DE_OTRAS_ENTIDADES);
@@ -110,6 +140,11 @@ public class PantallaDeCrearUsuario {
         System.out.println("Usuario creado exitosamente");
     }
 
+    /**
+     * Permite crear un nuevo rol personalizado, seleccionando permisos
+     * disponibles. Luego crea un usuario con ese rol nuevo solicitando usuario
+     * y contraseña.
+     */
     private void crearRol() {
         System.out.println("=== Crear Nuevo Rol ===");
         String nombreDeRol = t.leerString("Ingrese el nombre del rol a crear");
@@ -153,6 +188,4 @@ public class PantallaDeCrearUsuario {
         System.out.println("Usuario con rol nuevo creado exitosamente");
     }
 
-    
-    
 }
