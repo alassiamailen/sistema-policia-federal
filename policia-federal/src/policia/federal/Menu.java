@@ -172,6 +172,7 @@ public class Menu {
         PantallaDeCargarDetenido accion_de_cargar_detenido = new PantallaDeCargarDetenido();
         accion_de_cargar_detenido.cargarDetenido(contexto);
     }    
+    
     private void abrirCaso(){
         PantallaDeAbrirCaso accion_de_abrir_un_caso= new PantallaDeAbrirCaso();
         accion_de_abrir_un_caso.abrirCaso(contexto);
