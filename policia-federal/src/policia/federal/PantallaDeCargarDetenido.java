@@ -56,8 +56,7 @@ public class PantallaDeCargarDetenido {
 
                 banda_criminal= contexto.obtenerBandaCriminal(index_asaltante);
                 sucursal= contexto.obtenerSucursal(index_sucursal);
-                Asalto nuevo_asalto = new Asalto(fecha, detenido, sucursal,banda_criminal);
-                //ACA ME FALTA GUARDAR EL ASALTO EN EL ARRAY GENERAL DE ASALTOS SINO SOLO EXISTE EN EL ASALTANTE Y DSP NO ENCUENTRA EL CODIGO_ASALTO CND QUIERE ABRIR UN CASO
+                Asalto nuevo_asalto = new Asalto(fecha, detenido, sucursal,banda_criminal);                
                 contexto.asignarAsaltoADetenido(index_asaltante, nuevo_asalto);
             }
 

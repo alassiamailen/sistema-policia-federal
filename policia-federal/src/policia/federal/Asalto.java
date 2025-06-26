@@ -55,17 +55,49 @@ public class Asalto {
         return this.codigo_asalto;
     }
 
+    /**
+     * Obtiene el asaltante detenido.
+     *
+     * @return Objeto {@code Asaltante} o {@code null} si no hay detenido.
+     */
     public Asaltante obtenerDetenido() {
         return detenido;
     }
 
+    /**
+     * Obtiene la sucursal afectada por el asalto.
+     *
+     * @return Objeto {@code Sucursal}.
+     */
     public Sucursal obtenerSucursal() {
         return sucursal;
     }
 
+    /**
+     * Marca al asaltante como condenado.
+     */
+    public void condenarAsaltante() {
+        condenado = true;
+    }
+
+    /**
+     * Devuelve una representación en cadena del asalto.
+     *
+     * @return Cadena con los datos principales del asalto.
+     */    
     @Override
     public String toString() {
         return "Asalto" + "codigo_asalto=" + codigo_asalto + ", fecha=" + fecha + ", detenido=" + detenido.getNombre() + ", sucursal=" + sucursal.getNombre() + ", banda_criminal=" + banda_criminal.getCodigoIdentificacion() + '}';
+    }
+     /**
+     * Muestra por consola los detalles del asalto, indicando si el asaltante fue condenado.
+     */
+    public void mostarAsalto() {
+        if (condenado) {
+            System.out.println("ID asalto: " + codigo_asalto + "fecha: " + fecha + ", detenido: " + detenido.getNombre() + " sucursal: " + sucursal.getNombre() + " ID banda criminal: " + banda_criminal.getCodigoIdentificacion() + "Condenado: SI");
+        } else {
+            System.out.println("ID asalto: " + codigo_asalto + " fecha: " + fecha + " detenido: " + detenido.getNombre() + " sucursal: " + sucursal.getNombre() + " ID banda criminal: " + banda_criminal.getCodigoIdentificacion() + " Condenado: NO");
+        }
     }
 
     /**

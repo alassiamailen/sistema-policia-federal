@@ -113,7 +113,11 @@ public class Contexto {
     public void agregarBandaCriminal(BandaCriminal b) {
         bandaCriminal.add(b);
     }
-
+      /**
+     * Agrega un nuevo asalto al sistema.
+     *
+     * @param a El asalto a registrar
+     */
     public void agregarAsalto(Asalto a) {
         asaltos.add(a);
     }
@@ -197,14 +201,22 @@ public class Contexto {
             System.out.println(asalto);
         }
     }
-
+       /**
+     * Muestra por consola la lista de casos judiciales.
+     *
+     * @param casos Lista de objetos {@code Caso} a mostrar.
+     */
     public void mostrarCasos(ArrayList<Caso> casos) {
         System.out.println("-- CASOS --");
         for (Caso caso : casos) {
             System.out.println(caso);
         }
     }
-
+     /**
+     * Muestra por consola la lista de condenas registradas.
+     *
+     * @param condenas Lista de objetos {@code Condena} a mostrar.
+     */
     public void mostrarCondenas(ArrayList<Condena> condenas) {
         System.out.println("-- CONDENAS --");
         for (Condena condena : condenas) {
@@ -256,16 +268,7 @@ public class Contexto {
             System.out.println("Error - Ingrese una opcion valida");
             return null;
         }
-    }
-
-    public Juez validarJuez(int index) {
-        if (index > 0 && index <= juez.size()) {
-            return juez.get(index - 1);
-        } else {
-            System.out.println("Error - Ingrese una opcion valida");
-            return null;
-        }
-    }
+    }   
 
     /**
      * Valida y obtiene el nombre de un vigilante por su índice.
@@ -281,7 +284,13 @@ public class Contexto {
             return null;
         }
     }
-
+        /**
+     * Verifica si existe un asalto registrado con el código especificado.
+     *
+     * @param codigo Código del asalto a validar.
+     * @return {@code true} si el código existe en la lista de asaltos,
+     *         {@code false} en caso contrario (e imprime un mensaje de error).
+     */
     public boolean validarCodigoAsalto(int codigo) {
 
         for (int i = 0; i < asaltos.size(); i++) {
@@ -292,13 +301,34 @@ public class Contexto {
         System.out.println("Error - El codigo " + codigo + " no existe. Intente nuevamente");
         return false;
     }
-
+      /**
+     * Valida que la cantidad de años de condena esté dentro de un rango permitido.
+     *
+     * @param anios Número de años a validar.
+     * @return {@code true} si los años están entre 1 y 50 inclusive,
+     *         {@code false} si están fuera de rango (e imprime un mensaje de error).
+     */
     public boolean validarAniosCondena(int anios) {
         if (anios > 0 && anios <= 50) {
             return true;
         } else {
             System.out.println("Error - La pena permitida es de 0 a 50 anios. Intente nuevamente");
             return false;
+        }
+    }
+     /**
+     * Valida el índice ingresado por el usuario para seleccionar un juez de la lista.
+     *
+     * @param index Número ingresado correspondiente a un juez (1-based).
+     * @return El objeto {@code Juez} si el índice es válido,
+     *         o {@code null} si está fuera de rango (e imprime un mensaje de error).
+     */
+    public Juez validarJuez(int index) {
+        if (index > 0 && index <= juez.size()) {
+            return juez.get(index - 1);
+        } else {
+            System.out.println("Error - Ingrese una opción válida");
+            return null;
         }
     }
 
@@ -362,7 +392,13 @@ public class Contexto {
     public Sucursal obtenerSucursal(int index) {
         return sucursal.get(index - 1);
     }
-
+        /**
+     * Obtiene el asaltante detenido en un asalto específico.
+     *
+     * @param codigo Código identificador del asalto.
+     * @return El {@code Asaltante} detenido en el asalto correspondiente al código dado,
+     *         o {@code null} si no se encuentra ningún asalto con ese código.
+     */
     public Asaltante obtenerDetenidoPorAsalto(int codigo) {
         for (int i = 0; i < asaltos.size(); i++) {
             if (codigo == asaltos.get(i).obtenerCodigo()) {
@@ -371,7 +407,14 @@ public class Contexto {
         }
         return null;
     }
-
+    
+    /**
+     * Busca un asalto registrado a partir de su código.
+     *
+     * @param codigo Código identificador del asalto.
+     * @return El objeto {@code Asalto} correspondiente al código dado,
+     *         o {@code null} si no se encuentra ningún asalto con ese código.
+     */
     public Asalto obtenerAsaltoPorCodigo(int codigo) {
         for (int i = 0; i < asaltos.size(); i++) {
             if (codigo == asaltos.get(i).obtenerCodigo()) {
