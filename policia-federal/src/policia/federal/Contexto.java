@@ -19,23 +19,39 @@ import java.util.List;
  */
 public class Contexto {
 
-    /** Lista de entidades bancarias registradas en el sistema */
+    /**
+     * Lista de entidades bancarias registradas en el sistema
+     */
     public List<EntidadBancaria> entidadBancaria = new ArrayList<>();
-    
-    /** Lista de jueces registrados en el sistema */
+
+    /**
+     * Lista de jueces registrados en el sistema
+     */
     public List<Juez> juez = new ArrayList<>();
-    
-    /** Lista de vigilantes registrados en el sistema */
+
+    /**
+     * Lista de vigilantes registrados en el sistema
+     */
     public List<Vigilante> vigilante = new ArrayList<>();
-    
-    /** Lista de sucursales bancarias registradas */
+
+    /**
+     * Lista de sucursales bancarias registradas
+     */
     public List<Sucursal> sucursal = new ArrayList<>();
-    
-    /** Lista de asaltantes registrados */
+
+    /**
+     * Lista de asaltantes registrados
+     */
     public List<Asaltante> asaltante = new ArrayList<>();
-    
-    /** Lista de bandas criminales registradas */
+
+    /**
+     * Lista de bandas criminales registradas
+     */
     public List<BandaCriminal> bandaCriminal = new ArrayList<>();
+
+    public List<Asalto> asaltos = new ArrayList<>();
+    public List<Condena> condenas = new ArrayList<>();
+    public List<Caso> casos = new ArrayList<>();
 
     /**
      * Constructor del contexto, inicializa todas las listas vacías.
@@ -44,10 +60,9 @@ public class Contexto {
     }
 
     // ------------------------ MÉTODOS DE AGREGADO ------------------------
-    
     /**
      * Agrega una nueva entidad bancaria al sistema.
-     * 
+     *
      * @param entidad La entidad bancaria a registrar
      */
     public void agregarEntidadBancaria(EntidadBancaria entidad) {
@@ -56,7 +71,7 @@ public class Contexto {
 
     /**
      * Agrega una nueva sucursal bancaria al sistema.
-     * 
+     *
      * @param s La sucursal a registrar
      */
     public void agregarSucursal(Sucursal s) {
@@ -65,7 +80,7 @@ public class Contexto {
 
     /**
      * Agrega un nuevo vigilante al sistema.
-     * 
+     *
      * @param v El vigilante a registrar
      */
     public void agregarVigilante(Vigilante v) {
@@ -74,7 +89,7 @@ public class Contexto {
 
     /**
      * Agrega un nuevo asaltante al sistema.
-     * 
+     *
      * @param a El asaltante a registrar
      */
     public void agregarAsaltantes(Asaltante a) {
@@ -83,7 +98,7 @@ public class Contexto {
 
     /**
      * Agrega un nuevo juez al sistema.
-     * 
+     *
      * @param j El juez a registrar
      */
     public void agregarJuez(Juez j) {
@@ -92,15 +107,18 @@ public class Contexto {
 
     /**
      * Agrega una nueva banda criminal al sistema.
-     * 
+     *
      * @param b La banda criminal a registrar
      */
     public void agregarBandaCriminal(BandaCriminal b) {
         bandaCriminal.add(b);
     }
 
+    public void agregarAsalto(Asalto a) {
+        asaltos.add(a);
+    }
+
     // ------------------------ MÉTODOS DE VISUALIZACIÓN ------------------------
-    
     /**
      * Muestra por consola todas las entidades bancarias registradas.
      */
@@ -132,8 +150,9 @@ public class Contexto {
      * Muestra por consola todos los jueces registrados.
      */
     public void mostrarJueces() {
-        for (Juez cadaUno : juez) {
-            System.out.println(cadaUno);
+        for (int i = 0; i < juez.size(); i++) {
+            System.out.println((i + 1) + "- " + juez.get(i).getNombre_apellido());
+
         }
     }
 
@@ -157,7 +176,7 @@ public class Contexto {
 
     /**
      * Muestra por consola todos los contratos de vigilancia.
-     * 
+     *
      * @param contratos Lista de contratos a mostrar
      */
     public void mostrarContratos(ArrayList<ContratoSucVig> contratos) {
@@ -169,7 +188,7 @@ public class Contexto {
 
     /**
      * Muestra por consola todos los asaltos registrados.
-     * 
+     *
      * @param asaltos Lista de asaltos a mostrar
      */
     public void mostrarAsaltos(ArrayList<Asalto> asaltos) {
@@ -179,11 +198,24 @@ public class Contexto {
         }
     }
 
+    public void mostrarCasos(ArrayList<Caso> casos) {
+        System.out.println("-- CASOS --");
+        for (Caso caso : casos) {
+            System.out.println(caso);
+        }
+    }
+
+    public void mostrarCondenas(ArrayList<Condena> condenas) {
+        System.out.println("-- CONDENAS --");
+        for (Condena condena : condenas) {
+            System.out.println(condena.toString());
+        }
+    }
+
     // ------------------------ MÉTODOS DE VALIDACIÓN ------------------------
-    
     /**
      * Valida y obtiene el nombre de una entidad bancaria por su índice.
-     * 
+     *
      * @param index Índice de la entidad bancaria
      * @return Nombre de la entidad o null si el índice es inválido
      */
@@ -198,7 +230,7 @@ public class Contexto {
 
     /**
      * Valida y obtiene el nombre de un asaltante por su índice.
-     * 
+     *
      * @param index Índice del asaltante
      * @return Nombre del asaltante o null si el índice es inválido
      */
@@ -213,7 +245,7 @@ public class Contexto {
 
     /**
      * Valida y obtiene el nombre de una sucursal por su índice.
-     * 
+     *
      * @param index Índice de la sucursal
      * @return Nombre de la sucursal o null si el índice es inválido
      */
@@ -226,9 +258,18 @@ public class Contexto {
         }
     }
 
+    public Juez validarJuez(int index) {
+        if (index > 0 && index <= juez.size()) {
+            return juez.get(index - 1);
+        } else {
+            System.out.println("Error - Ingrese una opcion valida");
+            return null;
+        }
+    }
+
     /**
      * Valida y obtiene el nombre de un vigilante por su índice.
-     * 
+     *
      * @param index Índice del vigilante
      * @return Nombre del vigilante o null si el índice es inválido
      */
@@ -241,11 +282,30 @@ public class Contexto {
         }
     }
 
+    public boolean validarCodigoAsalto(int codigo) {
+
+        for (int i = 0; i < asaltos.size(); i++) {
+            if (codigo == asaltos.get(i).obtenerCodigo()) {
+                return true;
+            }
+        }
+        System.out.println("Error - El codigo " + codigo + " no existe. Intente nuevamente");
+        return false;
+    }
+
+    public boolean validarAniosCondena(int anios) {
+        if (anios > 0 && anios < 50) {
+            return true;
+        } else {
+            System.out.println("Error - La pena permitida es de 0 a 50 anios. Intente nuevamente");
+            return false;
+        }
+    }
+
     // ------------------------ MÉTODOS DE OBTENCIÓN ------------------------
-    
     /**
      * Obtiene el nombre de una entidad bancaria por su índice.
-     * 
+     *
      * @param index Índice de la entidad bancaria
      * @return Nombre de la entidad bancaria
      */
@@ -255,7 +315,7 @@ public class Contexto {
 
     /**
      * Obtiene el nombre de una sucursal por su índice.
-     * 
+     *
      * @param index Índice de la sucursal
      * @return Nombre de la sucursal
      */
@@ -265,7 +325,7 @@ public class Contexto {
 
     /**
      * Obtiene el nombre de un vigilante por su índice.
-     * 
+     *
      * @param index Índice del vigilante
      * @return Nombre del vigilante
      */
@@ -275,7 +335,7 @@ public class Contexto {
 
     /**
      * Obtiene un asaltante por su índice.
-     * 
+     *
      * @param index Índice del asaltante
      * @return Objeto Asaltante correspondiente
      */
@@ -285,7 +345,7 @@ public class Contexto {
 
     /**
      * Obtiene la banda criminal asociada a un asaltante por su índice.
-     * 
+     *
      * @param index Índice del asaltante
      * @return Banda criminal asociada
      */
@@ -295,7 +355,7 @@ public class Contexto {
 
     /**
      * Obtiene una sucursal por su índice.
-     * 
+     *
      * @param index Índice de la sucursal
      * @return Objeto Sucursal correspondiente
      */
@@ -303,11 +363,28 @@ public class Contexto {
         return sucursal.get(index - 1);
     }
 
+    public Asaltante obtenerDetenidoPorAsalto(int codigo) {
+        for (int i = 0; i < asaltos.size(); i++) {
+            if (codigo == asaltos.get(i).obtenerCodigo()) {
+                return asaltos.get(i).obtenerDetenido();
+            }
+        }
+        return null;
+    }
+
+    public Asalto obtenerAsaltoPorCodigo(int codigo) {
+        for (int i = 0; i < asaltos.size(); i++) {
+            if (codigo == asaltos.get(i).obtenerCodigo()) {
+                return asaltos.get(i);
+            }
+        }
+        return null;
+    }
+
     // ------------------------ GETTERS ------------------------
-    
     /**
      * Obtiene la lista completa de entidades bancarias.
-     * 
+     *
      * @return Lista de EntidadBancaria
      */
     public List<EntidadBancaria> getEntidadBancaria() {
@@ -316,7 +393,7 @@ public class Contexto {
 
     /**
      * Obtiene la lista completa de jueces.
-     * 
+     *
      * @return Lista de Juez
      */
     public List<Juez> getJuez() {
@@ -325,7 +402,7 @@ public class Contexto {
 
     /**
      * Obtiene la lista completa de vigilantes.
-     * 
+     *
      * @return Lista de Vigilante
      */
     public List<Vigilante> getVigilante() {
@@ -334,7 +411,7 @@ public class Contexto {
 
     /**
      * Obtiene la lista completa de sucursales.
-     * 
+     *
      * @return Lista de Sucursal
      */
     public List<Sucursal> getSucursal() {
@@ -343,7 +420,7 @@ public class Contexto {
 
     /**
      * Obtiene la lista completa de asaltantes.
-     * 
+     *
      * @return Lista de Asaltante
      */
     public List<Asaltante> getAsaltante() {
@@ -351,7 +428,6 @@ public class Contexto {
     }
 
     // ------------------------ MÉTODOS DE VINCULACIÓN ------------------------
-    
     /**
      * Asigna un contrato a un vigilante específico por nombre.
      *
@@ -373,7 +449,15 @@ public class Contexto {
      * @param index índice del asaltante
      * @param nuevo_asalto asalto a asignar
      */
+    // Asignar un [Asalto] a un [Asaltante] determinado
     public void asignarAsaltoADetenido(int index, Asalto nuevo_asalto) {
         asaltante.get(index - 1).agregarAsalto(nuevo_asalto);
+        agregarAsaltoAlArrayAsaltos(nuevo_asalto);
     }
+
+    // AGREGAR UN ASALTO A "BASE DE DATOS DE ASALTOS"
+    public void agregarAsaltoAlArrayAsaltos(Asalto nuevo_asalto) {
+        asaltos.add(nuevo_asalto);
+    }
+
 }

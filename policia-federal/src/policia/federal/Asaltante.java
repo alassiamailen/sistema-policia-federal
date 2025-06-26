@@ -19,7 +19,9 @@ public class Asaltante {
     private String nombre_apellido;
     private BandaCriminal banda_criminal;
     private ArrayList<Asalto> asaltos = new ArrayList<>();
-    private int contadorAsaltos = 0;
+    private int contadorAsaltos = 1;
+    private ArrayList<Condena> condenas = new ArrayList<>();
+    private int contador_condena = 1;
 
     Tools tools = new Tools();
 
@@ -45,7 +47,7 @@ public class Asaltante {
         this.codigo = codigo;
         this.nombre_apellido = nombre_apellido;
         this.banda_criminal = banda_criminal;
-        
+
     }
 
     /////////////BORRAR ESTO/////////////     
@@ -131,5 +133,15 @@ public class Asaltante {
      */
     public void setBandaCriminal(BandaCriminal banda) {
         this.banda_criminal = banda;
+    }
+    /// Agregar una [Condena] al ArrayList [condenas]
+
+    public void agregarCondena(Condena nueva_condena) {
+        nueva_condena.setCodigo(contador_condena);
+        condenas.add(nueva_condena);
+        contador_condena++;
+        /////////////BORRAR ESTO///////////// 
+        contexto.mostrarCondenas(condenas);
+
     }
 }

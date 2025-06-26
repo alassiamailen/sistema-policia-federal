@@ -41,6 +41,10 @@ public enum Permiso {
      */
     ELIMINAR_DATOS("Eliminar usuarios."),
     /**
+     * Permite abrir un caso judicial.
+     */
+    ABRIR_CASO("Abrir un caso"),
+    /**
      * Permite cerrar la sesión actual.
      */
     CERRAR_SESION("Cerrar sesion."),

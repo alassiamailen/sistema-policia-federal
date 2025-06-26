@@ -1,5 +1,7 @@
 package policia.federal;
 
+import java.time.LocalDate;
+
 /**
  * Clase principal que inicializa el sistema de gestión policial. Se encarga de
  * crear y registrar roles, usuarios, vigilantes, entidades bancarias,
@@ -27,6 +29,7 @@ public class Main {
         admin.agregarPermiso(Permiso.CONSULTAR_DATOS_DE_OTRAS_ENTIDADES);
         admin.agregarPermiso(Permiso.CONTRATAR_VIGILANTE);
         admin.agregarPermiso(Permiso.CARGAR_DETENIDO);
+        admin.agregarPermiso(Permiso.ABRIR_CASO);
         admin.agregarPermiso(Permiso.CREAR_USUARIOS);
         admin.agregarPermiso(Permiso.EDITAR_DATOS);
         admin.agregarPermiso(Permiso.ELIMINAR_DATOS);
@@ -68,6 +71,10 @@ public class Main {
         Asaltante detenido_2 = new Asaltante(12, "Carlos Gomez", banda_2);
         Asaltante detenido_3 = new Asaltante(120, "Susana Palacios", banda_1);
 
+        /// ASALTO
+        LocalDate fecha = LocalDate.of(2024, 04, 02);
+        Asalto asalto_1 = new Asalto(fecha, detenido_1, paternal, banda_1);
+
         // Inicializar entidad
         contexto.agregarEntidadBancaria(BBVA);
         contexto.agregarEntidadBancaria(GALICIA);
@@ -87,6 +94,10 @@ public class Main {
         // Inicializar banda criminal
         contexto.agregarBandaCriminal(banda_1);
         contexto.agregarBandaCriminal(banda_2);
+
+        // Inicializar asalto
+        contexto.agregarAsalto(asalto_1);
+
         // Lanzar el sistema principal
         Sistema sistema = new Sistema();
         sistema.iniciar(contexto);

@@ -15,7 +15,7 @@ public class Vigilante {
     private String nombre_apellido;
     private int codigo;
     private int edad;
-    private int contadorContratos = 0;
+    private int contadorContratos = 1;
     private ArrayList<ContratoSucVig> contratos = new ArrayList<>();
 
     Tools tools = new Tools();
