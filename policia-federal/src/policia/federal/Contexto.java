@@ -147,6 +147,17 @@ public class Contexto {
     }
 
     /**
+     * Muestra por consola la lista de condenas registradas, enumerándolas una
+     * por una.
+     */
+    public void mostrarCondenas() {
+        for (int i = 0; i < condenas.size(); i++) {
+            Condena c = condenas.get(i);
+            System.out.println((i + 1) + "- " + c);
+        }
+    }
+
+    /**
      * Muestra por consola todos los jueces registrados.
      */
     public void mostrarJueces() {
