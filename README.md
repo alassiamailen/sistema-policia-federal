@@ -82,4 +82,3 @@ src/
 - Nicolás Guinzio
 - Leonel Rivera
 
-```
