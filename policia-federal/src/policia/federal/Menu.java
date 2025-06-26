@@ -39,7 +39,6 @@ public class Menu {
     private Map<Permiso, Accion> acciones = new HashMap<>();
     private Contexto contexto;
     private ArrayList<ContratoSucVig> contratos = new ArrayList<>();
-    private Tools tools = new Tools();
     private OnMenuItemSelectedListener menuItemListener;
 
     /**
@@ -173,6 +172,7 @@ public class Menu {
         PantallaDeCargarDetenido accion_de_cargar_detenido = new PantallaDeCargarDetenido();
         accion_de_cargar_detenido.cargarDetenido(contexto);
     }    
+    
     private void abrirCaso(){
         PantallaDeAbrirCaso accion_de_abrir_un_caso= new PantallaDeAbrirCaso();
         accion_de_abrir_un_caso.abrirCaso(contexto);

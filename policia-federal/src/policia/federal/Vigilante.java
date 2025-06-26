@@ -70,13 +70,24 @@ public class Vigilante {
      */
     @Override
     public String toString() {
-        String presentacion = "";
-        presentacion += "Nombre: " + nombre_apellido + "\n";
-        presentacion += "Edad: " + edad + "\n";
-        presentacion += "Codigo: " + codigo + "\n";
-        presentacion += "\n-----------------------\n";
+        StringBuilder sb = new StringBuilder();
+        sb.append("\n===== Datos del Vigilante =====\n");
+        sb.append("Nombre y Apellido : ").append(nombre_apellido).append("\n");
+        sb.append("Codigo            : ").append(codigo).append("\n");
+        sb.append("Edad              : ").append(edad).append("\n");
+        sb.append("Cantidad contratos: ").append(contadorContratos).append("\n");
 
-        return presentacion;
+        sb.append("Contratos:\n");
+        if (contratos.isEmpty()) {
+            sb.append("  (No hay contratos asignados)\n");
+        } else {
+            for (int i = 0; i < contratos.size(); i++) {
+                sb.append("  [").append(i + 1).append("] ").append(contratos.get(i)).append("\n");
+            }
+        }
+
+        sb.append("================================\n");
+        return sb.toString();
     }
 
     /**
