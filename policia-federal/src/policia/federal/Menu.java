@@ -37,8 +37,7 @@ public class Menu {
     }
 
     private Map<Permiso, Accion> acciones = new HashMap<>();
-    private Contexto contexto;
-    private ArrayList<ContratoSucVig> contratos = new ArrayList<>();
+    private Contexto contexto;    
     private OnMenuItemSelectedListener menuItemListener;
 
     /**
