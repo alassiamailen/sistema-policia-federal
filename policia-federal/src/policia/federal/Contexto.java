@@ -244,6 +244,23 @@ public class Contexto {
     }
 
     /**
+     * Valida si el índice ingresado corresponde a una condena existente en la
+     * lista. Si es válido, retorna la condena correspondiente. Si no, muestra
+     * un mensaje de error.
+     *
+     * @param index índice ingresado por el usuario (1-based).
+     * @return la instancia de Condena si es válida, o null si es inválida.
+     */
+    public Condena validarCondena(int index) {
+        if (index > 0 && index <= condenas.size()) {
+            return condenas.get(index - 1);
+        } else {
+            System.out.println("Error - Ingrese una opción válida");
+            return null;
+        }
+    }
+
+    /**
      * Valida y obtiene el nombre de una sucursal por su índice.
      *
      * @param index Índice de la sucursal

@@ -15,7 +15,7 @@ public class Vigilante {
     private String nombre_apellido;
     private int codigo;
     private int edad;
-    private int contadorContratos = 1;
+    private int contadorContratos = 0;
     private ArrayList<ContratoSucVig> contratos = new ArrayList<>();
 
     Tools tools = new Tools();
@@ -36,6 +36,7 @@ public class Vigilante {
         this.edad = edad;
     }
 
+    
     /**
      * Solicita al usuario ingresar los datos del vigilante por consola.
      */
