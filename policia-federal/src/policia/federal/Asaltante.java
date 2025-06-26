@@ -45,6 +45,7 @@ public class Asaltante {
         this.codigo = codigo;
         this.nombre_apellido = nombre_apellido;
         this.banda_criminal = banda_criminal;
+        
     }
 
     /////////////BORRAR ESTO/////////////     
