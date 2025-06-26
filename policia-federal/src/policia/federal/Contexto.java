@@ -294,7 +294,7 @@ public class Contexto {
     }
 
     public boolean validarAniosCondena(int anios) {
-        if (anios > 0 && anios < 50) {
+        if (anios > 0 && anios <= 50) {
             return true;
         } else {
             System.out.println("Error - La pena permitida es de 0 a 50 anios. Intente nuevamente");
