@@ -52,7 +52,7 @@ src/
 ├── sistema/           # Lógica de negocio y controladores
 ├── ui/                # Entrada por consola
 └── Main.java          # Punto de entrada del sistema
-
+```
 ---
 
 ## 🧪 Requisitos técnicos
