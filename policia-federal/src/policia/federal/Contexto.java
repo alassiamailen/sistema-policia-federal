@@ -19,8 +19,9 @@ public class Contexto {
     public List<Sucursal> sucursal = new ArrayList<>();
     public List<Asaltante> asaltante = new ArrayList<>();
     public List<BandaCriminal> bandaCriminal = new ArrayList<>();
-
-    
+    public List<Asalto> asaltos = new ArrayList<>();
+    public List<Condena> condenas = new ArrayList<>();
+    public List<Caso> casos = new ArrayList<>();
     
     public Contexto() {
     }
@@ -49,6 +50,10 @@ public class Contexto {
     public void agregarBandaCriminal(BandaCriminal b) {
         bandaCriminal.add(b);
     }
+    
+    public void agregarAsalto(Asalto a){
+        asaltos.add(a);
+    }
 
     /// MOSTRAR
     public void mostrarEntidadesBancarias() {
@@ -71,8 +76,9 @@ public class Contexto {
     }
 
     public void mostrarJueces() {
-        for (Juez cadaUno : juez) {
-            System.out.println(cadaUno);
+        for (int i = 0; i < juez.size(); i++) {
+            System.out.println((i + 1) + "- " + juez.get(i).getNombre_apellido());
+
         }
     }
 
@@ -100,7 +106,19 @@ public class Contexto {
             System.out.println(asalto);
         }
     }
-
+    public void mostrarCasos(ArrayList<Caso> casos){
+        System.out.println("-- CASOS --");
+        for (Caso caso : casos) {
+            System.out.println(caso);
+        }
+    }
+     public void mostrarCondenas(ArrayList<Condena> condenas){
+        System.out.println("-- CONDENAS --");
+        for (Condena condena : condenas) {
+            System.out.println(condena.toString());
+        }
+    }
+     
     /// VALIDAR
     public String validarEntidadBancaria(int index) {
 
@@ -130,6 +148,15 @@ public class Contexto {
             return null;
         }
     }
+    
+    public Juez validarJuez(int index){
+        if (index > 0 && index <= juez.size()) {
+            return juez.get(index - 1);
+        } else {
+            System.out.println("Error - Ingrese una opcion valida");
+            return null;
+        }
+    }
 
     public String validarVigilante(int index) {
 
@@ -139,7 +166,26 @@ public class Contexto {
             System.out.println("Error - Ingrese una opcion valida");
             return null;
         }
-    }   
+    }
+    public boolean validarCodigoAsalto(int codigo){
+        
+        for(int i=0; i<asaltos.size();i++){
+            if(codigo==asaltos.get(i).obtenerCodigo()){
+                return true;
+            }
+        }
+         System.out.println("Error - El codigo "+ codigo+ " no existe. Intente nuevamente");
+        return false;
+    }
+    
+    public boolean validarAniosCondena(int anios){
+        if(anios>0 && anios<50){
+            return true;
+        }else{
+            System.out.println("Error - La pena permitida es de 0 a 50 anios. Intente nuevamente");
+            return false;
+        }
+    }
 
     ///OBTENER DATOS APARTIR DEL INDEX
     public String obtenerNombreEntidadBancaria(int index) {
@@ -161,6 +207,23 @@ public class Contexto {
     }
     public Sucursal obtenerSucursal(int index){
         return sucursal.get(index - 1);
+    }
+    public Asaltante obtenerDetenidoPorAsalto(int codigo){
+        for(int i=0;i<asaltos.size();i++){
+            if(codigo==asaltos.get(i).obtenerCodigo()){
+               return asaltos.get(i).obtenerDetenido();
+            }
+        }
+        return null;
+    }
+    
+    public Asalto obtenerAsaltoPorCodigo(int codigo){
+        for(int i=0;i<asaltos.size();i++){
+            if(codigo==asaltos.get(i).obtenerCodigo()){
+               return asaltos.get(i);
+            }
+        }
+        return null;
     }
 
     // GETTERS 
@@ -198,6 +261,12 @@ public class Contexto {
     // Asignar un [Asalto] a un [Asaltante] determinado
     public void asignarAsaltoADetenido(int index, Asalto nuevo_asalto){
         asaltante.get(index-1).agregarAsalto(nuevo_asalto);
+        agregarAsaltoAlArrayAsaltos(nuevo_asalto);
+    }  
+    
+    // AGREGAR UN ASALTO A "BASE DE DATOS DE ASALTOS"
+    public void agregarAsaltoAlArrayAsaltos(Asalto nuevo_asalto){
+        asaltos.add(nuevo_asalto);
     }
     
 }

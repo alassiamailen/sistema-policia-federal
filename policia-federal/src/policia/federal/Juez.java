@@ -1,4 +1,7 @@
 package policia.federal;
+
+import java.util.ArrayList;
+
 /**
  *
  * @author Alassia
@@ -7,6 +10,8 @@ public class Juez {
     private String nombre_apellido;
     private int codigo;
     private int anios_de_servicio;
+    private ArrayList<Caso> casos_asignados= new ArrayList<>();
+    private int codigo_casos=1;
 
     Tools tools = new Tools();
      
@@ -14,8 +19,12 @@ public class Juez {
         this.nombre_apellido = nombre_apellido;
         this.codigo = codigo;
         this.anios_de_servicio = anios_de_servicio;
+        
     }    
     
+    /////////////BORRAR ESTO/////////////     
+     Contexto contexto = new Contexto();
+     
     public Juez(){
         ingresarDatos();
     }
@@ -55,6 +64,14 @@ public class Juez {
 
     public void setTools(Tools tools) {
         this.tools = tools;
+    }
+    
+    public void agregarCasos(Caso nuevo_caso){
+        nuevo_caso.setCodigo(codigo_casos);
+        casos_asignados.add(nuevo_caso);
+        codigo_casos++;
+        /////////////BORRAR ESTO/////////////
+        contexto.mostrarCasos(casos_asignados);
     }
     
      

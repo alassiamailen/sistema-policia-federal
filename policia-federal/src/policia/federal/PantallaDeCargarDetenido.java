@@ -17,7 +17,7 @@ public class PantallaDeCargarDetenido {
             do{
                 System.out.println("*** CARGAR DETENIDO ***");
                 contexto.mostrarAsaltantes();
-                index_asaltante = tools.leerEntero("Ingrese nombre de ASALTANTE o <0> para SALIR: ");
+                index_asaltante = tools.leerEntero("Ingrese numero de ASALTANTE o <0> para SALIR: ");
                 if (index_asaltante == 0) {
                     salir = true;
                     break;
@@ -37,6 +37,7 @@ public class PantallaDeCargarDetenido {
                 banda_criminal= contexto.obtenerBandaCriminal(index_asaltante);
                 sucursal= contexto.obtenerSucursal(index_sucursal);
                 Asalto nuevo_asalto = new Asalto(fecha, detenido, sucursal,banda_criminal);
+                //ACA ME FALTA GUARDAR EL ASALTO EN EL ARRAY GENERAL DE ASALTOS SINO SOLO EXISTE EN EL ASALTANTE Y DSP NO ENCUENTRA EL CODIGO_ASALTO CND QUIERE ABRIR UN CASO
                 contexto.asignarAsaltoADetenido(index_asaltante, nuevo_asalto);
             }
             

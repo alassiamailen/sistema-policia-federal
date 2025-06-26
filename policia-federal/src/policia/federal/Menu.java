@@ -36,7 +36,8 @@ public class Menu {
     private void inicializarAcciones() {
         acciones.put(Permiso.CONSULTAR_DATOS_DE_OTRAS_ENTIDADES, this::deConsultarDatos);
         acciones.put(Permiso.CONTRATAR_VIGILANTE, this::deContratarVigilante);
-        acciones.put(Permiso.CARGAR_DETENIDO, this::cargarDetenido);
+        acciones.put(Permiso.CARGAR_DETENIDO, this::cargarDetenido);     
+        acciones.put(Permiso.ABRIR_CASO, this::abrirCaso);
         acciones.put(Permiso.CONSULTAR_MIS_DATOS_VIGILANTE, this::deConsultarMisDatos);
         acciones.put(Permiso.EDITAR_DATOS, this::deEditarDatos);
         acciones.put(Permiso.CREAR_USUARIOS, this::deCrearUsuarios);
@@ -125,6 +126,10 @@ public class Menu {
     private void cargarDetenido() {
         PantallaDeCargarDetenido accion_de_cargar_detenido = new PantallaDeCargarDetenido();
         accion_de_cargar_detenido.cargarDetenido(contexto);
+    }    
+    private void abrirCaso(){
+        PantallaDeAbrirCaso accion_de_abrir_un_caso= new PantallaDeAbrirCaso();
+        accion_de_abrir_un_caso.abrirCaso(contexto);
     }
 
     //Listo
