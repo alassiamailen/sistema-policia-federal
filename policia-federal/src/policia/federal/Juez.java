@@ -137,7 +137,7 @@ public String toString() {
     sb.append("\n========= JUEZ =========\n");
     sb.append("Nombre y Apellido   : ").append(nombre_apellido).append("\n");
     sb.append("Codigo              : ").append(codigo).append("\n");
-    sb.append("Años de Servicio    : ").append(anios_de_servicio).append("\n");
+    sb.append("Tiempo de Servicio    : ").append(anios_de_servicio).append("\n");
     sb.append("Codigo Casos Actual : ").append(codigo_casos).append("\n");
     
     sb.append("Casos Asignados     : ");

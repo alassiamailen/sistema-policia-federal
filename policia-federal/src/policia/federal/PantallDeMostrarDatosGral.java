@@ -4,7 +4,11 @@
  */
 package policia.federal;
 
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
 
 /**
  *
@@ -38,6 +42,7 @@ class PantallDeMostrarDatosGral {
             if (sc.hasNextInt()) {
                 seleccion = sc.nextInt();
                 sc.nextLine(); // limpiar buffer
+                tools.limpiarConsola();
 
                 switch (seleccion) {
                     case 1 ->
@@ -122,163 +127,99 @@ class PantallDeMostrarDatosGral {
         System.out.println("\n0. Volver al menu principal");
     }
 
-    /**
-     * Consulta la informacion de los jueces registrados en el sistema.
-     */
     private void consultarJuez() {
-        Juez juez;
-
-        do {
-            int opcion;
-            System.out.println("*** Listado de jueces ***");
-//            contexto.mostrarJueces();
-            contexto.mostrarNombreEntidad(contexto.getJuez());
-            opcion = tools.leerEntero("Ingrese numero de Juez");
-            juez = contexto.validarEntidadGenerica(contexto.getJuez(),opcion);
-            System.out.println(juez.toString());
-            opcion = tools.leerEntero("Ingrese \"0\" para salir");
-        } while (juez == null);
+        new ConsultorEntidad<>(contexto, tools, contexto.getJuez(), "*** Listado de jueces ***").consultar();
     }
 
-    /**
-     * Consulta las condenas asignadas a los asaltantes. Si no hay condenas
-     * registradas, informa al usuario.
-     */
     private void consultarCondena() {
-        if (contexto.getCondenas().isEmpty()) {
-            System.out.println("No hay condenas registradas en el sistema.");
+        new ConsultorEntidad<>(contexto, tools, contexto.getCondenas(), "*** Listado de condenas ***").consultar();
+    }
+
+    private void consultarAsaltante() {
+        new ConsultorEntidad<>(contexto, tools, contexto.getAsaltante(), "*** Listado de detenidos ***").consultar();
+    }
+
+    private void consultarDelito() {
+        new ConsultorEntidad<>(contexto, tools, contexto.getAsaltos(), "*** Listado de delitos ***").consultar();
+    }
+
+    private void consultarCasos() {
+        new ConsultorEntidad<>(contexto, tools, contexto.getCasos(), "*** Listado de casos ***").consultar();
+    }
+
+    private void consultarVigilante() {
+        new ConsultorEntidad<>(contexto, tools, contexto.getVigilante(), "*** Listado de vigilantes ***").consultar();
+    }
+
+    private void consultarContratos() {
+        new ConsultorEntidad<>(contexto, tools, contexto.getVigilante(), "*** Listado de contratos ***").consultar();
+    }
+
+    private void consultarEntidadBancaria() {
+//        new ConsultorEntidad<>(contexto, tools, contexto.getEntidadBancaria(), "*** Listado de entidades bancarias ***").consultar();
+    }
+
+    private void consultarSucursal() {
+        new ConsultorEntidad<>(contexto, tools, contexto.getSucursal(), "*** Listado de sucursales ***").consultar();
+    }
+
+    private void consultarUsuarios() {
+        List<Usuario> usuarios = Authenticacion.getInstance().getUsuarios();
+
+        if (usuarios.isEmpty()) {
+            System.out.println("No hay usuarios registrados en el sistema.");
             return;
         }
 
-        Condena condena = null;
+        System.out.println("*** Usuarios del sistema ***\n");
 
-        do {
-            System.out.println("*** Listado de condenas ***");           
-            contexto.mostrarEntidad(contexto.getCondenas());
+        for (int i = 0; i < usuarios.size(); i++) {
+            Usuario u = usuarios.get(i);
+            System.out.println((i + 1) + ". " + u.getNombreUsuario() + " - Rol: " + u.getRol().getNombre());
+        }
 
-            int opcion = tools.leerEntero("Ingrese número de condena (0 para salir):");
-
-            if (opcion == 0) {
-                return;
-            }
-
-            condena = contexto.validarEntidadGenerica(contexto.getCondenas(),opcion);
-
-            if (condena != null) {
-                System.out.println(condena.toString());
-                tools.leerEntero("Presione 0 para continuar");
-            }
-
-        } while (condena == null);
+        tools.leerEntero("\nPresione 0 para volver al menu anterior.");
     }
 
-    /**
-     * Consulta los asaltantes registrados, con sus vinculos a casos o bandas.
-     */
-    private void consultarAsaltante() {
-        // TODO: Implementar logica para mostrar asaltantes
-        Asaltante asaltante;
-
-        do {
-            int opcion;
-            System.out.println("*** Listado de detenidos ***");
-              contexto.mostrarNombreEntidad(contexto.getAsaltante());
-            opcion = tools.leerEntero("Ingrese numero de detenido");
-            asaltante = contexto.validarEntidadGenerica(contexto.getAsaltante(),opcion);
-            System.out.println(asaltante.toString());
-            opcion = tools.leerEntero("Ingrese \"0\" para salir");
-        } while (asaltante == null);
-    }
-
-    /**
-     * Consulta la informacion relacionada a los delitos (asaltos).
-     */
-    private void consultarDelito() {
-        // TODO: Implementar logica para mostrar asaltantes
-        Asalto delito;
-
-        do {
-            int opcion;
-            System.out.println("*** Listado de detenidos ***");
-//            contexto.mostrarDelitos();
-            contexto.mostrarEntidad(contexto.getAsaltos());
-            opcion = tools.leerEntero("Ingrese numero de detenido");
-            delito = contexto.validarEntidadGenerica(contexto.getAsaltos(),opcion);
-            System.out.println(delito.toString());
-            opcion = tools.leerEntero("Ingrese \"0\" para salir");
-        } while (delito == null);
-    }
-
-    /**
-     * Consulta los casos judiciales en el sistema.
-     */
-    private void consultarCasos() {
-        // TODO: Implementar logica para mostrar casos
-        Caso caso;
-        do {
-            int opcion;
-            System.out.println("*** Listado de casos ***");
-//            contexto.mostrarCasos();
-            contexto.mostrarEntidad(contexto.getCasos());
-            opcion = tools.leerEntero("Ingrese numero de caso");
-            caso = contexto.validarEntidadGenerica(contexto.getCasos(),opcion);
-            System.out.println(caso.toString());
-            opcion = tools.leerEntero("Ingrese \"0\" para salir");
-        } while (caso == null);
-    }
-
-    /**
-     * Consulta los vigilantes registrados, con sus contratos y datos
-     * personales.
-     */
-    private void consultarVigilante() {
-        // TODO: Implementar logica para mostrar vigilantes
-    }
-
-    /**
-     * Consulta los contratos de vigilancia activos o finalizados.
-     */
-    private void consultarContratos() {
-        // TODO: Implementar logica para mostrar contratos
-    }
-
-    /**
-     * Consulta las entidades bancarias registradas.
-     */
-    private void consultarEntidadBancaria() {
-        // TODO: Implementar logica para mostrar entidades bancarias
-    }
-
-    /**
-     * Consulta las sucursales pertenecientes a las entidades bancarias.
-     */
-    private void consultarSucursal() {
-        // TODO: Implementar logica para mostrar sucursales
-    }
-
-    /**
-     * Consulta los usuarios del sistema, sean administrativos, investigadores o
-     * vigilantes.
-     */
-    private void consultarUsuarios() {
-        // TODO: Implementar logica para mostrar usuarios del sistema
-    }
-
-    /**
-     * Consulta los roles disponibles en el sistema (ej: Administrador,
-     * Investigador, Vigilante).
-     */
     private void consultarRoles() {
-        // TODO: Implementar logica para mostrar roles
+        List<Usuario> usuarios = Authenticacion.getInstance().getUsuarios();
+
+        if (usuarios.isEmpty()) {
+            System.out.println("No hay usuarios registrados, por lo tanto no hay roles asignados.");
+            return;
+        }
+
+        Set<Rol> rolesUnicos = new LinkedHashSet<>();
+
+        for (Usuario u : usuarios) {
+            rolesUnicos.add(u.getRol()); // evita duplicados
+        }
+
+        System.out.println("*** Roles en el sistema ***\n");
+
+        int i = 1;
+        for (Rol rol : rolesUnicos) {
+            System.out.println(i + ". " + rol.getNombre());
+            System.out.println("Permisos:");
+            for (Permiso p : rol.getPermisos()) {
+                System.out.println("  - " + p);
+            }
+            System.out.println();
+            i++;
+        }
+
+        tools.leerEntero("Presione 0 para volver al menu anterior.");
     }
 
-    /**
-     * Consulta los permisos definidos en el sistema y su descripcion.
-     */
     private void consultarPermisos() {
-        // TODO: Implementar logica para mostrar permisos
+        List<Permiso> permisosDisponibles = new ArrayList<>(List.of(Permiso.values()));
+        permisosDisponibles.remove(Permiso.CERRAR_SESION);
+        permisosDisponibles.remove(Permiso.SALIR);
+        for (int i = 0; i < permisosDisponibles.size(); i++) {
+            System.out.println((i + 1) + ". " + permisosDisponibles.get(i));
+        }
+
+        tools.leerEntero("Presione 0 para volver al menu anterior.");
     }
-    
-   
 
 }

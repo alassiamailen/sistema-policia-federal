@@ -84,9 +84,7 @@ public class Sucursal implements Nombre{
      *
      * @return lista de contratos
      */
-    public ArrayList<ContratoSucVig> getContrato() {
-        return contrato;
-    }
+
      @Override
     public String getNombre() {
         return nombre;

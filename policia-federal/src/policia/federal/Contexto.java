@@ -19,60 +19,32 @@ import java.util.List;
  */
 public class Contexto {
 
-    /**
-     * Lista de entidades bancarias registradas en el sistema
-     */
     public List<EntidadBancaria> entidadBancaria = new ArrayList<>();
-
-    /**
-     * Lista de jueces registrados en el sistema
-     */
     public List<Juez> juez = new ArrayList<>();
-
-    /**
-     * Lista de vigilantes registrados en el sistema
-     */
     public List<Vigilante> vigilante = new ArrayList<>();
-
-    /**
-     * Lista de sucursales bancarias registradas
-     */
     public List<Sucursal> sucursal = new ArrayList<>();
-
-    /**
-     * Lista de asaltantes registrados
-     */
     public List<Asaltante> asaltante = new ArrayList<>();
-
-    /**
-     * Lista de bandas criminales registradas
-     */
     public List<BandaCriminal> bandaCriminal = new ArrayList<>();
-
     public List<Asalto> asaltos = new ArrayList<>();
     public List<Condena> condenas = new ArrayList<>();
     public List<Caso> casos = new ArrayList<>();
 
-    /**
-     * Constructor del contexto, inicializa todas las listas vacías.
-     */
     public Contexto() {
     }
 
     // ------------------------ MÉTODOS DE AGREGADO ------------------------
-    
     public <T> void agregarEntidadAlArrayList(List<T> lista, T elemento) {
         lista.add(elemento);
     }
 
     // ------------------------ MÉTODOS DE VISUALIZACIÓN ------------------------
-    
-    public <T> void mostrarEntidad(List<T> lista){
+    public <T> void mostrarEntidad(List<T> lista) {
         for (int i = 0; i < lista.size(); i++) {
             System.out.println((i + 1) + "- " + lista.get(i));
         }
     }
-     public <T extends Nombre> void mostrarNombreEntidad(List<T> lista){
+
+    public <T extends Nombre> void mostrarNombreEntidad(List<T> lista) {
         for (int i = 0; i < lista.size(); i++) {
             System.out.println((i + 1) + "- " + lista.get(i).getNombre());
         }
@@ -86,16 +58,15 @@ public class Contexto {
     }
 
     // ------------------------ MÉTODOS DE VALIDACIÓN ------------------------
-  
-    public <T> T validarEntidadGenerica(List <T> lista, int index){
-         if (index > 0 && index <= lista.size()) {
+    public <T> T validarEntidadGenerica(List<T> lista, int index) {
+        if (index > 0 && index <= lista.size()) {
             return lista.get(index - 1);
         } else {
             System.out.println("Error - Ingrese una opcion valida");
             return null;
         }
     }
-    
+
     public boolean validarCodigoAsalto(int codigo) {
 
         for (int i = 0; i < asaltos.size(); i++) {
@@ -129,7 +100,7 @@ public class Contexto {
     // ------------------------ GETTERS ------------------------
     public List<EntidadBancaria> getEntidadBancaria() {
         return entidadBancaria;
-    } 
+    }
 
     public List<Asalto> getAsaltos() {
         return asaltos;
@@ -162,7 +133,7 @@ public class Contexto {
     public List<Caso> getCasos() {
         return casos;
     }
-    
+
     // ------------------------ MÉTODOS DE VINCULACIÓN ------------------------
     public void asignarContratoAVigilante(String nombre_vigilante, ContratoSucVig contrato) {
         for (int i = 0; i < vigilante.size(); i++) {
@@ -191,5 +162,4 @@ public class Contexto {
         }
         return null;
     }
-
 }

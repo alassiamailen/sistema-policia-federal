@@ -4,7 +4,7 @@ package policia.federal;
  *
  * @author Alassia
  */
-public class Caso {
+public class Caso implements Codigo, Nombre {
 
     private int codigo_caso;
     private Juez juez;
@@ -26,6 +26,16 @@ public class Caso {
                 + "Juez Asignado          : " + (juez != null ? juez.getNombre_apellido() : "No asignado") + "\n"
                 + "Código de Condena      : " + (condena != null ? condena.mostrarCodigoCondena() : "Sin condena") + "\n"
                 + "========================\n";
+    }
+
+    @Override
+    public int obtenerCodigo() {
+        return codigo_caso;
+    }
+
+    @Override
+    public String getNombre() {
+       return "Caso nro: " + codigo_caso + " por Juez: " +  juez.getNombre_apellido();
     }
 
 }

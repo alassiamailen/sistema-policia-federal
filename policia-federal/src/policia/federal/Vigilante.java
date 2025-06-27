@@ -103,6 +103,12 @@ public class Vigilante implements Nombre{
         this.nombre_apellido = nombre_apellido;
     }
 
+    public ArrayList<ContratoSucVig> getContratos() {
+        return contratos;
+    }
+
+    
+    
     /**
      * Devuelve la edad del vigilante.
      *

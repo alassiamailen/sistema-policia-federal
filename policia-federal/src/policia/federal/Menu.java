@@ -80,7 +80,7 @@ public class Menu {
         Usuario usuario = Authenticacion.getInstance().getUsuarioActual();
         System.out.println("Usuario " + usuario.getNombreUsuario() + ":");
         ArrayList<Permiso> permisos = new ArrayList<>(usuario.getRol().getPermisos());
-
+        Tools tools = new Tools();
         Scanner sc = new Scanner(System.in);
 
         boolean seguir = true;
@@ -97,6 +97,7 @@ public class Menu {
             System.out.print("\nSeleccione una opcion >>> ");
             int eleccion = sc.nextInt();
             Permiso seleccionado = opciones.get(eleccion);
+            tools.limpiarConsola();
             System.out.println("\n");
             if (seleccionado != null && acciones.containsKey(seleccionado)) {
                 acciones.get(seleccionado).ejecutar();
