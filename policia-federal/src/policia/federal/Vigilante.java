@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * @author Mailen
  * @author Leo
  */
-public class Vigilante {
+public class Vigilante implements Nombre{
 
     private String nombre_apellido;
     private int codigo;
@@ -19,10 +19,7 @@ public class Vigilante {
     private ArrayList<ContratoSucVig> contratos = new ArrayList<>();
 
     Tools tools = new Tools();
-
-    /////////////BORRAR ESTO/////////////     
-    Contexto contexto = new Contexto();
-
+    
     /**
      * Constructor para crear un vigilante con sus datos iniciales.
      *
@@ -57,10 +54,7 @@ public class Vigilante {
         // Le asigno un codigo unico al contrato antes de guardarlo en el array
         contrato.setCodigo(contadorContratos);
         contratos.add(contrato);
-        contadorContratos++;
-
-        /////////////BORRAR ESTO/////////////
-        contexto.mostrarContratos(contratos);
+        contadorContratos++;      
 
     }
 
@@ -101,15 +95,6 @@ public class Vigilante {
     }
 
     /**
-     * Devuelve el nombre y apellido del vigilante.
-     *
-     * @return nombre completo
-     */
-    public String getNombre() {
-        return nombre_apellido;
-    }
-
-    /**
      * Establece el nombre y apellido del vigilante.
      *
      * @param nombre_apellido nuevo nombre completo
@@ -134,6 +119,10 @@ public class Vigilante {
      */
     public void setEdad(int edad) {
         this.edad = edad;
+    }
+      @Override
+    public String getNombre() {
+        return nombre_apellido;
     }
 
 }

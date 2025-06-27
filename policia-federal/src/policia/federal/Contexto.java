@@ -66,98 +66,17 @@ public class Contexto {
     }
 
     // ------------------------ MÉTODOS DE VISUALIZACIÓN ------------------------
-
-    public void mostrarEntidadesBancarias() {
-        for (int i = 0; i < entidadBancaria.size(); i++) {
-            System.out.println((i + 1) + "- " + entidadBancaria.get(i));
+    
+    public <T> void mostrarEntidad(List<T> lista){
+        for (int i = 0; i < lista.size(); i++) {
+            System.out.println((i + 1) + "- " + lista.get(i));
         }
     }
-
- 
-    public void mostrarBandasCriminales() {
-        for (int i = 0; i < bandaCriminal.size(); i++) {
-            System.out.println((i + 1) + "- " + "Numero Identificacion: " + bandaCriminal.get(i).getCodigoIdentificacion());
+     public <T extends Nombre> void mostrarNombreEntidad(List<T> lista){
+        for (int i = 0; i < lista.size(); i++) {
+            System.out.println((i + 1) + "- " + lista.get(i).getNombre());
         }
     }
-
-
-    public void mostrarSucursales() {
-        for (int i = 0; i < sucursal.size(); i++) {
-            System.out.println((i + 1) + "- " + sucursal.get(i).getNombre());
-        }
-    }
-
-
-    public void mostrarDelitos() {
-        for (int i = 0; i < asaltos.size(); i++) {
-            Asalto c = asaltos.get(i);
-            System.out.println((i + 1) + "- " + c);
-        }
-    }
-
-
-    public void mostrarCondenas() {
-        for (int i = 0; i < condenas.size(); i++) {
-            Condena c = condenas.get(i);
-            System.out.println((i + 1) + "- " + c);
-        }
-    }
-
-
-    public void mostrarJueces() {
-        for (int i = 0; i < juez.size(); i++) {
-            System.out.println((i + 1) + "- " + juez.get(i).getNombre_apellido());
-
-        }
-    }
-
-    public void mostrarAsaltantes() {
-        for (int i = 0; i < asaltante.size(); i++) {
-            System.out.println((i + 1) + "- " + asaltante.get(i).toString());
-        }
-    }
-
-    public void mostrarVigilantes() {
-        for (int i = 0; i < vigilante.size(); i++) {
-            System.out.println((i + 1) + "- " + vigilante.get(i).getNombre());
-        }
-    }
-
-
-    public void mostrarContratos(ArrayList<ContratoSucVig> contratos) {
-        System.out.println("-- CONTRATOS --");
-        for (ContratoSucVig contrato : contratos) {
-            System.out.println(contrato);
-        }
-    }
-
-    public void mostrarAsaltos(ArrayList<Asalto> asaltos) {
-        System.out.println("-- ASALTOS --");
-        for (Asalto asalto : asaltos) {
-            System.out.println(asalto);
-        }
-    }
-
-    public void mostrarCasos(ArrayList<Caso> casos) {
-        System.out.println("-- CASOS --");
-        for (Caso caso : casos) {
-            System.out.println(caso);
-        }
-    }
-
-    public void mostrarCasos() {
-        for (int i = 0; i < casos.size(); i++) {
-            System.out.println((i + 1) + "- " + casos.get(i));
-        }
-    }
-
-    public void mostrarCondenas(ArrayList<Condena> condenas) {
-        System.out.println("-- CONDENAS --");
-        for (Condena condena : condenas) {
-            System.out.println(condena.toString());
-        }
-    }
-
 
     public void mostrarPermisos() {
         Permiso[] permisos = Permiso.values();
@@ -210,7 +129,7 @@ public class Contexto {
     // ------------------------ GETTERS ------------------------
     public List<EntidadBancaria> getEntidadBancaria() {
         return entidadBancaria;
-    }
+    } 
 
     public List<Asalto> getAsaltos() {
         return asaltos;
@@ -243,7 +162,6 @@ public class Contexto {
     public List<Caso> getCasos() {
         return casos;
     }
-
     
     // ------------------------ MÉTODOS DE VINCULACIÓN ------------------------
     public void asignarContratoAVigilante(String nombre_vigilante, ContratoSucVig contrato) {

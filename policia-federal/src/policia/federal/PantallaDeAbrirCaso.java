@@ -42,7 +42,8 @@ public class PantallaDeAbrirCaso {
                 do {
                     System.out.println("*** ASALTO SELECCIONADO ***");
                     System.out.println(delito.toString());
-                    contexto.mostrarJueces();
+//                    contexto.mostrarJueces();
+                     contexto.mostrarNombreEntidad(contexto.getJuez());
                     index_juez = tools.leerEntero("Ingrese numero de Juez");
                     juez = contexto.validarEntidadGenerica(contexto.getJuez(),index_juez);
                 } while (juez == null);

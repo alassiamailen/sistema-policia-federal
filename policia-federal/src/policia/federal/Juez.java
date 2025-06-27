@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * @author Mailen
  * @author Leo
  */
-public class Juez implements Codigo{
+public class Juez implements Codigo, Nombre{
 
     private String nombre_apellido;
     private int codigo;
@@ -34,9 +34,6 @@ public class Juez implements Codigo{
         this.anios_de_servicio = anios_de_servicio;
 
     }
-
-    /////////////BORRAR ESTO/////////////     
-    Contexto contexto = new Contexto();
 
     /**
      * Constructor sin parametros que solicita ingresar los datos del juez por
@@ -131,9 +128,7 @@ public class Juez implements Codigo{
     public void agregarCasos(Caso nuevo_caso) {
         nuevo_caso.setCodigo(codigo_casos);
         casos_asignados.add(nuevo_caso);
-        codigo_casos++;
-        /////////////BORRAR ESTO/////////////
-        contexto.mostrarCasos(casos_asignados);
+        codigo_casos++;       
     }
 
 @Override
@@ -163,6 +158,9 @@ public String toString() {
     public int obtenerCodigo() {
         return codigo;
     }
-
+    @Override
+    public String getNombre() {
+       return nombre_apellido;
+    }
 
 }

@@ -131,7 +131,8 @@ class PantallDeMostrarDatosGral {
         do {
             int opcion;
             System.out.println("*** Listado de jueces ***");
-            contexto.mostrarJueces();
+//            contexto.mostrarJueces();
+            contexto.mostrarNombreEntidad(contexto.getJuez());
             opcion = tools.leerEntero("Ingrese numero de Juez");
             juez = contexto.validarEntidadGenerica(contexto.getJuez(),opcion);
             System.out.println(juez.toString());
@@ -152,8 +153,8 @@ class PantallDeMostrarDatosGral {
         Condena condena = null;
 
         do {
-            System.out.println("*** Listado de condenas ***");
-            contexto.mostrarCondenas();
+            System.out.println("*** Listado de condenas ***");           
+            contexto.mostrarEntidad(contexto.getCondenas());
 
             int opcion = tools.leerEntero("Ingrese número de condena (0 para salir):");
 
@@ -181,7 +182,7 @@ class PantallDeMostrarDatosGral {
         do {
             int opcion;
             System.out.println("*** Listado de detenidos ***");
-            contexto.mostrarAsaltantes();
+              contexto.mostrarNombreEntidad(contexto.getAsaltante());
             opcion = tools.leerEntero("Ingrese numero de detenido");
             asaltante = contexto.validarEntidadGenerica(contexto.getAsaltante(),opcion);
             System.out.println(asaltante.toString());
@@ -199,7 +200,8 @@ class PantallDeMostrarDatosGral {
         do {
             int opcion;
             System.out.println("*** Listado de detenidos ***");
-            contexto.mostrarDelitos();
+//            contexto.mostrarDelitos();
+            contexto.mostrarEntidad(contexto.getAsaltos());
             opcion = tools.leerEntero("Ingrese numero de detenido");
             delito = contexto.validarEntidadGenerica(contexto.getAsaltos(),opcion);
             System.out.println(delito.toString());
@@ -216,7 +218,8 @@ class PantallDeMostrarDatosGral {
         do {
             int opcion;
             System.out.println("*** Listado de casos ***");
-            contexto.mostrarCasos();
+//            contexto.mostrarCasos();
+            contexto.mostrarEntidad(contexto.getCasos());
             opcion = tools.leerEntero("Ingrese numero de caso");
             caso = contexto.validarEntidadGenerica(contexto.getCasos(),opcion);
             System.out.println(caso.toString());

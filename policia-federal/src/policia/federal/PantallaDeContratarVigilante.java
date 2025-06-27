@@ -32,7 +32,8 @@ public class PantallaDeContratarVigilante {
         do {
             do {
                 System.out.println("*** CREAR CONTRATO ***");
-                contexto.mostrarEntidadesBancarias();
+//                contexto.mostrarEntidadesBancarias();
+                contexto.mostrarEntidad(contexto.getEntidadBancaria());
                 index_entidad_bancaria = tools.leerEntero("Ingrese nombre de ENTIDAD BANCARIA o <0> para SALIR: ");
                 if (index_entidad_bancaria == 0) {
                     salir = true;
@@ -43,12 +44,14 @@ public class PantallaDeContratarVigilante {
 
             if (!salir) {
                 do {
-                    contexto.mostrarSucursales();
+//                    contexto.mostrarSucursales();
+                    contexto.mostrarNombreEntidad(contexto.getSucursal());
                     index_sucursal = tools.leerEntero("Ingrese nombre de SUCURSAL: ");
                 } while (contexto.validarEntidadGenerica(contexto.getSucursal(),index_sucursal) == null);
 
                 do {
-                    contexto.mostrarVigilantes();
+//                    contexto.mostrarVigilantes();
+                    contexto.mostrarNombreEntidad(contexto.getVigilante());
                     index_vigilante = tools.leerEntero("Ingrese nombre de VIGILANTE: ");
                 } while (contexto.validarEntidadGenerica(contexto.getVigilante(),index_vigilante) == null);
                     

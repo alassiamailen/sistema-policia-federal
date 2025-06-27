@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * @author Leo
  * @version 1.0
  */
-public class Asaltante implements Codigo{
+public class Asaltante implements Codigo, Nombre{
 
     private int codigo;
     private String nombre_apellido;
@@ -50,8 +50,6 @@ public class Asaltante implements Codigo{
 
     }
 
-    /////////////BORRAR ESTO/////////////     
-    Contexto contexto = new Contexto();
 
     /**
      * Constructor que solicita datos por consola.
@@ -123,10 +121,7 @@ public class Asaltante implements Codigo{
         // Le asigno un codigo unico al contrato antes de guardarlo en el array
         nuevo_asalto.setCodigo(contadorAsaltos);
         asaltos.add(nuevo_asalto);
-        contadorAsaltos++;
-
-        /////////////BORRAR ESTO///////////// 
-        contexto.mostrarAsaltos(asaltos);
+        contadorAsaltos++;     
     }
 
     /**
@@ -151,9 +146,7 @@ public class Asaltante implements Codigo{
     public void agregarCondena(Condena nueva_condena) {
         nueva_condena.setCodigo(contador_condena);
         condenas.add(nueva_condena);
-        contador_condena++;
-        /////////////BORRAR ESTO///////////// 
-        contexto.mostrarCondenas(condenas);
+        contador_condena++;      
 
     }
 

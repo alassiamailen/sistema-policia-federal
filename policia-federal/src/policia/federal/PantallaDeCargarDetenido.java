@@ -35,7 +35,8 @@ public class PantallaDeCargarDetenido {
         do {
             do {
                 System.out.println("*** CARGAR DETENIDO ***");
-                contexto.mostrarAsaltantes();
+//                contexto.mostrarAsaltantes();
+                  contexto.mostrarEntidad(contexto.getAsaltante());
                 index_asaltante = tools.leerEntero("Ingrese numero de ASALTANTE o <0> para SALIR: ");
                 if (index_asaltante == 0) {
                     salir = true;
@@ -48,7 +49,8 @@ public class PantallaDeCargarDetenido {
                 System.out.println(detenido);
 
                 do {
-                    contexto.mostrarSucursales();
+//                   contexto.mostrarSucursales();
+                    contexto.mostrarEntidad(contexto.getSucursal());
                     index_sucursal = tools.leerEntero("Ingrese nombre de SUCURSAL: ");
                 } while (contexto.validarEntidadGenerica(contexto.getSucursal(),index_sucursal) == null);
 

@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * @author Mailen
  * @author Leo
  */
-public class Sucursal {
+public class Sucursal implements Nombre{
 
     private int cantidad_de_empleados;
     private ArrayList<Usuario> usuarios = new ArrayList<>();
@@ -75,9 +75,9 @@ public class Sucursal {
      *
      * @return nombre de la sucursal
      */
-    public String getNombre() {
-        return nombre;
-    }
+//    public String getNombre() {
+//        return nombre;
+//    }
 
     /**
      * Obtiene la lista de contratos entre la sucursal y vigilantes.
@@ -86,6 +86,10 @@ public class Sucursal {
      */
     public ArrayList<ContratoSucVig> getContrato() {
         return contrato;
+    }
+     @Override
+    public String getNombre() {
+        return nombre;
     }
 
 }
