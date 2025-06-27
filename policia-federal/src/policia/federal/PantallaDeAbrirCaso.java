@@ -29,26 +29,29 @@ public class PantallaDeAbrirCaso {
                 }
             } while (!contexto.validarCodigoAsalto(index_cod_asalto));
             if (!salir) {
-                contexto.obtenerAsaltoPorCodigo(index_cod_asalto);
+//                contexto.obtenerAsaltoPorCodigo(index_cod_asalto);
+//                contexto.obtenerPorCodigo(contexto.getAsaltos(), index_cod_asalto);
                 do {
                     anios_de_condena = tools.leerEntero("Ingrese anios de Condena");
                 } while (!contexto.validarAniosCondena(anios_de_condena));
 
-                detenido = contexto.obtenerDetenidoPorAsalto(index_cod_asalto);
-                delito = contexto.obtenerAsaltoPorCodigo(index_cod_asalto);
+                detenido = contexto.obtenerPorCodigo(contexto.getAsaltos(), index_cod_asalto).obtenerDetenido();
+//                detenido = contexto.obtenerDetenidoPorAsalto(index_cod_asalto);
+                delito = contexto.obtenerPorCodigo(contexto.getAsaltos(), index_cod_asalto);
 
                 do {
                     System.out.println("*** ASALTO SELECCIONADO ***");
                     System.out.println(delito.toString());
-                    contexto.mostrarJueces();
+//                    contexto.mostrarJueces();
+                     contexto.mostrarNombreEntidad(contexto.getJuez());
                     index_juez = tools.leerEntero("Ingrese numero de Juez");
-                    juez = contexto.validarJuez(index_juez);
+                    juez = contexto.validarEntidadGenerica(contexto.getJuez(),index_juez);
                 } while (juez == null);
 
-                Condena nuevo_condena = new Condena(detenido, delito, anios_de_condena);                
+                Condena nuevo_condena = new Condena(detenido, delito, anios_de_condena);
                 // Asignar Condena a Detenido
                 detenido.agregarCondena(nuevo_condena);
-                
+
                 Caso nuevo_caso = new Caso(juez, nuevo_condena);
                 // Asignar Caso a Juez
                 juez.agregarCasos(nuevo_caso);
