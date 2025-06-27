@@ -13,7 +13,7 @@ import java.time.LocalDate;
  * @author Leo
  * @version 1.0
  */
-public class Asalto {
+public class Asalto implements Codigo{
 
     private int codigo_asalto;
     private LocalDate fecha;
@@ -65,7 +65,31 @@ public class Asalto {
 
     @Override
     public String toString() {
-        return "Asalto" + "codigo_asalto=" + codigo_asalto + ", fecha=" + fecha + ", detenido=" + detenido.getNombre() + ", sucursal=" + sucursal.getNombre() + ", banda_criminal=" + banda_criminal.getCodigoIdentificacion() + '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append("\n========= ASALTO =========\n");
+        sb.append("Código de Asalto        : ").append(codigo_asalto).append("\n");
+        sb.append("Fecha del Asalto        : ").append(fecha).append("\n");
+
+        if (detenido != null) {
+            sb.append("Nombre del Detenido     : ").append(detenido.getNombre()).append("\n");
+        } else {
+            sb.append("Nombre del Detenido     : No registrado\n");
+        }
+
+        if (sucursal != null) {
+            sb.append("Sucursal Asaltada       : ").append(sucursal.getNombre()).append("\n");
+        } else {
+            sb.append("Sucursal Asaltada       : No registrada\n");
+        }
+
+        if (banda_criminal != null) {
+            sb.append("Código Banda Criminal   : ").append(banda_criminal.getCodigoIdentificacion()).append("\n");
+        } else {
+            sb.append("Código Banda Criminal   : No asociada\n");
+        }
+
+        sb.append("==========================\n");
+        return sb.toString();
     }
 
     /**

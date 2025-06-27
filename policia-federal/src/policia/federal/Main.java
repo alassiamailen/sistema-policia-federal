@@ -1,6 +1,7 @@
 package policia.federal;
 
 import java.time.LocalDate;
+import java.util.List;
 
 /**
  * Clase principal que inicializa el sistema de gestión policial. Se encarga de
@@ -71,32 +72,41 @@ public class Main {
         Asaltante detenido_2 = new Asaltante(12, "Carlos Gomez", banda_2);
         Asaltante detenido_3 = new Asaltante(120, "Susana Palacios", banda_1);
 
+        //Jueces
+        Juez juez_1 = new Juez("Esteban Paz", 123, 2);
+        Juez juez_2 = new Juez("Joaquin Lopez", 234, 5);
+        Juez juez_3 = new Juez("Juana Palapa", 456, 8);
+
         /// ASALTO
         LocalDate fecha = LocalDate.of(2024, 04, 02);
         Asalto asalto_1 = new Asalto(fecha, detenido_1, paternal, banda_1);
 
         // Inicializar entidad
-        contexto.agregarEntidadBancaria(BBVA);
-        contexto.agregarEntidadBancaria(GALICIA);
-        contexto.agregarEntidadBancaria(SANTANDER_RIO);
-        // Inicializar sucursal
-        contexto.agregarSucursal(paternal);
-        contexto.agregarSucursal(vicente_lopez);
-        contexto.agregarSucursal(triunvirato);
+        contexto.agregarEntidadAlArrayList(contexto.getEntidadBancaria(), BBVA);
+        contexto.agregarEntidadAlArrayList(contexto.getEntidadBancaria(), GALICIA);
+        contexto.agregarEntidadAlArrayList(contexto.getEntidadBancaria(), SANTANDER_RIO);
 
-        contexto.agregarJuez(new Juez("Esteban Paz", 123, 2));
-        contexto.agregarJuez(new Juez("Joaquin Lopez", 234, 5));
-        contexto.agregarJuez(new Juez("Juana Palapa", 456, 8));
+        // Inicializar sucursal
+        contexto.agregarEntidadAlArrayList(contexto.getSucursal(), paternal);
+        contexto.agregarEntidadAlArrayList(contexto.getSucursal(), vicente_lopez);
+        contexto.agregarEntidadAlArrayList(contexto.getSucursal(), triunvirato);
+
+        // Inicializar jueces
+        contexto.agregarEntidadAlArrayList(contexto.getJuez(), juez_1);
+        contexto.agregarEntidadAlArrayList(contexto.getJuez(), juez_2);
+        contexto.agregarEntidadAlArrayList(contexto.getJuez(), juez_3);
+
         // Inicializar asaltante
-        contexto.agregarAsaltantes(detenido_1);
-        contexto.agregarAsaltantes(detenido_2);
-        contexto.agregarAsaltantes(detenido_3);
+        contexto.agregarEntidadAlArrayList(contexto.getAsaltante(), detenido_1);
+        contexto.agregarEntidadAlArrayList(contexto.getAsaltante(), detenido_2);
+        contexto.agregarEntidadAlArrayList(contexto.getAsaltante(), detenido_3);
+
         // Inicializar banda criminal
-        contexto.agregarBandaCriminal(banda_1);
-        contexto.agregarBandaCriminal(banda_2);
+        contexto.agregarEntidadAlArrayList(contexto.getBandaCriminal(), banda_1);
+        contexto.agregarEntidadAlArrayList(contexto.getBandaCriminal(), banda_2);
 
         // Inicializar asalto
-        contexto.agregarAsalto(asalto_1);
+        contexto.agregarEntidadAlArrayList(contexto.getAsaltos(), asalto_1);
 
         // Lanzar el sistema principal
         Sistema sistema = new Sistema();

@@ -19,7 +19,7 @@ public enum Permiso {
     /**
      * Permite consultar los datos de todas las entidades del sistema.
      */
-    CONSULTAR_DATOS_DE_OTRAS_ENTIDADES("Consultar datos DE TODO."),
+    CONSULTAR_DATOS_DE_OTRAS_ENTIDADES("Consultar datos."),
     /**
      * Permite editar datos dentro del sistema.
      */

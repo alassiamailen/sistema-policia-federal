@@ -3,15 +3,15 @@ package policia.federal;
 import java.util.ArrayList;
 
 /**
- * Representa un juez con nombre completo, código identificador y años de
- * servicio. Proporciona métodos para ingresar datos, obtener y modificar sus
+ * Representa un juez con nombre completo, codigo identificador y años de
+ * servicio. Proporciona metodos para ingresar datos, obtener y modificar sus
  * atributos.
  *
  * @author Nicolas
  * @author Mailen
  * @author Leo
  */
-public class Juez {
+public class Juez implements Codigo, Nombre{
 
     private String nombre_apellido;
     private int codigo;
@@ -25,7 +25,7 @@ public class Juez {
      * Constructor que inicializa un juez con los datos dados.
      *
      * @param nombre_apellido nombre y apellido del juez
-     * @param codigo código identificador del juez
+     * @param codigo codigo identificador del juez
      * @param anios_de_servicio años que lleva en servicio
      */
     public Juez(String nombre_apellido, int codigo, int anios_de_servicio) {
@@ -35,11 +35,8 @@ public class Juez {
 
     }
 
-    /////////////BORRAR ESTO/////////////     
-    Contexto contexto = new Contexto();
-
     /**
-     * Constructor sin parámetros que solicita ingresar los datos del juez por
+     * Constructor sin parametros que solicita ingresar los datos del juez por
      * consola.
      */
     public Juez() {
@@ -75,18 +72,18 @@ public class Juez {
     }
 
     /**
-     * Obtiene el código identificador del juez.
+     * Obtiene el codigo identificador del juez.
      *
-     * @return código del juez
+     * @return codigo del juez
      */
     public int getCodigo() {
         return codigo;
     }
 
     /**
-     * Establece el código identificador del juez.
+     * Establece el codigo identificador del juez.
      *
-     * @param codigo nuevo código identificador
+     * @param codigo nuevo codigo identificador
      */
     public void setCodigo(int codigo) {
         this.codigo = codigo;
@@ -131,9 +128,39 @@ public class Juez {
     public void agregarCasos(Caso nuevo_caso) {
         nuevo_caso.setCodigo(codigo_casos);
         casos_asignados.add(nuevo_caso);
-        codigo_casos++;
-        /////////////BORRAR ESTO/////////////
-        contexto.mostrarCasos(casos_asignados);
+        codigo_casos++;       
+    }
+
+@Override
+public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("\n========= JUEZ =========\n");
+    sb.append("Nombre y Apellido   : ").append(nombre_apellido).append("\n");
+    sb.append("Codigo              : ").append(codigo).append("\n");
+    sb.append("Años de Servicio    : ").append(anios_de_servicio).append("\n");
+    sb.append("Codigo Casos Actual : ").append(codigo_casos).append("\n");
+    
+    sb.append("Casos Asignados     : ");
+    if (casos_asignados.isEmpty()) {
+        sb.append("(Sin casos asignados)\n");
+    } else {
+        sb.append("\n");
+        for (int i = 0; i < casos_asignados.size(); i++) {
+            sb.append("  [").append(i + 1).append("] ").append(casos_asignados.get(i)).append("\n");
+        }
+    }
+
+    sb.append("========================\n");
+    return sb.toString();
+}
+
+    @Override
+    public int obtenerCodigo() {
+        return codigo;
+    }
+    @Override
+    public String getNombre() {
+       return nombre_apellido;
     }
 
 }

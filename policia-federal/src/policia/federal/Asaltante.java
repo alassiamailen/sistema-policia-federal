@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * @author Leo
  * @version 1.0
  */
-public class Asaltante {
+public class Asaltante implements Codigo, Nombre{
 
     private int codigo;
     private String nombre_apellido;
@@ -50,8 +50,6 @@ public class Asaltante {
 
     }
 
-    /////////////BORRAR ESTO/////////////     
-    Contexto contexto = new Contexto();
 
     /**
      * Constructor que solicita datos por consola.
@@ -89,7 +87,19 @@ public class Asaltante {
      */
     @Override
     public String toString() {
-        return "ID: " + codigo + "\nNombre: " + nombre_apellido + "\nID Banda Criminal: " + banda_criminal.getCodigoIdentificacion();
+        StringBuilder sb = new StringBuilder();
+        sb.append("========= ASALTANTE =========\n");
+        sb.append("ID:").append(codigo).append("\n");
+        sb.append("Nombre:").append(nombre_apellido).append("\n");
+
+        if (banda_criminal != null) {
+            sb.append("ID Banda Criminal: ").append(banda_criminal.getCodigoIdentificacion()).append("\n");
+        } else {
+            sb.append("ID Banda Criminal: [Sin asignar]\n");
+        }
+
+        sb.append("=============================");
+        return sb.toString();
     }
 
     /**
@@ -111,10 +121,7 @@ public class Asaltante {
         // Le asigno un codigo unico al contrato antes de guardarlo en el array
         nuevo_asalto.setCodigo(contadorAsaltos);
         asaltos.add(nuevo_asalto);
-        contadorAsaltos++;
-
-        /////////////BORRAR ESTO///////////// 
-        contexto.mostrarAsaltos(asaltos);
+        contadorAsaltos++;     
     }
 
     /**
@@ -139,9 +146,13 @@ public class Asaltante {
     public void agregarCondena(Condena nueva_condena) {
         nueva_condena.setCodigo(contador_condena);
         condenas.add(nueva_condena);
-        contador_condena++;
-        /////////////BORRAR ESTO///////////// 
-        contexto.mostrarCondenas(condenas);
+        contador_condena++;      
 
     }
+
+    @Override
+    public int obtenerCodigo() {
+        return codigo;
+    }
+
 }
