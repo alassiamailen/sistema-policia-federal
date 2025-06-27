@@ -46,7 +46,7 @@ public class RegistroVigilantes {
         Usuario usuario = new Usuario(nombreUsuario, clave, rolVigilante);
         usuario.setVigilante(vigilante);
 
-        contexto.agregarVigilante(vigilante);
+        contexto.agregarEntidadAlArrayList(contexto.getVigilante(),vigilante);
         authenticacion.registrarUsuario(usuario);
     }
 }

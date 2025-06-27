@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * @author Leo
  * @version 1.0
  */
-public class Asaltante {
+public class Asaltante implements Codigo{
 
     private int codigo;
     private String nombre_apellido;
@@ -89,7 +89,19 @@ public class Asaltante {
      */
     @Override
     public String toString() {
-        return "ID: " + codigo + "\nNombre: " + nombre_apellido + "\nID Banda Criminal: " + banda_criminal.getCodigoIdentificacion();
+        StringBuilder sb = new StringBuilder();
+        sb.append("========= ASALTANTE =========\n");
+        sb.append("ID:").append(codigo).append("\n");
+        sb.append("Nombre:").append(nombre_apellido).append("\n");
+
+        if (banda_criminal != null) {
+            sb.append("ID Banda Criminal: ").append(banda_criminal.getCodigoIdentificacion()).append("\n");
+        } else {
+            sb.append("ID Banda Criminal: [Sin asignar]\n");
+        }
+
+        sb.append("=============================");
+        return sb.toString();
     }
 
     /**
@@ -144,4 +156,10 @@ public class Asaltante {
         contexto.mostrarCondenas(condenas);
 
     }
+
+    @Override
+    public int obtenerCodigo() {
+        return codigo;
+    }
+
 }

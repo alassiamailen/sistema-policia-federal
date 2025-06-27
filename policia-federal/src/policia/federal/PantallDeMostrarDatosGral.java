@@ -1,3 +1,7 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package policia.federal;
 
 import java.util.Scanner;
@@ -6,7 +10,7 @@ import java.util.Scanner;
  *
  * @author Nico
  */
-public class PantallDeMostrarDatosGral {
+class PantallDeMostrarDatosGral {
 
     private Tools tools = new Tools();
     private Contexto contexto;
@@ -93,7 +97,7 @@ public class PantallDeMostrarDatosGral {
      * volver al menu principal.
      */
     private void mostrarMenuOpcionAver() {
-        System.out.println("=== Seleccione que desea consultar ===\n");
+        System.out.println("\n\n=== Seleccione que desea consultar ===\n");
 
         System.out.println(">> Informacion Judicial:");
         System.out.println("1. Juez");
@@ -123,32 +127,47 @@ public class PantallDeMostrarDatosGral {
      */
     private void consultarJuez() {
         Juez juez;
-        
+
         do {
             int opcion;
             System.out.println("*** Listado de jueces ***");
             contexto.mostrarJueces();
             opcion = tools.leerEntero("Ingrese numero de Juez");
-            juez = contexto.validarJuez(opcion);
+            juez = contexto.validarEntidadGenerica(contexto.getJuez(),opcion);
             System.out.println(juez.toString());
             opcion = tools.leerEntero("Ingrese \"0\" para salir");
         } while (juez == null);
     }
 
     /**
-     * Consulta las condenas asignadas a los asaltantes.
+     * Consulta las condenas asignadas a los asaltantes. Si no hay condenas
+     * registradas, informa al usuario.
      */
     private void consultarCondena() {
-        Condena condena;
-        
+        if (contexto.getCondenas().isEmpty()) {
+            System.out.println("No hay condenas registradas en el sistema.");
+            return;
+        }
+
+        Condena condena = null;
+
         do {
-            int opcion;
             System.out.println("*** Listado de condenas ***");
             contexto.mostrarCondenas();
-            opcion = tools.leerEntero("Ingrese numero de condena");
-            condena = contexto.validarCondena(opcion);
-            System.out.println(condena.toString());
-            opcion = tools.leerEntero("Ingrese \"0\" para salir");
+
+            int opcion = tools.leerEntero("Ingrese número de condena (0 para salir):");
+
+            if (opcion == 0) {
+                return;
+            }
+
+            condena = contexto.validarEntidadGenerica(contexto.getCondenas(),opcion);
+
+            if (condena != null) {
+                System.out.println(condena.toString());
+                tools.leerEntero("Presione 0 para continuar");
+            }
+
         } while (condena == null);
     }
 
@@ -157,13 +176,35 @@ public class PantallDeMostrarDatosGral {
      */
     private void consultarAsaltante() {
         // TODO: Implementar logica para mostrar asaltantes
+        Asaltante asaltante;
+
+        do {
+            int opcion;
+            System.out.println("*** Listado de detenidos ***");
+            contexto.mostrarAsaltantes();
+            opcion = tools.leerEntero("Ingrese numero de detenido");
+            asaltante = contexto.validarEntidadGenerica(contexto.getAsaltante(),opcion);
+            System.out.println(asaltante.toString());
+            opcion = tools.leerEntero("Ingrese \"0\" para salir");
+        } while (asaltante == null);
     }
 
     /**
      * Consulta la informacion relacionada a los delitos (asaltos).
      */
     private void consultarDelito() {
-        // TODO: Implementar logica para mostrar delitos o asaltos
+        // TODO: Implementar logica para mostrar asaltantes
+        Asalto delito;
+
+        do {
+            int opcion;
+            System.out.println("*** Listado de detenidos ***");
+            contexto.mostrarDelitos();
+            opcion = tools.leerEntero("Ingrese numero de detenido");
+            delito = contexto.validarEntidadGenerica(contexto.getAsaltos(),opcion);
+            System.out.println(delito.toString());
+            opcion = tools.leerEntero("Ingrese \"0\" para salir");
+        } while (delito == null);
     }
 
     /**
@@ -171,6 +212,16 @@ public class PantallDeMostrarDatosGral {
      */
     private void consultarCasos() {
         // TODO: Implementar logica para mostrar casos
+        Caso caso;
+        do {
+            int opcion;
+            System.out.println("*** Listado de casos ***");
+            contexto.mostrarCasos();
+            opcion = tools.leerEntero("Ingrese numero de caso");
+            caso = contexto.validarEntidadGenerica(contexto.getCasos(),opcion);
+            System.out.println(caso.toString());
+            opcion = tools.leerEntero("Ingrese \"0\" para salir");
+        } while (caso == null);
     }
 
     /**
@@ -224,5 +275,7 @@ public class PantallDeMostrarDatosGral {
     private void consultarPermisos() {
         // TODO: Implementar logica para mostrar permisos
     }
+    
+   
 
 }

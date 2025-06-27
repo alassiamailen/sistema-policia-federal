@@ -39,22 +39,26 @@ public class PantallaDeContratarVigilante {
                     break;
                 }
 
-            } while (contexto.validarEntidadBancaria(index_entidad_bancaria) == null);
+            } while (contexto.validarEntidadGenerica(contexto.getEntidadBancaria(),index_entidad_bancaria) == null);
 
             if (!salir) {
                 do {
                     contexto.mostrarSucursales();
                     index_sucursal = tools.leerEntero("Ingrese nombre de SUCURSAL: ");
-                } while (contexto.validarSucursal(index_sucursal) == null);
+                } while (contexto.validarEntidadGenerica(contexto.getSucursal(),index_sucursal) == null);
 
                 do {
                     contexto.mostrarVigilantes();
                     index_vigilante = tools.leerEntero("Ingrese nombre de VIGILANTE: ");
-                } while (contexto.validarVigilante(index_vigilante) == null);
+                } while (contexto.validarEntidadGenerica(contexto.getVigilante(),index_vigilante) == null);
+                    
+                    
+                    
 
-                entidad_bancaria = contexto.obtenerNombreEntidadBancaria(index_entidad_bancaria);
-                sucursal = contexto.obtenerNombreSucursal(index_sucursal);
-                vigilante = contexto.obtenerNombreVigilante(index_vigilante);
+                entidad_bancaria = contexto.obtenerEntidadPorIndex(contexto.getEntidadBancaria(),index_entidad_bancaria).getNombre();
+                sucursal = contexto.obtenerEntidadPorIndex(contexto.getSucursal(),index_sucursal).getNombre();
+                vigilante = contexto.obtenerEntidadPorIndex(contexto.getVigilante(),index_vigilante).getNombre();
+
 
                 ContratoSucVig nuevo_contrato = new ContratoSucVig(entidad_bancaria, sucursal, vigilante);
                 contexto.asignarContratoAVigilante(vigilante, nuevo_contrato);

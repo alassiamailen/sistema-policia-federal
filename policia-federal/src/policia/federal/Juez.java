@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * @author Mailen
  * @author Leo
  */
-public class Juez {
+public class Juez implements Codigo{
 
     private String nombre_apellido;
     private int codigo;
@@ -158,6 +158,11 @@ public String toString() {
     sb.append("========================\n");
     return sb.toString();
 }
+
+    @Override
+    public int obtenerCodigo() {
+        return codigo;
+    }
 
 
 }
