@@ -11,7 +11,8 @@ import java.util.ArrayList;
  * @author Leo
  */
 public class Vigilante implements Nombre{
-
+    
+private static int contadorCodigo = 1;
     private String nombre_apellido;
     private int codigo;
     private int edad;
@@ -29,8 +30,13 @@ public class Vigilante implements Nombre{
      */
     public Vigilante(String nombre_apellido, int codigo, int edad) {
         this.nombre_apellido = nombre_apellido;
-        this.codigo = codigo;
+        this.codigo = contadorCodigo++;
         this.edad = edad;
+    }
+    
+    public Vigilante(){
+        ingresarDatos();
+         this.codigo = contadorCodigo++;
     }
 
     
@@ -38,8 +44,7 @@ public class Vigilante implements Nombre{
      * Solicita al usuario ingresar los datos del vigilante por consola.
      */
     public void ingresarDatos() {
-        this.nombre_apellido = tools.leerString("Ingrese nombre y apellido: ");
-        this.codigo = tools.leerEntero("Ingrese codigo: ");
+        this.nombre_apellido = tools.leerString("Ingrese nombre y apellido: ");        
         this.edad = tools.leerEntero("Ingrese edad: ");
 
     }

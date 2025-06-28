@@ -15,7 +15,7 @@ package policia.federal;
  * @version 1.0
  */
 public class BandaCriminal implements Codigo {
-
+   
     private int nro_de_identificacion;
     private int cantidad_de_miembros;
 
@@ -31,6 +31,12 @@ public class BandaCriminal implements Codigo {
     public BandaCriminal(int nro_de_identificacion, int cantidad_de_miembros) {
         this.nro_de_identificacion = nro_de_identificacion;
         this.cantidad_de_miembros = cantidad_de_miembros;
+        
+    }
+
+    @Override
+    public String toString() {
+        return  "nro_de_identificacion=" + nro_de_identificacion + ", cantidad_de_miembros=" + cantidad_de_miembros;
     }
 
     /**
