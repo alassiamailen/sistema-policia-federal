@@ -55,7 +55,6 @@ class PantallDeMostrarDatosGral {
                         consultarDelito();
                     case 5 ->
                         consultarCasos();
-
                     case 6 ->
                         consultarVigilante();
                     case 7 ->
@@ -81,6 +80,7 @@ class PantallDeMostrarDatosGral {
                 }
             } else {
                 System.out.println("Debe ingresar un numero.");
+                tools.limpiarConsola();
                 sc.nextLine(); // limpiar entrada invalida
             }
         }
@@ -175,7 +175,7 @@ class PantallDeMostrarDatosGral {
 
         for (int i = 0; i < usuarios.size(); i++) {
             Usuario u = usuarios.get(i);
-            System.out.println((i + 1) + ". " + u.getNombreUsuario() + " - Rol: " + u.getRol().getNombre());
+            System.out.println("-" + u.getNombreUsuario() + " - Rol: " + u.getRol().getNombre());
         }
 
         tools.leerEntero("\nPresione 0 para volver al menu anterior.");
@@ -216,7 +216,7 @@ class PantallDeMostrarDatosGral {
         permisosDisponibles.remove(Permiso.CERRAR_SESION);
         permisosDisponibles.remove(Permiso.SALIR);
         for (int i = 0; i < permisosDisponibles.size(); i++) {
-            System.out.println((i + 1) + ". " + permisosDisponibles.get(i));
+            System.out.println("-" + permisosDisponibles.get(i));
         }
 
         tools.leerEntero("Presione 0 para volver al menu anterior.");

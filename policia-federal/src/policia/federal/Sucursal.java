@@ -42,25 +42,6 @@ public class Sucursal implements Nombre{
     }
 
     /**
-     * Método placeholder para lógica relacionada a abrir una sucursal.
-     * Actualmente sin implementación.
-     */
-    public void abrirSucursal() {
-
-    }
-
-    /**
-     * Método placeholder para la contratación de un vigilante para esta
-     * sucursal. Actualmente sin implementación completa.
-     */
-    public void contratarVigilante() {
-        String nombre;
-        int codigo, edad;
-        nombre = tools.leerString("Ingrese nombre de Sucursal: ");
-
-    }
-
-    /**
      * Devuelve el nombre de la sucursal como representación en texto.
      *
      * @return nombre de la sucursal
@@ -70,14 +51,6 @@ public class Sucursal implements Nombre{
         return nombre;
     }
 
-    /**
-     * Obtiene el nombre de la sucursal.
-     *
-     * @return nombre de la sucursal
-     */
-//    public String getNombre() {
-//        return nombre;
-//    }
 
     /**
      * Obtiene la lista de contratos entre la sucursal y vigilantes.

@@ -1,7 +1,6 @@
 package policia.federal;
 
 import java.time.LocalDate;
-import java.util.List;
 
 /**
  * Clase principal que inicializa el sistema de gestión policial. Se encarga de
