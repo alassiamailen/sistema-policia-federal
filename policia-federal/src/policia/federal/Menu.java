@@ -110,7 +110,6 @@ public class Menu {
             }
         } while (seguir);
 
-        
     }
 
     /**
@@ -175,11 +174,17 @@ public class Menu {
         accion_de_cargar_detenido.cargarDetenido(contexto);
     }
 
+    /**
+     * Ejecuta la acción de abrir un nuevo caso en el sistema.
+     */
     private void abrirCaso() {
         PantallaDeAbrirCaso accion_de_abrir_un_caso = new PantallaDeAbrirCaso();
         accion_de_abrir_un_caso.abrirCaso(contexto);
     }
 
+    /**
+     * Muestra el menú para crear nuevas entidades en el sistema.
+     */
     private void crearEntidad() {
         PantallaDeCrearEntidad accion_de_crear_entidad = new PantallaDeCrearEntidad(contexto);
         accion_de_crear_entidad.menuCrearEntidad();

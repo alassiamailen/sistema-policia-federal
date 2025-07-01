@@ -1,21 +1,47 @@
-
 package policia.federal;
 
 import java.util.Scanner;
 
 /**
+ * Clase que representa la pantalla para crear diferentes tipos de entidades del
+ * sistema: Juez, Asaltante, Vigilante, Entidad Bancaria y Sucursal.
+ *
+ * Muestra un menú al usuario para seleccionar qué tipo de entidad desea crear,
+ * y delega la creación a métodos específicos.
+ *
+ * Utiliza la clase {@link Contexto} para acceder y modificar las listas de
+ * entidades existentes.
  *
  * @author Alassia
  */
 class PantallaDeCrearEntidad {
 
+    /**
+     * Contexto general del sistema que contiene las listas de entidades.
+     */
     private Contexto contexto;
 
+    /**
+     * Constructor que recibe el contexto principal del sistema.
+     *
+     * @param contexto el contexto compartido que contiene las entidades del
+     * sistema
+     */
     public PantallaDeCrearEntidad(Contexto contexto) {
         this.contexto = contexto;
     }
+    /**
+     * Herramientas auxiliares para entrada/salida y utilidades.
+     */
     private Tools tools = new Tools();
 
+    /**
+     * Muestra el menú de creación de entidades y gestiona la interacción con el
+     * usuario.
+     *
+     * Permite seleccionar el tipo de entidad a crear o volver al menú
+     * principal.
+     */
     public void menuCrearEntidad() {
         Scanner sc = new Scanner(System.in);
         int seleccion;
@@ -56,6 +82,9 @@ class PantallaDeCrearEntidad {
         }
     }
 
+    /**
+     * Muestra por consola las opciones del menú para crear entidades.
+     */
     private void mostrarMenuOpcionAver() {
         System.out.println("\n\n=== Seleccione que entidad desea crear ===\n");
 
@@ -68,6 +97,10 @@ class PantallaDeCrearEntidad {
         System.out.println("\n0. Volver al menu principal");
     }
 
+    /**
+     * Crea un nuevo objeto {@link Juez}, lo agrega a la lista correspondiente
+     * en el contexto y muestra un mensaje de éxito o error.
+     */
     public void crearJuez() {
         tools.limpiarConsola();
         System.out.println("Crear Juez");
@@ -82,6 +115,10 @@ class PantallaDeCrearEntidad {
 
     }
 
+    /**
+     * Crea un nuevo {@link Asaltante}, con o sin asignación de
+     * {@link BandaCriminal}, y lo agrega al contexto.
+     */
     public void crearAsaltante() {
         int id_banda_criminal, ingresar_banda;
         BandaCriminal banda_criminal;
@@ -101,8 +138,8 @@ class PantallaDeCrearEntidad {
             nuevo_asaltante = new Asaltante(nombre_apellido, banda_criminal);
             contexto.agregarEntidadAlArrayList(contexto.getAsaltante(), nuevo_asaltante);
 
-        } else {           
-            nuevo_asaltante =new Asaltante();
+        } else {
+            nuevo_asaltante = new Asaltante();
 
         }
 
@@ -114,6 +151,9 @@ class PantallaDeCrearEntidad {
         }
     }
 
+    /**
+     * Crea un nuevo {@link Vigilante} y lo agrega al contexto.
+     */
     public void crearVigilante() {
         tools.limpiarConsola();
         System.out.println("Crear Vigilante");
@@ -125,6 +165,10 @@ class PantallaDeCrearEntidad {
             System.out.println("Error al crear Vigilante");
         }
     }
+
+    /**
+     * Crea una nueva {@link EntidadBancaria} y la agrega al contexto.
+     */
 
     public void crearEntidadBancaria() {
         tools.limpiarConsola();
@@ -138,10 +182,13 @@ class PantallaDeCrearEntidad {
         }
     }
 
+    /**
+     * Crea una nueva {@link Sucursal} y la agrega al contexto.
+     */
     public void crearSucursal() {
         tools.limpiarConsola();
         System.out.println("Crear Sucursal");
-        Sucursal nueva_sucursal = new Sucursal();       
+        Sucursal nueva_sucursal = new Sucursal();
         if (nueva_sucursal != null) {
             System.out.println("Sucursal creada con exito");
             contexto.agregarEntidadAlArrayList(contexto.getSucursal(), nueva_sucursal);
