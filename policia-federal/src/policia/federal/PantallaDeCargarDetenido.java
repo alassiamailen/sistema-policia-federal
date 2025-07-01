@@ -35,7 +35,6 @@ public class PantallaDeCargarDetenido {
         do {
             do {
                 System.out.println("*** CARGAR DETENIDO ***");
-//                contexto.mostrarAsaltantes();
                   contexto.mostrarEntidad(contexto.getAsaltante());
                 index_asaltante = tools.leerEntero("Ingrese numero de ASALTANTE o <0> para SALIR: ");
                 if (index_asaltante == 0) {
@@ -44,6 +43,7 @@ public class PantallaDeCargarDetenido {
                 }
 
             } while (contexto.validarEntidadGenerica(contexto.getAsaltante(),index_asaltante) == null);
+            
             if (!salir) {
                 detenido =  contexto.obtenerEntidadPorIndex(contexto.getAsaltante(),index_asaltante);
                 System.out.println(detenido);
@@ -51,7 +51,7 @@ public class PantallaDeCargarDetenido {
                 do {
 //                   contexto.mostrarSucursales();
                     contexto.mostrarEntidad(contexto.getSucursal());
-                    index_sucursal = tools.leerEntero("Ingrese nombre de SUCURSAL: ");
+                    index_sucursal = tools.leerEntero("Ingrese numero de SUCURSAL: ");
                 } while (contexto.validarEntidadGenerica(contexto.getSucursal(),index_sucursal) == null);
 
                 fecha = tools.leerFecha("Ingrese fecha de cuando ocurrio el asalto en formato(dd-MM-yyyy)");

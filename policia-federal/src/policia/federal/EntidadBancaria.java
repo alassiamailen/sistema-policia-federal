@@ -11,7 +11,7 @@ package policia.federal;
  * @author Mailen
  * @author Leo
  */
-public class EntidadBancaria {
+public class EntidadBancaria implements Nombre{
     private static int contadorCodigo = 1;
     private int codigo;
     private String domicilio;

@@ -135,8 +135,7 @@ class PantallaDeCrearEntidad {
             } while (banda_criminal == null);
 
             nombre_apellido = tools.leerString("Ingrese nombre y apellido: ");
-            nuevo_asaltante = new Asaltante(nombre_apellido, banda_criminal);
-            contexto.agregarEntidadAlArrayList(contexto.getAsaltante(), nuevo_asaltante);
+            nuevo_asaltante = new Asaltante(nombre_apellido, banda_criminal);          
 
         } else {
             nuevo_asaltante = new Asaltante();

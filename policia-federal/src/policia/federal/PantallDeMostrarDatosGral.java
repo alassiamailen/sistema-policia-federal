@@ -156,7 +156,7 @@ class PantallDeMostrarDatosGral {
     }
 
     private void consultarEntidadBancaria() {
-//        new ConsultorEntidad<>(contexto, tools, contexto.getEntidadBancaria(), "*** Listado de entidades bancarias ***").consultar();
+       new ConsultorEntidad<>(contexto, tools, contexto.getEntidadBancaria(), "*** Listado de entidades bancarias ***").consultar();
     }
 
     private void consultarSucursal() {

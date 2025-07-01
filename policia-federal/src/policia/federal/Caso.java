@@ -22,9 +22,9 @@ public class Caso implements Codigo, Nombre {
     @Override
     public String toString() {
         return "\n========= CASO =========\n"
-                + "Código del Caso        : " + codigo_caso + "\n"
+                + "Codigo del Caso        : " + codigo_caso + "\n"
                 + "Juez Asignado          : " + (juez != null ? juez.getNombre_apellido() : "No asignado") + "\n"
-                + "Código de Condena      : " + (condena != null ? condena.mostrarCodigoCondena() : "Sin condena") + "\n"
+                + "Codigo de Condena      : " + (condena != null ? condena.mostrarCodigoCondena() : "Sin condena") + "\n"
                 + "========================\n";
     }
 
