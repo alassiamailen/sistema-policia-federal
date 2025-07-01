@@ -52,9 +52,9 @@ public class Main {
         RegistroVigilantes registro = new RegistroVigilantes(authenticacion, contexto, vigilante);
 
         //Cargo vigilantes, linkeo con usuarios y cargo al contexto
-        registro.crearVigilanteConUsuario("Carlos Sanchez", 10, 40, "carlos", "1234");
-        registro.crearVigilanteConUsuario("Ana Gomez", 11, 38, "ana", "abcd");
-        registro.crearVigilanteConUsuario("Luis Varela", 12, 45, "luis", "pass");
+        registro.crearVigilanteConUsuario("Carlos Sanchez", 40, "carlos", "1234");
+        registro.crearVigilanteConUsuario("Ana Gomez", 38, "ana", "abcd");
+        registro.crearVigilanteConUsuario("Luis Varela", 45, "luis", "pass");
 
         //ENTIDADES
         EntidadBancaria BBVA = new EntidadBancaria("BBVA", 1234, "Triunvirato");

@@ -28,7 +28,7 @@ private static int contadorCodigo = 1;
      * @param codigo código identificador del vigilante
      * @param edad edad del vigilante
      */
-    public Vigilante(String nombre_apellido, int codigo, int edad) {
+    public Vigilante(String nombre_apellido, int edad) {
         this.nombre_apellido = nombre_apellido;
         this.codigo = contadorCodigo++;
         this.edad = edad;
