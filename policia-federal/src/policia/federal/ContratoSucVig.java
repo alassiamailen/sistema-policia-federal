@@ -5,8 +5,8 @@ import java.time.LocalDate;
 /**
  * Representa un contrato entre una sucursal bancaria y un vigilante.
  * <p>
- * Gestiona información sobre fechas de contrato, entidad bancaria, sucursal,
- * vigilante asignado y condiciones de portación de arma.
+ * Gestiona informacion sobre fechas de contrato, entidad bancaria, sucursal,
+ * vigilante asignado y condiciones de portacion de arma.
  *
  * @author Nicolas
  * @author Mailen
@@ -27,7 +27,7 @@ public class ContratoSucVig {
     Tools tools = new Tools();
 
     /**
-     * Constructor principal que inicializa un contrato con datos básicos.
+     * Constructor principal que inicializa un contrato con datos basicos.
      *
      * @param entidad_bancaria Nombre de la entidad bancaria.
      * @param sucursal Nombre de la sucursal.
@@ -44,7 +44,7 @@ public class ContratoSucVig {
      * Crea un nuevo contrato solicitando datos al usuario.
      * <p>
      * Pide fechas de inicio/fin y determina si el vigilante porta arma. Valida
-     * que la opción de arma sea correcta (1/0).
+     * que la opcion de arma sea correcta (1/0).
      */
     public void crearContrato() {
         //String entidad_bancaria, sucursal, armado;
@@ -72,16 +72,16 @@ public class ContratoSucVig {
     }
 
     /**
-     * Establece el código único del contrato.
+     * Establece el codigo unico del contrato.
      *
-     * @param codigo Código numérico a asignar.
+     * @param codigo Codigo numerico a asignar.
      */
     public void setCodigo(int codigo) {
         this.codigo_contrato = codigo;
     }
 
     /**
-     * Devuelve una representación detallada del contrato en formato String.
+     * Devuelve una representacion detallada del contrato en formato String.
      *
      * @return Datos del contrato formateados.
      */

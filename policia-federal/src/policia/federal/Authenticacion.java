@@ -1,11 +1,11 @@
 package policia.federal;
 
 /**
- * Sistema de autenticación para el Sistema de Gestión Policial.
+ * Sistema de autenticacion para el Sistema de Gestion Policial.
  * <p>
- * Implementa el patrón Singleton para garantizar una única instancia en el
+ * Implementa el patron Singleton para garantizar una unica instancia en el
  * sistema. Proporciona funcionalidades para registro de usuarios, inicio de
- * sesión y gestión de sesiones activas.
+ * sesion y gestion de sesiones activas.
  *
  *
  * @author Nicolas
@@ -20,7 +20,7 @@ import java.util.Scanner;
 public class Authenticacion {
 
     /**
-     * Interfaz para notificar eventos de inicio de sesión exitoso.
+     * Interfaz para notificar eventos de inicio de sesion exitoso.
      */
     //A traves de esta interfaz le aviso a quien llame a mi metodo (En este caso iniciar sesion) que hubo un inicio de sesion existoso.
     public interface Listener {
@@ -35,7 +35,7 @@ public class Authenticacion {
     private static Authenticacion instance;
 
     /**
-     * Obtiene la instancia única de la clase Authenticacion.
+     * Obtiene la instancia unica de la clase Authenticacion.
      *
      * @return La instancia singleton de Authenticacion
      */
@@ -51,7 +51,7 @@ public class Authenticacion {
     private final Scanner sc = new Scanner(System.in);
 
     /**
-     * Constructor privado para implementación del patrón Singleton.
+     * Constructor privado para implementacion del patron Singleton.
      */
     private Authenticacion() {
 
@@ -72,18 +72,18 @@ public class Authenticacion {
     }
 
     /**
-     * Cierra la sesión del usuario actual.
+     * Cierra la sesion del usuario actual.
      */
     public void cerrarSesion() {
         usuarioActual = null;
     }
 
     /**
-     * Inicia sesión con un nombre de usuario y clave.
+     * Inicia sesion con un nombre de usuario y clave.
      * <p>
      * Permite 3 intentos fallidos antes de bloquear el acceso temporalmente.
      *
-     * @param listener Objeto que será notificado cuando el login sea exitoso
+     * @param listener Objeto que sera notificado cuando el login sea exitoso
      */
     public void iniciarSesion(Listener listener) {
         int intento = 3;
@@ -120,7 +120,7 @@ public class Authenticacion {
      *
      * @param nombreUsuario Nombre de usuario a verificar
      * @param clave Contraseña a verificar
-     * @return El objeto Usuario si las credenciales son válidas, null en caso
+     * @return El objeto Usuario si las credenciales son validas, null en caso
      * contrario
      */
     private Usuario login(String nombreUsuario, String clave) {

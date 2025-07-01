@@ -16,7 +16,7 @@ public class PantallaDeContratarVigilante {
     private Tools tools = new Tools();
 
     /**
-     * Método que muestra la interfaz para crear un contrato entre una sucursal
+     * Metodo que muestra la interfaz para crear un contrato entre una sucursal
      * y un vigilante. Solicita al usuario que seleccione la entidad bancaria,
      * sucursal y vigilante correspondientes, y registra el contrato en el
      * contexto.

@@ -1,11 +1,11 @@
 package policia.federal;
 
 /**
- * Representa una entidad bancaria con información básica como código, domicilio
+ * Representa una entidad bancaria con informacion basica como codigo, domicilio
  * y nombre.
  * <p>
  * Esta clase permite gestionar los datos de una entidad bancaria y proporciona
- * métodos para interactuar con ellos (creación, modificación y consulta).
+ * metodos para interactuar con ellos (creacion, modificacion y consulta).
  *
  * @author Nicolas
  * @author Mailen
@@ -21,11 +21,11 @@ public class EntidadBancaria implements Nombre{
 
     /**
      * Constructor principal que inicializa una entidad bancaria con datos
-     * específicos.
+     * especificos.
      *
      * @param nombre Nombre de la entidad bancaria.
-     * @param codigo Código único de la entidad.
-     * @param domicilio Domicilio físico de la entidad.
+     * @param codigo Codigo unico de la entidad.
+     * @param domicilio Domicilio fisico de la entidad.
      */
     public EntidadBancaria(String nombre, int codigo, String domicilio) {
         this.nombre = nombre;
@@ -37,7 +37,7 @@ public class EntidadBancaria implements Nombre{
      * Constructor secundario que solicita los datos al usuario mediante
      * consola.
      * <p>
-     * Utiliza el método {@link #ingresarDatos()} para capturar la información.
+     * Utiliza el metodo {@link #ingresarDatos()} para capturar la informacion.
      */
     public EntidadBancaria() {
         ingresarDatos();
@@ -45,17 +45,17 @@ public class EntidadBancaria implements Nombre{
     }
 
     /**
-     * Solicita al usuario que ingrese los datos de la entidad bancaria (código,
+     * Solicita al usuario que ingrese los datos de la entidad bancaria (codigo,
      * domicilio y nombre).
      * <p>
-     * Los datos se capturan a través de la clase {@link Tools}.
+     * Los datos se capturan a traves de la clase {@link Tools}.
      */
     public void ingresarDatos() {             
         this.nombre = tools.leerString("Ingrese el nombre: ");
     }
 
     /**
-     * Devuelve una representación en String del nombre de la entidad bancaria.
+     * Devuelve una representacion en String del nombre de la entidad bancaria.
      *
      * @return Nombre de la entidad.
      */
@@ -75,9 +75,9 @@ public class EntidadBancaria implements Nombre{
     }
 
     /**
-     * Obtiene el código de la entidad bancaria.
+     * Obtiene el codigo de la entidad bancaria.
      *
-     * @return Código actual.
+     * @return Codigo actual.
      */
     public int getCodigo() {
         return codigo;

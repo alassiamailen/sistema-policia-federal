@@ -9,7 +9,7 @@ import java.util.Scanner;
  * crear usuarios con roles predefinidos (Investigador, Vigilante,
  * Administrador) o crear un nuevo rol personalizado con permisos seleccionados.
  *
- * Contiene un menú interactivo para que el usuario elija qué tipo de usuario
+ * Contiene un menu interactivo para que el usuario elija que tipo de usuario
  * crear.
  *
  * @author Nicolas
@@ -32,8 +32,8 @@ public class PantallaDeCrearUsuario {
     }
 
     /**
-     * Método principal que muestra el menú de creación de usuarios y procesa la
-     * selección del usuario.
+     * Metodo principal que muestra el menu de creacion de usuarios y procesa la
+     * seleccion del usuario.
      */
     public void menu() {
         Scanner sc = new Scanner(System.in);
@@ -71,7 +71,7 @@ public class PantallaDeCrearUsuario {
     }
 
     /**
-     * Muestra las opciones disponibles en el menú de creación de usuarios.
+     * Muestra las opciones disponibles en el menu de creacion de usuarios.
      */
     private void mostrarMenuEditar() {
         System.out.println("=== Menu de Crear Usuarios ===");
@@ -100,7 +100,7 @@ public class PantallaDeCrearUsuario {
 
     /**
      * Crea un usuario con rol Vigilante y permisos predefinidos. Solicita datos
-     * de usuario, contraseña, nombre completo, código y edad. Crea el vigilante
+     * de usuario, contraseña, nombre completo, codigo y edad. Crea el vigilante
      * y lo vincula con el usuario.
      */
     private void crearVigilante() {
@@ -171,7 +171,7 @@ public class PantallaDeCrearUsuario {
                 permisosDisponibles.remove(permisoSeleccionado);
                 System.out.println("Permiso agregado: " + permisoSeleccionado);
             } else {
-                System.out.println("Opción inválida. Intente nuevamente.");
+                System.out.println("Opcion invalida. Intente nuevamente.");
             }
         }
 

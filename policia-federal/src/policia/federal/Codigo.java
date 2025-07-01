@@ -5,7 +5,10 @@
 package policia.federal;
 
 /**
- *
+ * Interfaz que representa el comportamiento de obtener un código identificador.
+ * Puede ser implementada por cualquier clase que necesite tener un código único,
+ * como casos, personas, condenas, etc.
+ * 
  * @author Nico
  */
 public interface Codigo {

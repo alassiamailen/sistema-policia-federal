@@ -3,11 +3,11 @@ package policia.federal;
 import java.time.LocalDate;
 
 /**
- * Clase que representa la pantalla para cargar información de detenidos
+ * Clase que representa la pantalla para cargar informacion de detenidos
  * (asaltantes). Permite seleccionar un asaltante, una sucursal y registrar un
  * nuevo asalto con fecha.
  *
- * El usuario puede ingresar múltiples asaltos hasta decidir salir.
+ * El usuario puede ingresar multiples asaltos hasta decidir salir.
  *
  * @author Nicolas
  * @author Mailen
@@ -23,7 +23,7 @@ public class PantallaDeCargarDetenido {
     Sucursal sucursal;
 
     /**
-     * Método que despliega la interfaz de texto para cargar un detenido.
+     * Metodo que despliega la interfaz de texto para cargar un detenido.
      * Permite seleccionar un asaltante existente, una sucursal y la fecha del
      * asalto para crear un nuevo registro de asalto vinculado.
      *

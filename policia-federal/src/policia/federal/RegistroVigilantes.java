@@ -4,7 +4,7 @@ package policia.federal;
  * Clase encargada de registrar vigilantes en el sistema, creando tanto el
  * objeto Vigilante como su Usuario asociado.
  *
- * Usa el contexto para agregar el vigilante y la autenticación para registrar
+ * Usa el contexto para agregar el vigilante y la autenticacion para registrar
  * el usuario.
  *
  * @author Nicolas
@@ -21,9 +21,9 @@ public class RegistroVigilantes {
     /**
      * Constructor que recibe las dependencias necesarias para crear vigilantes.
      *
-     * @param auth instancia de autenticación para registrar usuarios
+     * @param auth instancia de autenticacion para registrar usuarios
      * @param contexto contexto general con las listas de entidades
-     * @param rolVigilante rol que será asignado al usuario vigilante creado
+     * @param rolVigilante rol que sera asignado al usuario vigilante creado
      */
     public RegistroVigilantes(Authenticacion auth, Contexto contexto, Rol rolVigilante) {
         this.authenticacion = auth;
@@ -33,10 +33,9 @@ public class RegistroVigilantes {
 
     /**
      * Crea un nuevo vigilante y su usuario asociado, los vincula y los registra
-     * en el contexto y el sistema de autenticación.
+     * en el contexto y el sistema de autenticacion.
      *
-     * @param nombreApellido nombre y apellido completo del vigilante
-     * @param codigo código identificador único del vigilante
+     * @param nombreApellido nombre y apellido completo del vigilante   
      * @param edad edad del vigilante
      * @param nombreUsuario nombre de usuario para login
      * @param clave contraseña del usuario

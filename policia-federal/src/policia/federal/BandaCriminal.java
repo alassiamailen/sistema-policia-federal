@@ -1,11 +1,11 @@
 package policia.federal;
 
 /**
- * Representa una banda criminal con información básica de identificación y
+ * Representa una banda criminal con informacion basica de identificacion y
  * miembros.
  * <p>
  * Esta clase permite gestionar los datos de bandas criminales, incluyendo su
- * número de identificación y cantidad de miembros, con opción para ingresar
+ * numero de identificacion y cantidad de miembros, con opcion para ingresar
  * datos manualmente.
  *
  * @author Alassia
@@ -23,9 +23,9 @@ public class BandaCriminal implements Codigo {
 
     /**
      * Constructor principal que inicializa una banda criminal con datos
-     * específicos.
+     * especificos.
      *
-     * @param nro_de_identificacion Número único de identificación.
+     * @param nro_de_identificacion Numero unico de identificacion.
      * @param cantidad_de_miembros Cantidad de miembros de la banda.
      */
     public BandaCriminal(int nro_de_identificacion, int cantidad_de_miembros) {
@@ -43,7 +43,7 @@ public class BandaCriminal implements Codigo {
      * Constructor secundario que solicita los datos al usuario mediante
      * consola.
      * <p>
-     * Utiliza el método {@link #ingresarDatos()} para capturar la información.
+     * Utiliza el metodo {@link #ingresarDatos()} para capturar la informacion.
      */
     public BandaCriminal() {
         ingresarDatos();
@@ -52,7 +52,7 @@ public class BandaCriminal implements Codigo {
     /**
      * Solicita al usuario que ingrese los datos de la banda criminal.
      * <p>
-     * Pide el número de identificación y la cantidad de miembros mediante la
+     * Pide el numero de identificacion y la cantidad de miembros mediante la
      * clase {@link Tools}.
      */
     public void ingresarDatos() {
@@ -62,9 +62,9 @@ public class BandaCriminal implements Codigo {
     }
 
     /**
-     * Obtiene el número de identificación de la banda criminal.
+     * Obtiene el numero de identificacion de la banda criminal.
      *
-     * @return Número de identificación actual.
+     * @return Numero de identificacion actual.
      */
     public int getCodigoIdentificacion() {
         return nro_de_identificacion;

@@ -3,7 +3,7 @@ package policia.federal;
 import java.time.LocalDate;
 
 /**
- * Clase principal que inicializa el sistema de gestión policial. Se encarga de
+ * Clase principal que inicializa el sistema de gestion policial. Se encarga de
  * crear y registrar roles, usuarios, vigilantes, entidades bancarias,
  * sucursales, bandas criminales, asaltantes y jueces, y de iniciar el sistema.
  *
@@ -14,11 +14,11 @@ import java.time.LocalDate;
 public class Main {
 
     /**
-     * Método principal que se ejecuta al iniciar la aplicación. Configura el
+     * Metodo principal que se ejecuta al iniciar la aplicacion. Configura el
      * contexto inicial del sistema, crea roles, usuarios, vigilantes,
      * entidades, bandas, y lanza el sistema principal.
      *
-     * @param args argumentos de línea de comandos (no utilizados)
+     * @param args argumentos de linea de comandos (no utilizados)
      */
     public static void main(String[] args) {
         Contexto contexto = new Contexto();

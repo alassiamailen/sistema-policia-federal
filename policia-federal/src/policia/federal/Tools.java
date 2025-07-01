@@ -8,8 +8,8 @@ import java.util.Scanner;
 /**
  * Clase utilitaria para la lectura de datos desde la consola.
  * <p>
- * Proporciona métodos estándar para leer enteros, cadenas y fechas, con
- * validación básica y formato predefinido.
+ * Proporciona metodos estandar para leer enteros, cadenas y fechas, con
+ * validacion basica y formato predefinido.
  *
  * @author Nicolas
  * @author Mailen
@@ -26,7 +26,7 @@ public class Tools {
     private final Scanner sc = new Scanner(System.in);
 
     /**
-     * Lee un número entero desde la consola mostrando un mensaje personalizado.
+     * Lee un numero entero desde la consola mostrando un mensaje personalizado.
      *
      * @param mensaje Mensaje que se muestra al usuario para solicitar el dato.
      * @return El entero ingresado por el usuario.
@@ -34,7 +34,7 @@ public class Tools {
     public int leerEntero(String mensaje) {
         System.out.println(mensaje);
         int valor = sc.nextInt();
-        sc.nextLine(); // limpiar salto de línea pendiente
+        sc.nextLine(); // limpiar salto de linea pendiente
         return valor;
     }
 
@@ -53,7 +53,7 @@ public class Tools {
     /**
      * Lee una fecha desde la consola en formato "dd-MM-yyyy".
      * <p>
-     * Ejemplo de entrada válida: "31-12-2023".
+     * Ejemplo de entrada valida: "31-12-2023".
      *
      * @param mensaje Mensaje que se muestra al usuario para solicitar el dato.
      * @return La fecha parseada como {@link LocalDate}.

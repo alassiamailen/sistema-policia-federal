@@ -8,10 +8,10 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * Clase que permite la edición de datos de diferentes entidades del sistema,
+ * Clase que permite la edicion de datos de diferentes entidades del sistema,
  * como Juez, Vigilante y Entidad Bancaria.
  *
- * Muestra menús para seleccionar qué entidad editar y qué atributos modificar.
+ * Muestra menus para seleccionar que entidad editar y que atributos modificar.
  * Utiliza la clase Contexto para acceder a las listas de entidades.
  *
  * @author Nicolas
@@ -32,7 +32,7 @@ public class PantallaDeEditarDatos {
     }
 
     /**
-     * Muestra el menú principal de edición y procesa las opciones del usuario.
+     * Muestra el menu principal de edicion y procesa las opciones del usuario.
      * Permite elegir la entidad a editar (Juez, Vigilante, Entidad Bancaria).
      */
     public void mostrarMenuEditables() {
@@ -69,7 +69,7 @@ public class PantallaDeEditarDatos {
     }
 
     /**
-     * Muestra las opciones del menú principal de edición.
+     * Muestra las opciones del menu principal de edicion.
      */
     private void mostrarMenuEditar() {
         System.out.println("=== Menu de Editar ===");

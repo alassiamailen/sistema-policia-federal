@@ -2,10 +2,10 @@ package policia.federal;
 
 /**
  * Enum que representa los distintos permisos que pueden ser asignados a un rol.
- * Cada permiso tiene una descripción legible que se utiliza en la interfaz del
+ * Cada permiso tiene una descripcion legible que se utiliza en la interfaz del
  * sistema.
  *
- * Estos permisos definen qué acciones puede realizar un usuario según su rol.
+ * Estos permisos definen que acciones puede realizar un usuario segun su rol.
  *
  * @author Nicolas
  * @author Mailen
@@ -46,7 +46,7 @@ public enum Permiso {
      */
     ABRIR_CASO("Abrir un caso"),
     /**
-     * Permite cerrar la sesión actual.
+     * Permite cerrar la sesion actual.
      */
     CERRAR_SESION("Cerrar sesion."),
     /**
@@ -59,16 +59,16 @@ public enum Permiso {
     /**
      * Constructor del enum Permiso.
      *
-     * @param descripcion descripción legible del permiso
+     * @param descripcion descripcion legible del permiso
      */
     Permiso(String descripcion) {
         this.descripcion = descripcion;
     }
 
     /**
-     * Devuelve la descripción del permiso.
+     * Devuelve la descripcion del permiso.
      *
-     * @return descripción legible del permiso
+     * @return descripcion legible del permiso
      */
     @Override
     public String toString() {

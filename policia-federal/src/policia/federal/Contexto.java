@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Representa el contexto global del sistema policial, actuando como almacén
+ * Representa el contexto global del sistema policial, actuando como almacen
  * centralizado de todas las entidades operativas: bancos, sucursales, jueces,
  * vigilantes, asaltantes y bandas criminales.
  * <p>
  * Permite agregar, mostrar, validar y obtener datos de forma estructurada.
- * También facilita la vinculación de entidades como contratos o asaltos.
- * Implementa el patrón de diseño Singleton para garantizar una única instancia.
+ * Tambien facilita la vinculacion de entidades como contratos o asaltos.
+ * Implementa el patron de diseño Singleton para garantizar una unica instancia.
  *
  * @author Nicolas
  * @author Mailen
@@ -32,12 +32,12 @@ public class Contexto {
     public Contexto() {
     }
 
-    // ------------------------ MÉTODOS DE AGREGADO ------------------------
+    // ------------------------ MeTODOS DE AGREGADO ------------------------
     public <T> void agregarEntidadAlArrayList(List<T> lista, T elemento) {
         lista.add(elemento);
     }
 
-    // ------------------------ MÉTODOS DE VISUALIZACIÓN ------------------------
+    // ------------------------ MeTODOS DE VISUALIZACIoN ------------------------
     public <T> void mostrarEntidad(List<T> lista) {
         for (int i = 0; i < lista.size(); i++) {
             System.out.println((i + 1) + "- " + lista.get(i));
@@ -57,7 +57,7 @@ public class Contexto {
         }
     }
 
-    // ------------------------ MÉTODOS DE VALIDACIÓN ------------------------
+    // ------------------------ MeTODOS DE VALIDACIoN ------------------------
     public <T> T validarEntidadGenerica(List<T> lista, int index) {
         if (index > 0 && index <= lista.size()) {
             return lista.get(index - 1);
@@ -92,7 +92,7 @@ public class Contexto {
         if (index > 0 && index <= permisos.length) {
             return permisos[index - 1];
         } else {
-            System.out.println("Error - Ingrese una opción válida");
+            System.out.println("Error - Ingrese una opcion valida");
             return null;
         }
     }
@@ -134,7 +134,7 @@ public class Contexto {
         return casos;
     }
 
-    // ------------------------ MÉTODOS DE VINCULACIÓN ------------------------
+    // ------------------------ MeTODOS DE VINCULACIoN ------------------------
     public void asignarContratoAVigilante(String nombre_vigilante, ContratoSucVig contrato) {
         for (int i = 0; i < vigilante.size(); i++) {
             if (nombre_vigilante.equals(vigilante.get(i).getNombre())) {
@@ -149,7 +149,7 @@ public class Contexto {
         asaltos.add(nuevo_asalto);
     }
 
-    // ------------------------ MÉTODOS DE OBTENCIÓN GENERICOS ------------------------
+    // ------------------------ MeTODOS DE OBTENCIoN GENERICOS ------------------------
     public <T> T obtenerEntidadPorIndex(List<T> lista, int index) {
         return lista.get(index - 1);
     }

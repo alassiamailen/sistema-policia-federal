@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * Representa a un asaltante dentro del sistema policial.
  * <p>
- * Contiene información personal del asaltante, su afiliación a bandas
+ * Contiene informacion personal del asaltante, su afiliacion a bandas
  * criminales y el historial de asaltos cometidos.
  *
  * @author Nicolas
@@ -27,9 +27,9 @@ public class Asaltante implements Codigo, Nombre{
     Tools tools = new Tools();
 
     /**
-     * Constructor básico para crear un asaltante.
+     * Constructor basico para crear un asaltante.
      *
-     * @param codigo Código identificador único
+     * @param codigo Codigo identificador unico
      * @param nombre_apellido Nombre completo del asaltante
      */
     public Asaltante(int codigo, String nombre_apellido) {
@@ -38,9 +38,7 @@ public class Asaltante implements Codigo, Nombre{
     }
 
     /**
-     * Constructor completo para crear un asaltante con banda criminal asociada.
-     *
-     * @param codigo Código identificador único
+     * Constructor completo para crear un asaltante con banda criminal asociada.       
      * @param nombre_apellido Nombre completo del asaltante
      * @param banda_criminal Banda criminal a la que pertenece
      */
@@ -55,7 +53,7 @@ public class Asaltante implements Codigo, Nombre{
     /**
      * Constructor que solicita datos por consola.
      * <p>
-     * Utiliza el método {@link #ingresarDatos()} para capturar la información.
+     * Utiliza el metodo {@link #ingresarDatos()} para capturar la informacion.
      */
     public Asaltante() {
         ingresarDatos();
@@ -65,7 +63,7 @@ public class Asaltante implements Codigo, Nombre{
     /**
      * Solicita al usuario que ingrese los datos del asaltante.
      * <p>
-     * Pide nombre completo y código identificador.
+     * Pide nombre completo y codigo identificador.
      */
     public void ingresarDatos() {
         this.nombre_apellido = tools.leerString("Ingrese nombre y apellido: ");   
@@ -83,9 +81,9 @@ public class Asaltante implements Codigo, Nombre{
     }
 
     /**
-     * Devuelve una representación en cadena del asaltante.
+     * Devuelve una representacion en cadena del asaltante.
      *
-     * @return String con información básica del asaltante
+     * @return String con informacion basica del asaltante
      */
     @Override
     public String toString() {

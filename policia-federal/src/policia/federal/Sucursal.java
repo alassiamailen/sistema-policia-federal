@@ -53,7 +53,7 @@ public class Sucursal implements Nombre{
     }
 
     /**
-     * Devuelve el nombre de la sucursal como representación en texto.
+     * Devuelve el nombre de la sucursal como representacion en texto.
      *
      * @return nombre de la sucursal
      */

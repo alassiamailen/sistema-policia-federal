@@ -6,11 +6,11 @@ import java.util.Map;
 import java.util.Scanner;
 
 /**
- * Clase encargada de mostrar y gestionar el menú principal del sistema de
- * gestión policial. Las opciones disponibles dependen de los permisos del
+ * Clase encargada de mostrar y gestionar el menu principal del sistema de
+ * gestion policial. Las opciones disponibles dependen de los permisos del
  * usuario autenticado.
  *
- * Cada permiso está vinculado a una acción concreta que puede ejecutar el
+ * Cada permiso esta vinculado a una accion concreta que puede ejecutar el
  * usuario.
  *
  * @author Nicolas
@@ -20,13 +20,13 @@ import java.util.Scanner;
 public class Menu {
 
     /**
-     * Interfaz para definir acciones externas que puede realizar el menú como
-     * abrir pantallas o cerrar sesión.
+     * Interfaz para definir acciones externas que puede realizar el menu como
+     * abrir pantallas o cerrar sesion.
      */
     public interface OnMenuItemSelectedListener {
 
         /**
-         * Ejecuta el cierre de sesión del usuario actual.
+         * Ejecuta el cierre de sesion del usuario actual.
          */
         void cerrarSesion();
 
@@ -42,12 +42,12 @@ public class Menu {
     private OnMenuItemSelectedListener menuItemListener;
 
     /**
-     * Constructor del menú.
+     * Constructor del menu.
      *
      * @param contexto El contexto actual del sistema, donde se almacenan los
      * datos centrales.
      * @param menuItemListener Listener que permite ejecutar acciones externas
-     * como abrir pantallas o cerrar sesión.
+     * como abrir pantallas o cerrar sesion.
      */
     public Menu(Contexto contexto, OnMenuItemSelectedListener menuItemListener) {
         this.contexto = contexto;
@@ -56,7 +56,7 @@ public class Menu {
     }
 
     /**
-     * Asocia a cada permiso una acción correspondiente dentro del sistema.
+     * Asocia a cada permiso una accion correspondiente dentro del sistema.
      */
     private void inicializarAcciones() {
         acciones.put(Permiso.CONSULTAR_DATOS_DE_OTRAS_ENTIDADES, this::deConsultarDatos);
@@ -73,9 +73,9 @@ public class Menu {
     }
 
     /**
-     * Muestra el menú principal del sistema basado en los permisos del usuario
+     * Muestra el menu principal del sistema basado en los permisos del usuario
      * actual. Permite ejecutar acciones hasta que el usuario decida salir o
-     * cerrar sesión.
+     * cerrar sesion.
      */
     public void mostrar() {
         Usuario usuario = Authenticacion.getInstance().getUsuarioActual();
@@ -127,7 +127,7 @@ public class Menu {
     }
 
     /**
-     * Acción pendiente de implementación para consultar datos del sistema.
+     * Accion pendiente de implementacion para consultar datos del sistema.
      */
     private void deConsultarDatos() {
         PantallDeMostrarDatosGral p = new PantallDeMostrarDatosGral(contexto);
@@ -135,7 +135,7 @@ public class Menu {
     }
 
     /**
-     * Muestra el menú de creación de usuarios.
+     * Muestra el menu de creacion de usuarios.
      */
     private void deCrearUsuarios() {
         PantallaDeCrearUsuario p = new PantallaDeCrearUsuario(contexto);
@@ -143,7 +143,7 @@ public class Menu {
     }
 
     /**
-     * Muestra el menú para editar datos del sistema.
+     * Muestra el menu para editar datos del sistema.
      */
     private void deEditarDatos() {
         PantallaDeEditarDatos p = new PantallaDeEditarDatos(contexto);
@@ -152,14 +152,14 @@ public class Menu {
     }
 
     /**
-     * Acción pendiente de implementación para eliminar usuarios del sistema.
+     * Accion pendiente de implementacion para eliminar usuarios del sistema.
      */
     private void deEliminarUsuarios() {
         System.out.println("Entrando al panel de eliminacion...");
     }
 
     /**
-     * Ejecuta la acción de contratación de un nuevo vigilante.
+     * Ejecuta la accion de contratacion de un nuevo vigilante.
      */
     private void deContratarVigilante() {
         PantallaDeContratarVigilante accion_de_contrato = new PantallaDeContratarVigilante();
@@ -175,7 +175,7 @@ public class Menu {
     }
 
     /**
-     * Ejecuta la acción de abrir un nuevo caso en el sistema.
+     * Ejecuta la accion de abrir un nuevo caso en el sistema.
      */
     private void abrirCaso() {
         PantallaDeAbrirCaso accion_de_abrir_un_caso = new PantallaDeAbrirCaso();
@@ -183,7 +183,7 @@ public class Menu {
     }
 
     /**
-     * Muestra el menú para crear nuevas entidades en el sistema.
+     * Muestra el menu para crear nuevas entidades en el sistema.
      */
     private void crearEntidad() {
         PantallaDeCrearEntidad accion_de_crear_entidad = new PantallaDeCrearEntidad(contexto);
@@ -191,7 +191,7 @@ public class Menu {
     }
 
     /**
-     * Ejecuta el cierre de sesión utilizando el listener del menú.
+     * Ejecuta el cierre de sesion utilizando el listener del menu.
      */
     private void deCerrarSesion() {
         menuItemListener.cerrarSesion();

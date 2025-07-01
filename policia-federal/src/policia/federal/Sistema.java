@@ -1,12 +1,12 @@
 package policia.federal;
 
 /**
- * Clase principal que coordina la ejecución del sistema de gestión policial.
- * Implementa los listeners para manejar eventos de login y navegación del menú.
+ * Clase principal que coordina la ejecucion del sistema de gestion policial.
+ * Implementa los listeners para manejar eventos de login y navegacion del menu.
  *
- * Se encarga de iniciar sesión, mostrar el menú principal al usuario
- * autenticado y redirigir la ejecución de acciones como cerrar sesión o abrir
- * pantallas específicas.
+ * Se encarga de iniciar sesion, mostrar el menu principal al usuario
+ * autenticado y redirigir la ejecucion de acciones como cerrar sesion o abrir
+ * pantallas especificas.
  *
  * @author Nicolas
  * @author Mailen
@@ -18,7 +18,7 @@ public class Sistema implements Menu.OnMenuItemSelectedListener, Authenticacion.
     private Menu menu;
 
     /**
-     * Inicia el sistema con el contexto dado, y lanza el inicio de sesión.
+     * Inicia el sistema con el contexto dado, y lanza el inicio de sesion.
      *
      * @param contexto contexto del sistema, con los datos cargados previamente.
      */
@@ -31,8 +31,8 @@ public class Sistema implements Menu.OnMenuItemSelectedListener, Authenticacion.
     }
 
     /**
-     * Callback que se ejecuta cuando un usuario inicia sesión correctamente. Se
-     * encarga de mostrar el menú correspondiente a ese usuario.
+     * Callback que se ejecuta cuando un usuario inicia sesion correctamente. Se
+     * encarga de mostrar el menu correspondiente a ese usuario.
      */
     @Override
     public void onUserLogin() {
@@ -40,7 +40,7 @@ public class Sistema implements Menu.OnMenuItemSelectedListener, Authenticacion.
     }
 
     /**
-     * Cierra la sesión del usuario actual e inicia una nueva sesión.
+     * Cierra la sesion del usuario actual e inicia una nueva sesion.
      */
     @Override
     public void cerrarSesion() {
@@ -50,8 +50,8 @@ public class Sistema implements Menu.OnMenuItemSelectedListener, Authenticacion.
 
     //POSIBLEMENTE HAY QUE ELIMINAR ESTO!!!!!!!!!
     /**
-     * Abre la pantalla de consulta de datos. Este método sirve como ejemplo del
-     * uso de callbacks para modularizar la lógica del sistema.
+     * Abre la pantalla de consulta de datos. Este metodo sirve como ejemplo del
+     * uso de callbacks para modularizar la logica del sistema.
      *
      * Se recomienda crear una clase separada para cada pantalla, por ejemplo:
      * {@code PantallaRegistroDatos p = new PantallaRegistroDatos(); p.mostrar();}

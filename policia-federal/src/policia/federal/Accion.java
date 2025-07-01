@@ -1,8 +1,8 @@
 package policia.federal;
 
 /**
- * Interfaz funcional que representa una acción que puede ser ejecutada.
- * Contiene un único método abstracto para realizar la ejecución.
+ * Interfaz funcional que representa una accion que puede ser ejecutada.
+ * Contiene un unico metodo abstracto para realizar la ejecucion.
  *
  * @author Nicolas
  * @author Mailen
@@ -12,7 +12,7 @@ package policia.federal;
 public interface Accion {
 
     /**
-     * Ejecuta la acción definida.
+     * Ejecuta la accion definida.
      */
     void ejecutar();
 }

@@ -1,7 +1,10 @@
 package policia.federal;
 
 /**
- *
+ * Representa un caso judicial en la jurisdicción de la Policía Federal.
+ * Cada caso tiene un código identificador, un juez asignado y una condena asociada.
+ * Implementa las interfaces {@link Codigo} y {@link Nombre}.
+ * 
  * @author Alassia
  */
 public class Caso implements Codigo, Nombre {

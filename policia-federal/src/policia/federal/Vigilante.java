@@ -3,8 +3,8 @@ package policia.federal;
 import java.util.ArrayList;
 
 /**
- * Representa un vigilante con nombre, código, edad y contratos asociados.
- * Permite ingresar datos, agregar contratos y mostrar información.
+ * Representa un vigilante con nombre, codigo, edad y contratos asociados.
+ * Permite ingresar datos, agregar contratos y mostrar informacion.
  *
  * @author Nicolas
  * @author Mailen
@@ -25,7 +25,6 @@ private static int contadorCodigo = 1;
      * Constructor para crear un vigilante con sus datos iniciales.
      *
      * @param nombre_apellido nombre y apellido del vigilante
-     * @param codigo código identificador del vigilante
      * @param edad edad del vigilante
      */
     public Vigilante(String nombre_apellido, int edad) {
@@ -50,7 +49,7 @@ private static int contadorCodigo = 1;
     }
 
     /**
-     * Agrega un contrato al vigilante asignándole un código único.
+     * Agrega un contrato al vigilante asignandole un codigo unico.
      *
      * @param contrato el contrato a agregar
      */
@@ -64,9 +63,9 @@ private static int contadorCodigo = 1;
     }
 
     /**
-     * Devuelve una representación en String con los datos del vigilante.
+     * Devuelve una representacion en String con los datos del vigilante.
      *
-     * @return String con nombre, edad y código
+     * @return String con nombre, edad y codigo
      */
     @Override
     public String toString() {
@@ -91,9 +90,9 @@ private static int contadorCodigo = 1;
     }
 
     /**
-     * Devuelve el código del vigilante.
+     * Devuelve el codigo del vigilante.
      *
-     * @return código identificador
+     * @return codigo identificador
      */
     public int getCodigo() {
         return codigo;

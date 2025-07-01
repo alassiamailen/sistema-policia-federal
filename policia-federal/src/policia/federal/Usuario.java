@@ -2,7 +2,7 @@ package policia.federal;
 
 /**
  * Representa un usuario del sistema, el cual tiene un nombre de usuario, una
- * contraseña, un rol con permisos específicos, y opcionalmente un vigilante
+ * contraseña, un rol con permisos especificos, y opcionalmente un vigilante
  * asociado.
  *
  * Los usuarios pueden autenticarse y verificar si tienen permisos para realizar

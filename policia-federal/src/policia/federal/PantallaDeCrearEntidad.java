@@ -6,8 +6,8 @@ import java.util.Scanner;
  * Clase que representa la pantalla para crear diferentes tipos de entidades del
  * sistema: Juez, Asaltante, Vigilante, Entidad Bancaria y Sucursal.
  *
- * Muestra un menú al usuario para seleccionar qué tipo de entidad desea crear,
- * y delega la creación a métodos específicos.
+ * Muestra un menu al usuario para seleccionar que tipo de entidad desea crear,
+ * y delega la creacion a metodos especificos.
  *
  * Utiliza la clase {@link Contexto} para acceder y modificar las listas de
  * entidades existentes.
@@ -36,10 +36,10 @@ class PantallaDeCrearEntidad {
     private Tools tools = new Tools();
 
     /**
-     * Muestra el menú de creación de entidades y gestiona la interacción con el
+     * Muestra el menu de creacion de entidades y gestiona la interaccion con el
      * usuario.
      *
-     * Permite seleccionar el tipo de entidad a crear o volver al menú
+     * Permite seleccionar el tipo de entidad a crear o volver al menu
      * principal.
      */
     public void menuCrearEntidad() {
@@ -83,7 +83,7 @@ class PantallaDeCrearEntidad {
     }
 
     /**
-     * Muestra por consola las opciones del menú para crear entidades.
+     * Muestra por consola las opciones del menu para crear entidades.
      */
     private void mostrarMenuOpcionAver() {
         System.out.println("\n\n=== Seleccione que entidad desea crear ===\n");
@@ -99,7 +99,7 @@ class PantallaDeCrearEntidad {
 
     /**
      * Crea un nuevo objeto {@link Juez}, lo agrega a la lista correspondiente
-     * en el contexto y muestra un mensaje de éxito o error.
+     * en el contexto y muestra un mensaje de exito o error.
      */
     public void crearJuez() {
         tools.limpiarConsola();
@@ -116,7 +116,7 @@ class PantallaDeCrearEntidad {
     }
 
     /**
-     * Crea un nuevo {@link Asaltante}, con o sin asignación de
+     * Crea un nuevo {@link Asaltante}, con o sin asignacion de
      * {@link BandaCriminal}, y lo agrega al contexto.
      */
     public void crearAsaltante() {
