@@ -32,29 +32,36 @@ public class PantallaDeContratarVigilante {
         do {
             do {
                 System.out.println("*** CREAR CONTRATO ***");
-                contexto.mostrarEntidadesBancarias();
-                index_entidad_bancaria = tools.leerEntero("Ingrese nombre de ENTIDAD BANCARIA o <0> para SALIR: ");
+//                contexto.mostrarEntidadesBancarias();
+                contexto.mostrarEntidad(contexto.getEntidadBancaria());
+                index_entidad_bancaria = tools.leerEntero("Ingrese numero de ENTIDAD BANCARIA o <0> para SALIR: ");
                 if (index_entidad_bancaria == 0) {
                     salir = true;
                     break;
                 }
 
-            } while (contexto.validarEntidadBancaria(index_entidad_bancaria) == null);
+            } while (contexto.validarEntidadGenerica(contexto.getEntidadBancaria(),index_entidad_bancaria) == null);
 
             if (!salir) {
                 do {
-                    contexto.mostrarSucursales();
-                    index_sucursal = tools.leerEntero("Ingrese nombre de SUCURSAL: ");
-                } while (contexto.validarSucursal(index_sucursal) == null);
+//                    contexto.mostrarSucursales();
+                    contexto.mostrarNombreEntidad(contexto.getSucursal());
+                    index_sucursal = tools.leerEntero("Ingrese numero de SUCURSAL: ");
+                } while (contexto.validarEntidadGenerica(contexto.getSucursal(),index_sucursal) == null);
 
                 do {
-                    contexto.mostrarVigilantes();
-                    index_vigilante = tools.leerEntero("Ingrese nombre de VIGILANTE: ");
-                } while (contexto.validarVigilante(index_vigilante) == null);
+//                    contexto.mostrarVigilantes();
+                    contexto.mostrarNombreEntidad(contexto.getVigilante());
+                    index_vigilante = tools.leerEntero("Ingrese numero de VIGILANTE: ");
+                } while (contexto.validarEntidadGenerica(contexto.getVigilante(),index_vigilante) == null);
+                    
+                    
+                    
 
-                entidad_bancaria = contexto.obtenerNombreEntidadBancaria(index_entidad_bancaria);
-                sucursal = contexto.obtenerNombreSucursal(index_sucursal);
-                vigilante = contexto.obtenerNombreVigilante(index_vigilante);
+                entidad_bancaria = contexto.obtenerEntidadPorIndex(contexto.getEntidadBancaria(),index_entidad_bancaria).getNombre();
+                sucursal = contexto.obtenerEntidadPorIndex(contexto.getSucursal(),index_sucursal).getNombre();
+                vigilante = contexto.obtenerEntidadPorIndex(contexto.getVigilante(),index_vigilante).getNombre();
+
 
                 ContratoSucVig nuevo_contrato = new ContratoSucVig(entidad_bancaria, sucursal, vigilante);
                 contexto.asignarContratoAVigilante(vigilante, nuevo_contrato);

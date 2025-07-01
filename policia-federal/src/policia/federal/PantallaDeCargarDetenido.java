@@ -35,29 +35,31 @@ public class PantallaDeCargarDetenido {
         do {
             do {
                 System.out.println("*** CARGAR DETENIDO ***");
-                contexto.mostrarAsaltantes();
+                  contexto.mostrarEntidad(contexto.getAsaltante());
                 index_asaltante = tools.leerEntero("Ingrese numero de ASALTANTE o <0> para SALIR: ");
                 if (index_asaltante == 0) {
                     salir = true;
                     break;
                 }
 
-            } while (contexto.validarAsaltante(index_asaltante) == null);
+            } while (contexto.validarEntidadGenerica(contexto.getAsaltante(),index_asaltante) == null);
+            
             if (!salir) {
-                detenido = contexto.obtenerDetenido(index_asaltante);
+                detenido =  contexto.obtenerEntidadPorIndex(contexto.getAsaltante(),index_asaltante);
                 System.out.println(detenido);
 
                 do {
-                    contexto.mostrarSucursales();
-                    index_sucursal = tools.leerEntero("Ingrese nombre de SUCURSAL: ");
-                } while (contexto.validarSucursal(index_sucursal) == null);
+//                   contexto.mostrarSucursales();
+                    contexto.mostrarEntidad(contexto.getSucursal());
+                    index_sucursal = tools.leerEntero("Ingrese numero de SUCURSAL: ");
+                } while (contexto.validarEntidadGenerica(contexto.getSucursal(),index_sucursal) == null);
 
                 fecha = tools.leerFecha("Ingrese fecha de cuando ocurrio el asalto en formato(dd-MM-yyyy)");
+                banda_criminal =  contexto.obtenerEntidadPorIndex(contexto.getAsaltante(),index_asaltante).obtenerBandaCriminal();
 
-                banda_criminal= contexto.obtenerBandaCriminal(index_asaltante);
-                sucursal= contexto.obtenerSucursal(index_sucursal);
+                sucursal =  contexto.obtenerEntidadPorIndex(contexto.getSucursal(),index_sucursal);
                 Asalto nuevo_asalto = new Asalto(fecha, detenido, sucursal,banda_criminal);
-                //ACA ME FALTA GUARDAR EL ASALTO EN EL ARRAY GENERAL DE ASALTOS SINO SOLO EXISTE EN EL ASALTANTE Y DSP NO ENCUENTRA EL CODIGO_ASALTO CND QUIERE ABRIR UN CASO
+               
                 contexto.asignarAsaltoADetenido(index_asaltante, nuevo_asalto);
             }
 

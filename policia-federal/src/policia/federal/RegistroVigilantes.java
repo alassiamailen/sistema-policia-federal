@@ -41,12 +41,12 @@ public class RegistroVigilantes {
      * @param nombreUsuario nombre de usuario para login
      * @param clave contraseña del usuario
      */
-    public void crearVigilanteConUsuario(String nombreApellido, int codigo, int edad, String nombreUsuario, String clave) {
-        Vigilante vigilante = new Vigilante(nombreApellido, codigo, edad);
+    public void crearVigilanteConUsuario(String nombreApellido, int edad, String nombreUsuario, String clave) {
+        Vigilante vigilante = new Vigilante(nombreApellido, edad);
         Usuario usuario = new Usuario(nombreUsuario, clave, rolVigilante);
         usuario.setVigilante(vigilante);
 
-        contexto.agregarVigilante(vigilante);
+        contexto.agregarEntidadAlArrayList(contexto.getVigilante(),vigilante);
         authenticacion.registrarUsuario(usuario);
     }
 }

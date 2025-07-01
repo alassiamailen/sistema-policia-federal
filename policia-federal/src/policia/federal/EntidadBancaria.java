@@ -11,8 +11,8 @@ package policia.federal;
  * @author Mailen
  * @author Leo
  */
-public class EntidadBancaria {
-
+public class EntidadBancaria implements Nombre{
+    private static int contadorCodigo = 1;
     private int codigo;
     private String domicilio;
     private String nombre;
@@ -29,7 +29,7 @@ public class EntidadBancaria {
      */
     public EntidadBancaria(String nombre, int codigo, String domicilio) {
         this.nombre = nombre;
-        this.codigo = codigo;
+        this.codigo = contadorCodigo++;
         this.domicilio = domicilio;
     }
 
@@ -39,8 +39,9 @@ public class EntidadBancaria {
      * <p>
      * Utiliza el método {@link #ingresarDatos()} para capturar la información.
      */
-    public void EntidadBancaria() {
+    public EntidadBancaria() {
         ingresarDatos();
+        this.codigo = contadorCodigo++;
     }
 
     /**
@@ -49,11 +50,8 @@ public class EntidadBancaria {
      * <p>
      * Los datos se capturan a través de la clase {@link Tools}.
      */
-    public void ingresarDatos() {
-        this.codigo = tools.leerEntero("Ingrese codigo de Entidad Bancaria: ");
-        this.domicilio = tools.leerString("Ingrese el domicilio: ");
+    public void ingresarDatos() {             
         this.nombre = tools.leerString("Ingrese el nombre: ");
-
     }
 
     /**

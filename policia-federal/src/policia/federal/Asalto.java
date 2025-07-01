@@ -5,7 +5,7 @@ import java.time.LocalDate;
 /**
  * Representa un asalto registrado en el sistema policial.
  * <p>
- * Contiene información sobre el incidente, incluyendo fecha, asaltante
+ * Contiene informacion sobre el incidente, incluyendo fecha, asaltante
  * involucrado, sucursal afectada y banda criminal relacionada.
  *
  * @author Nicolas
@@ -13,9 +13,9 @@ import java.time.LocalDate;
  * @author Leo
  * @version 1.0
  */
-public class Asalto {
+public class Asalto implements Codigo, Nombre{
 
-    private int codigo_asalto;
+    private int codigo_asalto = 0;
     private LocalDate fecha;
     private Asaltante detenido;
     private Sucursal sucursal;
@@ -38,22 +38,15 @@ public class Asalto {
     }
 
     /**
-     * Establece el código identificador del asalto.
+     * Establece el codigo identificador del asalto.
      *
-     * @param codigo Código numérico único
+     * @param codigo Codigo numerico unico
      */
     public void setCodigo(int codigo) {
         this.codigo_asalto = codigo;
     }
 
-    /**
-     * Devuelve una representación en cadena del asalto.
-     *
-     * @return String con los datos principales del asalto
-     */
-    public int obtenerCodigo() {
-        return this.codigo_asalto;
-    }
+
 
     public Asaltante obtenerDetenido() {
         return detenido;
@@ -63,36 +56,53 @@ public class Asalto {
         return sucursal;
     }
 
-    @Override
-    public String toString() {
-        return "Asalto" + "codigo_asalto=" + codigo_asalto + ", fecha=" + fecha + ", detenido=" + detenido.getNombre() + ", sucursal=" + sucursal.getNombre() + ", banda_criminal=" + banda_criminal.getCodigoIdentificacion() + '}';
-    }
 
-    /**
-     * Obtiene el código del asalto.
-     *
-     * @return Código identificador
-     */
-    public int getCodigoAsalto() {
-        return codigo_asalto;
-    }
-
-    /**
-     * Obtiene la fecha del asalto.
-     *
-     * @return Fecha del incidente
-     */
     public LocalDate getFecha() {
         return fecha;
     }
 
-    /**
-     * Obtiene el asaltante detenido.
-     *
-     * @return Objeto Asaltante o null
-     */
     public Asaltante getDetenido() {
         return detenido;
     }
 
+    @Override
+    public int obtenerCodigo() {
+        return codigo_asalto;
+    }
+
+    
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("\n========= ASALTO =========\n");
+        sb.append("Codigo de Asalto        : ").append(codigo_asalto).append("\n");
+        sb.append("Fecha del Asalto        : ").append(fecha).append("\n");
+
+        if (detenido != null) {
+            sb.append("Nombre del Detenido     : ").append(detenido.getNombre()).append("\n");
+        } else {
+            sb.append("Nombre del Detenido     : No registrado\n");
+        }
+
+        if (sucursal != null) {
+            sb.append("Sucursal Asaltada       : ").append(sucursal.getNombre()).append("\n");
+        } else {
+            sb.append("Sucursal Asaltada       : No registrada\n");
+        }
+
+        if (banda_criminal != null) {
+            sb.append("Codigo Banda Criminal   : ").append(banda_criminal.getCodigoIdentificacion()).append("\n");
+        } else {
+            sb.append("Codigo Banda Criminal   : No asociada\n");
+        }
+
+        sb.append("==========================\n");
+        return sb.toString();
+    }
+
+
+    @Override
+    public String getNombre() {
+       return "Asalto nro: " + codigo_asalto + " - Fecha: " + getFecha()+ "\n";
+    }
 }

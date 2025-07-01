@@ -13,8 +13,9 @@ import java.util.ArrayList;
  * @author Leo
  * @version 1.0
  */
-public class Asaltante {
-
+public class Asaltante implements Codigo, Nombre{
+    
+    private static int contadorCodigo = 1;
     private int codigo;
     private String nombre_apellido;
     private BandaCriminal banda_criminal;
@@ -43,15 +44,13 @@ public class Asaltante {
      * @param nombre_apellido Nombre completo del asaltante
      * @param banda_criminal Banda criminal a la que pertenece
      */
-    public Asaltante(int codigo, String nombre_apellido, BandaCriminal banda_criminal) {
-        this.codigo = codigo;
+    public Asaltante(String nombre_apellido, BandaCriminal banda_criminal) {
+       this.codigo = contadorCodigo++;
         this.nombre_apellido = nombre_apellido;
         this.banda_criminal = banda_criminal;
 
     }
 
-    /////////////BORRAR ESTO/////////////     
-    Contexto contexto = new Contexto();
 
     /**
      * Constructor que solicita datos por consola.
@@ -60,6 +59,7 @@ public class Asaltante {
      */
     public Asaltante() {
         ingresarDatos();
+         this.codigo = contadorCodigo++;
     }
 
     /**
@@ -68,8 +68,8 @@ public class Asaltante {
      * Pide nombre completo y código identificador.
      */
     public void ingresarDatos() {
-        this.nombre_apellido = tools.leerString("Ingrese nombre y apellido: ");
-        this.codigo = tools.leerEntero("Ingrese codigo del asaltado: ");
+        this.nombre_apellido = tools.leerString("Ingrese nombre y apellido: ");   
+        
 
     }
 
@@ -89,7 +89,19 @@ public class Asaltante {
      */
     @Override
     public String toString() {
-        return "ID: " + codigo + "\nNombre: " + nombre_apellido + "\nID Banda Criminal: " + banda_criminal.getCodigoIdentificacion();
+        StringBuilder sb = new StringBuilder();
+        sb.append("========= ASALTANTE =========\n");
+        sb.append("ID:").append(codigo).append("\n");
+        sb.append("Nombre:").append(nombre_apellido).append("\n");
+
+        if (banda_criminal != null) {
+            sb.append("ID Banda Criminal: ").append(banda_criminal.getCodigoIdentificacion()).append("\n");
+        } else {
+            sb.append("ID Banda Criminal: [Sin asignar]\n");
+        }
+
+        sb.append("=============================");
+        return sb.toString();
     }
 
     /**
@@ -111,10 +123,7 @@ public class Asaltante {
         // Le asigno un codigo unico al contrato antes de guardarlo en el array
         nuevo_asalto.setCodigo(contadorAsaltos);
         asaltos.add(nuevo_asalto);
-        contadorAsaltos++;
-
-        /////////////BORRAR ESTO///////////// 
-        contexto.mostrarAsaltos(asaltos);
+        contadorAsaltos++;     
     }
 
     /**
@@ -139,9 +148,13 @@ public class Asaltante {
     public void agregarCondena(Condena nueva_condena) {
         nueva_condena.setCodigo(contador_condena);
         condenas.add(nueva_condena);
-        contador_condena++;
-        /////////////BORRAR ESTO///////////// 
-        contexto.mostrarCondenas(condenas);
+        contador_condena++;      
 
     }
+
+    @Override
+    public int obtenerCodigo() {
+        return codigo;
+    }
+
 }

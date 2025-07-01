@@ -10,19 +10,17 @@ import java.util.ArrayList;
  * @author Mailen
  * @author Leo
  */
-public class Vigilante {
-
+public class Vigilante implements Nombre{
+    
+private static int contadorCodigo = 1;
     private String nombre_apellido;
     private int codigo;
     private int edad;
-    private int contadorContratos = 1;
+    private int contadorContratos = 0;
     private ArrayList<ContratoSucVig> contratos = new ArrayList<>();
 
     Tools tools = new Tools();
-
-    /////////////BORRAR ESTO/////////////     
-    Contexto contexto = new Contexto();
-
+    
     /**
      * Constructor para crear un vigilante con sus datos iniciales.
      *
@@ -30,18 +28,23 @@ public class Vigilante {
      * @param codigo código identificador del vigilante
      * @param edad edad del vigilante
      */
-    public Vigilante(String nombre_apellido, int codigo, int edad) {
+    public Vigilante(String nombre_apellido, int edad) {
         this.nombre_apellido = nombre_apellido;
-        this.codigo = codigo;
+        this.codigo = contadorCodigo++;
         this.edad = edad;
     }
+    
+    public Vigilante(){
+        ingresarDatos();
+         this.codigo = contadorCodigo++;
+    }
 
+    
     /**
      * Solicita al usuario ingresar los datos del vigilante por consola.
      */
     public void ingresarDatos() {
-        this.nombre_apellido = tools.leerString("Ingrese nombre y apellido: ");
-        this.codigo = tools.leerEntero("Ingrese codigo: ");
+        this.nombre_apellido = tools.leerString("Ingrese nombre y apellido: ");        
         this.edad = tools.leerEntero("Ingrese edad: ");
 
     }
@@ -56,10 +59,7 @@ public class Vigilante {
         // Le asigno un codigo unico al contrato antes de guardarlo en el array
         contrato.setCodigo(contadorContratos);
         contratos.add(contrato);
-        contadorContratos++;
-
-        /////////////BORRAR ESTO/////////////
-        contexto.mostrarContratos(contratos);
+        contadorContratos++;      
 
     }
 
@@ -70,13 +70,24 @@ public class Vigilante {
      */
     @Override
     public String toString() {
-        String presentacion = "";
-        presentacion += "Nombre: " + nombre_apellido + "\n";
-        presentacion += "Edad: " + edad + "\n";
-        presentacion += "Codigo: " + codigo + "\n";
-        presentacion += "\n-----------------------\n";
+        StringBuilder sb = new StringBuilder();
+        sb.append("\n===== Datos del Vigilante =====\n");
+        sb.append("Nombre y Apellido : ").append(nombre_apellido).append("\n");
+        sb.append("Codigo            : ").append(codigo).append("\n");
+        sb.append("Edad              : ").append(edad).append("\n");
+        sb.append("Cantidad contratos: ").append(contadorContratos).append("\n");
 
-        return presentacion;
+        sb.append("Contratos:\n");
+        if (contratos.isEmpty()) {
+            sb.append("  (No hay contratos asignados)\n");
+        } else {
+            for (int i = 0; i < contratos.size(); i++) {
+                sb.append("  [").append(i + 1).append("] ").append(contratos.get(i)).append("\n");
+            }
+        }
+
+        sb.append("================================\n");
+        return sb.toString();
     }
 
     /**
@@ -89,15 +100,6 @@ public class Vigilante {
     }
 
     /**
-     * Devuelve el nombre y apellido del vigilante.
-     *
-     * @return nombre completo
-     */
-    public String getNombre() {
-        return nombre_apellido;
-    }
-
-    /**
      * Establece el nombre y apellido del vigilante.
      *
      * @param nombre_apellido nuevo nombre completo
@@ -106,6 +108,12 @@ public class Vigilante {
         this.nombre_apellido = nombre_apellido;
     }
 
+    public ArrayList<ContratoSucVig> getContratos() {
+        return contratos;
+    }
+
+    
+    
     /**
      * Devuelve la edad del vigilante.
      *
@@ -122,6 +130,10 @@ public class Vigilante {
      */
     public void setEdad(int edad) {
         this.edad = edad;
+    }
+      @Override
+    public String getNombre() {
+        return nombre_apellido;
     }
 
 }

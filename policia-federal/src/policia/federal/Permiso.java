@@ -19,7 +19,7 @@ public enum Permiso {
     /**
      * Permite consultar los datos de todas las entidades del sistema.
      */
-    CONSULTAR_DATOS_DE_OTRAS_ENTIDADES("Consultar datos DE TODO."),
+    CONSULTAR_DATOS_DE_OTRAS_ENTIDADES("Consultar datos."),
     /**
      * Permite editar datos dentro del sistema.
      */
@@ -32,6 +32,7 @@ public enum Permiso {
      * Permite crear un contrato entre una sucursal y un vigilante.
      */
     CONTRATAR_VIGILANTE("Crear un contrato entre sucursal y vigilante."),
+    CREAR_ENTIDAD("Crear nueva entidad."),
     /**
      * Permite registrar un nuevo detenido en el sistema.
      */
