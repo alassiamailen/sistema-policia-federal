@@ -12,12 +12,14 @@ import java.util.ArrayList;
  * @author Leo
  */
 public class Juez implements Codigo, Nombre{
-
+    
+    private static int contadorCodigo = 1;
     private String nombre_apellido;
     private int codigo;
     private int anios_de_servicio;
     private ArrayList<Caso> casos_asignados = new ArrayList<>();
     private int codigo_casos = 1;
+    
 
     Tools tools = new Tools();
 
@@ -30,7 +32,7 @@ public class Juez implements Codigo, Nombre{
      */
     public Juez(String nombre_apellido, int codigo, int anios_de_servicio) {
         this.nombre_apellido = nombre_apellido;
-        this.codigo = codigo;
+        this.codigo =  contadorCodigo++;
         this.anios_de_servicio = anios_de_servicio;
 
     }
@@ -40,7 +42,10 @@ public class Juez implements Codigo, Nombre{
      * consola.
      */
     public Juez() {
+       
         ingresarDatos();
+        this.codigo= contadorCodigo++;    
+        
     }
 
     /**
@@ -49,8 +54,10 @@ public class Juez implements Codigo, Nombre{
      */
     public void ingresarDatos() {
         this.nombre_apellido = tools.leerString("Ingrese nombre y apellido: ");
-        this.codigo = tools.leerEntero("Ingrese codigo de Juez: ");
-        this.anios_de_servicio = tools.leerEntero("Ingrese anios de servicio: ");
+         codigo++;
+        this.codigo = codigo;
+        this.anios_de_servicio = tools.leerEntero("Ingrese anios de servicio: ");       
+        
     }
 
     /**
@@ -137,8 +144,7 @@ public String toString() {
     sb.append("\n========= JUEZ =========\n");
     sb.append("Nombre y Apellido   : ").append(nombre_apellido).append("\n");
     sb.append("Codigo              : ").append(codigo).append("\n");
-    sb.append("Años de Servicio    : ").append(anios_de_servicio).append("\n");
-    sb.append("Codigo Casos Actual : ").append(codigo_casos).append("\n");
+    sb.append("Tiempo de Servicio    : ").append(anios_de_servicio).append("\n");    
     
     sb.append("Casos Asignados     : ");
     if (casos_asignados.isEmpty()) {

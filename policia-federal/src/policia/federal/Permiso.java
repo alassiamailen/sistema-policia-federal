@@ -32,6 +32,7 @@ public enum Permiso {
      * Permite crear un contrato entre una sucursal y un vigilante.
      */
     CONTRATAR_VIGILANTE("Crear un contrato entre sucursal y vigilante."),
+    CREAR_ENTIDAD("Crear nueva entidad."),
     /**
      * Permite registrar un nuevo detenido en el sistema.
      */

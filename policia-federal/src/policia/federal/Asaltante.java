@@ -14,7 +14,8 @@ import java.util.ArrayList;
  * @version 1.0
  */
 public class Asaltante implements Codigo, Nombre{
-
+    
+    private static int contadorCodigo = 1;
     private int codigo;
     private String nombre_apellido;
     private BandaCriminal banda_criminal;
@@ -43,8 +44,8 @@ public class Asaltante implements Codigo, Nombre{
      * @param nombre_apellido Nombre completo del asaltante
      * @param banda_criminal Banda criminal a la que pertenece
      */
-    public Asaltante(int codigo, String nombre_apellido, BandaCriminal banda_criminal) {
-        this.codigo = codigo;
+    public Asaltante(String nombre_apellido, BandaCriminal banda_criminal) {
+       this.codigo = contadorCodigo++;
         this.nombre_apellido = nombre_apellido;
         this.banda_criminal = banda_criminal;
 
@@ -58,6 +59,7 @@ public class Asaltante implements Codigo, Nombre{
      */
     public Asaltante() {
         ingresarDatos();
+         this.codigo = contadorCodigo++;
     }
 
     /**
@@ -66,8 +68,8 @@ public class Asaltante implements Codigo, Nombre{
      * Pide nombre completo y código identificador.
      */
     public void ingresarDatos() {
-        this.nombre_apellido = tools.leerString("Ingrese nombre y apellido: ");
-        this.codigo = tools.leerEntero("Ingrese codigo del asaltado: ");
+        this.nombre_apellido = tools.leerString("Ingrese nombre y apellido: ");   
+        
 
     }
 

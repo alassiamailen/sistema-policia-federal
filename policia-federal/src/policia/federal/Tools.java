@@ -65,5 +65,10 @@ public class Tools {
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         return LocalDate.parse(fechaTexto, formato);  // parsear a LocalDate
     }
+    public void limpiarConsola() {
+        for (int i = 0; i < 50; i++) {
+            System.out.println();
+        }
+    }
 
 }

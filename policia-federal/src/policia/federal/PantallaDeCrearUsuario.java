@@ -110,14 +110,13 @@ public class PantallaDeCrearUsuario {
         vigilante.agregarPermiso(Permiso.SALIR);
         String user = t.leerString("Ingresar Usuario");
         String clave = t.leerString("Ingresar Clave");
-        String NomApe = t.leerString("Ingresar Nombre Completo");
-        int code = t.leerEntero("Ingresar codigo de vigilante");
-        int edad = t.leerEntero("Ingresar codigo");
+        String NomApe = t.leerString("Ingresar Nombre Completo");        
+        int edad = t.leerEntero("Ingresar edad");
 
         //Cargo vigilantes y linkeo con usuarios y cargo al contexto
         Authenticacion auth = Authenticacion.getInstance();
         RegistroVigilantes nuevoVigi = new RegistroVigilantes(auth, contexto, vigilante);
-        nuevoVigi.crearVigilanteConUsuario(NomApe, code, edad, user, clave);
+        nuevoVigi.crearVigilanteConUsuario(NomApe, edad, user, clave);
         System.out.println("Usuario creado exitosamente");
     }
 

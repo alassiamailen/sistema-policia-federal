@@ -4,7 +4,7 @@ package policia.federal;
  *
  * @author Alassia
  */
-public class Condena {
+public class Condena implements Codigo, Nombre{
     private int codigo_condena;  
     private Asaltante asaltante;
     private Asalto asalto;
@@ -36,5 +36,14 @@ public String toString() {
            "\ttiempo_condena = " + tiempo_condena + "\n" +
            "";
 }
+
+  @Override
+    public int obtenerCodigo() {
+        return codigo_condena;
+    }
+    @Override
+    public String getNombre() {
+       return "Condena nro: " + codigo_condena + " - Asaltante: " + asaltante.getNombre() + "\n";
+    }
    
 }

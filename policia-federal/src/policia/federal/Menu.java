@@ -66,6 +66,7 @@ public class Menu {
         acciones.put(Permiso.CONSULTAR_MIS_DATOS_VIGILANTE, this::deConsultarMisDatos);
         acciones.put(Permiso.EDITAR_DATOS, this::deEditarDatos);
         acciones.put(Permiso.CREAR_USUARIOS, this::deCrearUsuarios);
+        acciones.put(Permiso.CREAR_ENTIDAD, this::crearEntidad);
         acciones.put(Permiso.ELIMINAR_DATOS, this::deEliminarUsuarios);
         acciones.put(Permiso.CERRAR_SESION, this::deCerrarSesion);
         acciones.put(Permiso.SALIR, this::deSalir);
@@ -80,7 +81,7 @@ public class Menu {
         Usuario usuario = Authenticacion.getInstance().getUsuarioActual();
         System.out.println("Usuario " + usuario.getNombreUsuario() + ":");
         ArrayList<Permiso> permisos = new ArrayList<>(usuario.getRol().getPermisos());
-
+        Tools tools = new Tools();
         Scanner sc = new Scanner(System.in);
 
         boolean seguir = true;
@@ -97,6 +98,7 @@ public class Menu {
             System.out.print("\nSeleccione una opcion >>> ");
             int eleccion = sc.nextInt();
             Permiso seleccionado = opciones.get(eleccion);
+            tools.limpiarConsola();
             System.out.println("\n");
             if (seleccionado != null && acciones.containsKey(seleccionado)) {
                 acciones.get(seleccionado).ejecutar();
@@ -108,7 +110,6 @@ public class Menu {
             }
         } while (seguir);
 
-        //Listo
     }
 
     /**
@@ -129,7 +130,7 @@ public class Menu {
      * Acción pendiente de implementación para consultar datos del sistema.
      */
     private void deConsultarDatos() {
-        PantallDeMostrarDatosGral p = new  PantallDeMostrarDatosGral(contexto);
+        PantallDeMostrarDatosGral p = new PantallDeMostrarDatosGral(contexto);
         p.menu();
     }
 
@@ -173,9 +174,20 @@ public class Menu {
         accion_de_cargar_detenido.cargarDetenido(contexto);
     }
 
+    /**
+     * Ejecuta la acción de abrir un nuevo caso en el sistema.
+     */
     private void abrirCaso() {
         PantallaDeAbrirCaso accion_de_abrir_un_caso = new PantallaDeAbrirCaso();
         accion_de_abrir_un_caso.abrirCaso(contexto);
+    }
+
+    /**
+     * Muestra el menú para crear nuevas entidades en el sistema.
+     */
+    private void crearEntidad() {
+        PantallaDeCrearEntidad accion_de_crear_entidad = new PantallaDeCrearEntidad(contexto);
+        accion_de_crear_entidad.menuCrearEntidad();
     }
 
     /**

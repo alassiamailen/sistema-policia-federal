@@ -55,6 +55,8 @@ public class PantallaDeAbrirCaso {
                 Caso nuevo_caso = new Caso(juez, nuevo_condena);
                 // Asignar Caso a Juez
                 juez.agregarCasos(nuevo_caso);
+                
+                contexto.agregarEntidadAlArrayList(contexto.getCasos(), nuevo_caso);
 
             }
 

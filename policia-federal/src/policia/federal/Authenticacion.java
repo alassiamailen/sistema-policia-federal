@@ -66,11 +66,7 @@ public class Authenticacion {
         usuarios.add(usuario);
     }
 
-    /**
-     * Obtiene el usuario actualmente autenticado.
-     *
-     * @return El usuario actual o null si no hay sesión activa
-     */
+
     public Usuario getUsuarioActual() {
         return usuarioActual;
     }
@@ -83,7 +79,7 @@ public class Authenticacion {
     }
 
     /**
-     * Inicia sesión con un nombre de usuario y contraseña.
+     * Inicia sesión con un nombre de usuario y clave.
      * <p>
      * Permite 3 intentos fallidos antes de bloquear el acceso temporalmente.
      *
@@ -123,13 +119,13 @@ public class Authenticacion {
      * Verifica las credenciales de un usuario.
      *
      * @param nombreUsuario Nombre de usuario a verificar
-     * @param contraseña Contraseña a verificar
+     * @param clave Contraseña a verificar
      * @return El objeto Usuario si las credenciales son válidas, null en caso
      * contrario
      */
-    private Usuario login(String nombreUsuario, String contraseña) {
+    private Usuario login(String nombreUsuario, String clave) {
         for (Usuario u : usuarios) {
-            if (u.autenticar(nombreUsuario, contraseña)) {
+            if (u.autenticar(nombreUsuario, clave)) {
                 return u;
             }
         }
@@ -146,4 +142,10 @@ public class Authenticacion {
         System.out.println(mensaje);
         return sc.nextLine();
     }
+
+    public List<Usuario> getUsuarios() {
+        return usuarios;
+    }
+    
+    
 }

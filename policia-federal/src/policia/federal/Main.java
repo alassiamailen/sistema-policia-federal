@@ -1,7 +1,6 @@
 package policia.federal;
 
 import java.time.LocalDate;
-import java.util.List;
 
 /**
  * Clase principal que inicializa el sistema de gestión policial. Se encarga de
@@ -32,6 +31,7 @@ public class Main {
         admin.agregarPermiso(Permiso.CARGAR_DETENIDO);
         admin.agregarPermiso(Permiso.ABRIR_CASO);
         admin.agregarPermiso(Permiso.CREAR_USUARIOS);
+        admin.agregarPermiso(Permiso.CREAR_ENTIDAD);
         admin.agregarPermiso(Permiso.EDITAR_DATOS);
         admin.agregarPermiso(Permiso.ELIMINAR_DATOS);
         admin.agregarPermiso(Permiso.CERRAR_SESION);
@@ -52,25 +52,25 @@ public class Main {
         RegistroVigilantes registro = new RegistroVigilantes(authenticacion, contexto, vigilante);
 
         //Cargo vigilantes, linkeo con usuarios y cargo al contexto
-        registro.crearVigilanteConUsuario("Carlos Sanchez", 10, 40, "carlos", "1234");
-        registro.crearVigilanteConUsuario("Ana Gomez", 11, 38, "ana", "abcd");
-        registro.crearVigilanteConUsuario("Luis Varela", 12, 45, "luis", "pass");
+        registro.crearVigilanteConUsuario("Carlos Sanchez", 40, "carlos", "1234");
+        registro.crearVigilanteConUsuario("Ana Gomez", 38, "ana", "abcd");
+        registro.crearVigilanteConUsuario("Luis Varela", 45, "luis", "pass");
 
         //ENTIDADES
         EntidadBancaria BBVA = new EntidadBancaria("BBVA", 1234, "Triunvirato");
         EntidadBancaria GALICIA = new EntidadBancaria("Galicia", 134, "Vicente Lopez");
         EntidadBancaria SANTANDER_RIO = new EntidadBancaria("Santander Rio", 14, "Paternal");
         //SUCURSALES
-        Sucursal paternal = new Sucursal(15, "Paternal");
-        Sucursal vicente_lopez = new Sucursal(15, "Vicente Lopez");
-        Sucursal triunvirato = new Sucursal(15, "Triunvirato");
+        Sucursal paternal = new Sucursal(15, "Paternal","Donato Alvarez");
+        Sucursal vicente_lopez = new Sucursal(15, "Vicente Lopez","Av.Maipu");
+        Sucursal triunvirato = new Sucursal(15, "Triunvirato","Av.Juan Alvarez");
         /// BANDA CRIMINAL
         BandaCriminal banda_1 = new BandaCriminal(889, 2);
         BandaCriminal banda_2 = new BandaCriminal(579, 1);
         /// ASALTANTES
-        Asaltante detenido_1 = new Asaltante(23, "Mario Ledesma", banda_1);
-        Asaltante detenido_2 = new Asaltante(12, "Carlos Gomez", banda_2);
-        Asaltante detenido_3 = new Asaltante(120, "Susana Palacios", banda_1);
+        Asaltante detenido_1 = new Asaltante("Mario Ledesma", banda_1);
+        Asaltante detenido_2 = new Asaltante("Carlos Gomez", banda_2);
+        Asaltante detenido_3 = new Asaltante("Susana Palacios", banda_1);
 
         //Jueces
         Juez juez_1 = new Juez("Esteban Paz", 123, 2);
